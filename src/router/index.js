@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../components/Home.vue'
+// import firebase from 'firebase/app'
+import 'firebase/auth'
 
 const router = createRouter({
 	history: createWebHistory(),
@@ -34,5 +36,6 @@ const router = createRouter({
 		},
 	],
 })
+
 
 export default router

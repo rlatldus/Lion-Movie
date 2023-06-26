@@ -35,8 +35,8 @@
 		<div class="menu">
 			<router-link to="/login" class="button">
 				<span class="material-icons">login</span>
-				<span v-if="!loggedIn" class="text">Login</span>
-				<span v-else class="text">Logout</span>
+				<span class="text" v-if=" !token">Login</span>
+				<span class="text" v-else>Logout</span>
 			</router-link>
 			<router-link to="/setting" class="button">
 				<span class="material-icons">person_add_alt</span>
@@ -47,29 +47,39 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { mapState, mapMutations } from 'vuex';
+import { ref, computed } from 'vue';
+import logoURL from '../assets/logo.png';
 
-import logoURL from '../assets/logo.png'
 export default {
+	computed: {
+		...mapState(['user', 'token'])
+	},
 	setup() {
-		const loggedIn = localStorage.getItem("loggedIn");
 		const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 		const ToggleMenu = () => {
-			is_expanded.value = !is_expanded.value
-			localStorage.setItem("is_expanded", is_expanded.value)
-		}
-		onMounted(() => {
-			loggedIn = localStorage.getItem("loggedIn");
+			is_expanded.value = !is_expanded.value;
+			localStorage.setItem("is_expanded", is_expanded.value);
+		};
+
+		const currentUser = computed(() => {
+			return this.user;
 		});
+		    const currentToken = computed(() => {
+			return this.token;
+		});
+
 		return {
-			loggedIn,
 			is_expanded,
 			ToggleMenu,
-			logoURL
-		}
+			logoURL,
+			currentUser,
+			 currentToken
+		};
 	}
 }
 </script>
+
 
 <style lang="scss" scoped>
 aside {

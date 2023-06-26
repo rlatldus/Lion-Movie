@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 export default createStore({
   state: {
     user: null,
+    token: localStorage.getItem("token") || null,
   },
   mutations: {
     SET_USER(state, user) {
@@ -15,17 +16,27 @@ export default createStore({
     CLEAR_USER(state) {
       state.user = null;
     },
+    SET_TOKEN(state, token) {
+      state.token = token;
+    },
+
+    CLEAR_TOKEN(state) {
+      state.token = null;
+    },
   },
 
   actions: {
-    async login({ commit }, details) { //NOTE 로그인
+    async login({ commit }, details) {
+      //NOTE 로그인
       const { email, password } = details;
       try {
         await signInWithEmailAndPassword(auth, email, password);
-         localStorage.setItem("loggedIn", "true");
+        const token = await auth.currentUser.getIdToken();
+        localStorage.setItem("token", token);
+        commit("SET_TOKEN", token);
         console.log(auth.currentUser);
       } catch (error) {
-        console.log(error)
+        console.log(error);
         switch (error.code) {
           case "auth/user-not-found":
             alert("사용자가 없습니다");
@@ -42,7 +53,8 @@ export default createStore({
       router.push("/");
     },
 
-    async register({ commit }, details) { //NOTE 회원가입
+    async register({ commit }, details) {
+      //NOTE 회원가입
       const { email, password } = details;
 
       try {
@@ -73,11 +85,14 @@ export default createStore({
       router.push("/login");
     },
 
-    async logout({ commit }) { //NOTE 로그아웃
+    async logout({ commit }) {
+      //NOTE 로그아웃
       await signOut(auth);
       commit("CLEAR_USER");
-      localStorage.removeItem("loggedIn");
+      commit("CLEAR_TOKEN");
+      localStorage.removeItem("token");
       router.push("/");
+      console.log(auth.currentUser);
     },
   },
 });

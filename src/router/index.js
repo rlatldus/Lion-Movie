@@ -1,7 +1,7 @@
+import { onAuthStateChanged } from "firebase/auth";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../components/Home.vue";
 import { auth } from "../firebase";
-import {onAuthStateChanged } from "firebase/auth";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -41,14 +41,14 @@ const router = createRouter({
 });
 // const auth = getAuth();
 router.beforeEach((to, from, next) => {
-
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         next();
       } else {
         next("/login");
       }
+      unsubscribe();
     });
   } else {
     next();

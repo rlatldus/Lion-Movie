@@ -4,10 +4,10 @@
       <form class="login" @submit.prevent="login()">
         <h2>로그인</h2>
         <label>이메일
-          <input v-model="formData.email" placeholder="email을 입력해주세요" type="text" />
+          <input v-model="formData.email" autocomplete="email" placeholder="email을 입력해주세요" type="text" />
         </label>
         <label>비밀번호
-          <input v-model="formData.password" placeholder="password를 입력해주세요" type="password" />
+          <input v-model="formData.password" autocomplete="password" placeholder="password를 입력해주세요" type="password" />
         </label>
         <button type="submit">로그인하기</button>
       </form>

@@ -1,3 +1,5 @@
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const config = {
   apiKey: "AIzaSyAETufK72MSllV8jqp2AsQUtJLdRh0hPDk",
@@ -10,4 +12,8 @@ const config = {
   measurementId: "G-5DJ03P9ZKV",
 };
 
-export  {config};
+const app = initializeApp(config);
+
+const auth = getAuth(app);
+
+export { auth };

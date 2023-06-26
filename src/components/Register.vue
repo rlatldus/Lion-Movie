@@ -1,9 +1,9 @@
 <template>
   <div id="register">
     <h4>아이디</h4>
-    <input v-model="email" type="text" />
+    <input v-model="formData.email" type="text" />
     <h4>패스워드</h4>
-    <input v-model="password" type="password"/>
+    <input v-model="formData.password" type="password"/>
     <div>
       <button @click="signUp()">가입하기</button>
     </div>
@@ -11,31 +11,22 @@
 </template>
 
 <script>
-import { initializeApp } from 'firebase/app'
-import {config} from '../firebase'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 
-    initializeApp(config)
-		export default {
-  name: 'Register',
-  data() {
-    return {
-      email: '',
-      password: ''
+export default {
+  setup() {
+    const formData = ref({});
+    const store = useStore();
+
+    const signUp = () => {
+      store.dispatch('register', formData.value);
     }
-  },
-  methods: {
-    signUp() {
-      const auth = getAuth()
-      createUserWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          const user = userCredential.user
-          console.log(user)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+
+    return {
+      formData,
+      signUp
     }
   }
-}
+};
 </script>

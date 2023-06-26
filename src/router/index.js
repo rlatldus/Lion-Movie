@@ -1,7 +1,6 @@
-import { onAuthStateChanged } from "firebase/auth";
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../components/Home.vue";
-import { auth } from "../firebase";
+import AuthGuard from "../util/authguard";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -39,20 +38,7 @@ const router = createRouter({
     },
   ],
 });
-// const auth = getAuth();
-router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        next();
-      } else {
-        next("/login");
-      }
-      unsubscribe();
-    });
-  } else {
-    next();
-  }
-});
+
+AuthGuard(router);
 
 export default router;

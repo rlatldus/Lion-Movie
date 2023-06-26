@@ -6,7 +6,7 @@ export default function AuthGuard(router) {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
-          next(false);
+          next();
         } else {
           alert("로그인 먼저 해주세요");
           next("/login");

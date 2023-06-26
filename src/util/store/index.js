@@ -22,6 +22,7 @@ export default createStore({
       const { email, password } = details;
       try {
         await signInWithEmailAndPassword(auth, email, password);
+         localStorage.setItem("loggedIn", "true");
         console.log(auth.currentUser);
       } catch (error) {
         console.log(error)
@@ -75,7 +76,8 @@ export default createStore({
     async logout({ commit }) { //NOTE 로그아웃
       await signOut(auth);
       commit("CLEAR_USER");
-      router.push("/login");
+      localStorage.removeItem("loggedIn");
+      router.push("/");
     },
   },
 });

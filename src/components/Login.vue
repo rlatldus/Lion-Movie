@@ -1,6 +1,6 @@
 <template>
   <main class="login">
-    <section class="forms">
+    <section v-if="!loggedIn" class="forms">
       <form class="login" @submit.prevent="login()">
         <h2>로그인</h2>
         <label>이메일
@@ -13,26 +13,37 @@
       </form>
       <span>만약 계정이 없다면, <router-link to="/register">회원가입</router-link>을 먼저 진행해주세요</span>
     </section>
-    <button @click="$store.dispatch('logout')">로그아웃</button>
+    <button v-else @click="logout">로그아웃</button>
   </main>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
   setup() {
     const formData = ref({});
     const store = useStore();
+    let loggedIn = localStorage.getItem("loggedIn");
 
     const login = () => {
       store.dispatch('login', formData.value);
     }
 
+    const logout = () => {
+      store.dispatch('logout');
+    }
+
+    onMounted(() => {
+      loggedIn = localStorage.getItem("loggedIn");
+    });
+
     return {
       formData,
       login,
+      logout,
+      loggedIn
     }
   }
 };

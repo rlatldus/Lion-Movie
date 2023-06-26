@@ -1,7 +1,7 @@
 <template>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
 		<div class="logo">
-			<img :src="logoURL" alt="Vue" /> 
+			<img :src="logoURL" alt="Vue" />
 		</div>
 
 		<div class="menu-toggle-wrap">
@@ -31,33 +31,43 @@
 		</div>
 
 		<div class="flex"></div>
-		
+
 		<div class="menu">
 			<router-link to="/login" class="button">
 				<span class="material-icons">login</span>
-				<span class="text">Login</span>
-			</router-link>
-			<router-link to="/register" class="button">
-				<span class="material-icons">person_add_alt</span>
-				<span class="text">Register</span>
+				<span v-if="!loggedIn" class="text">Login</span>
+				<span v-else class="text">Logout</span>
 			</router-link>
 			<router-link to="/setting" class="button">
-				<span class="material-icons">settings</span>
+				<span class="material-icons">person_add_alt</span>
 				<span class="text">Settings</span>
 			</router-link>
 		</div>
 	</aside>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { ref, onMounted } from 'vue'
+
 import logoURL from '../assets/logo.png'
-
-const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
-
-const ToggleMenu = () => {
-	is_expanded.value = !is_expanded.value
-	localStorage.setItem("is_expanded", is_expanded.value)
+export default {
+	setup() {
+		const loggedIn = localStorage.getItem("loggedIn");
+		const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
+		const ToggleMenu = () => {
+			is_expanded.value = !is_expanded.value
+			localStorage.setItem("is_expanded", is_expanded.value)
+		}
+		onMounted(() => {
+			loggedIn = localStorage.getItem("loggedIn");
+		});
+		return {
+			loggedIn,
+			is_expanded,
+			ToggleMenu,
+			logoURL
+		}
+	}
 }
 </script>
 
@@ -99,12 +109,13 @@ aside {
 
 		.menu-toggle {
 			transition: 0.2s ease-in-out;
+
 			.material-icons {
 				font-size: 2rem;
 				color: var(--light);
 				transition: 0.2s ease-out;
 			}
-			
+
 			&:hover {
 				.material-icons {
 					color: var(--primary);
@@ -114,7 +125,8 @@ aside {
 		}
 	}
 
-	h3, .button .text {
+	h3,
+	.button .text {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 	}
@@ -142,6 +154,7 @@ aside {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
 			}
+
 			.text {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
@@ -150,7 +163,8 @@ aside {
 			&:hover {
 				background-color: var(--dark-alt);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
@@ -159,7 +173,8 @@ aside {
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
@@ -181,13 +196,14 @@ aside {
 
 		.menu-toggle-wrap {
 			top: -3rem;
-			
+
 			.menu-toggle {
 				transform: rotate(-180deg);
 			}
 		}
 
-		h3, .button .text {
+		h3,
+		.button .text {
 			opacity: 1;
 		}
 

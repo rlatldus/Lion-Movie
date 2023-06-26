@@ -4,27 +4,21 @@
     <h4>아이디</h4>
     <input v-model="email" placeholder="email을 입력해주세요" type="text" />
     <h4>패스워드</h4>
-    <input v-model="password" placeholder="password를 입력해주세요" type="password"/>
+    <input v-model="password" placeholder="password를 입력해주세요" type="password" />
     <div><button @click="login()">로그인하기</button></div>
     <span>만약 계정이 없다면, <router-link to="/register">회원가입</router-link>을 먼저 진행해주세요</span>
+
+    <button @click="logOut()">로그아웃</button>
   </div>
 </template>
 
 <script>
-import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { saveAccessToken } from '../auth/auth';
+import { config } from '../firebase';
 
-var config = {
-	apiKey: "AIzaSyAETufK72MSllV8jqp2AsQUtJLdRh0hPDk",
-    authDomain: "movie-33ea4.firebaseapp.com",
-    databaseURL: "https://movie-33ea4-default-rtdb.firebaseio.com",
-    projectId: "movie-33ea4",
-    storageBucket: "movie-33ea4.appspot.com",
-    messagingSenderId: "785708981878",
-    appId: "1:785708981878:web:9f34e3a6b329bed9580957",
-    measurementId: "G-5DJ03P9ZKV",
-    }
-		initializeApp(config)
+initializeApp(config);
 
 export default {
   name: 'login',
@@ -32,20 +26,34 @@ export default {
     return {
       email: '',
       password: ''
-    }
+    };
   },
   methods: {
     login() {
-      const auth = getAuth()
+      const auth = getAuth();
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
-          const user = userCredential.user
-          console.log(user)
+          const user = userCredential.user;
+          saveAccessToken(user.accessToken);
+          console.log(user);
         })
         .catch((error) => {
-          console.log(error)
+          console.log(error);
+        });
+    },
+    logOut() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // 로그아웃 성공
+          console.log('로그아웃되었습니다.');
+          // 여기에서 로그아웃 후에 수행할 작업을 추가할 수 있습니다.
         })
+        .catch((error) => {
+          // 로그아웃 실패
+          console.log('로그아웃 중에 오류가 발생했습니다.', error);
+        });
     }
   }
-}
+};
 </script>

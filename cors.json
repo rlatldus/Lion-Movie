@@ -1,0 +1,7 @@
+[
+    {
+        "origin" : ["http://192.168.0.7:3001"],
+        "method" : ["GET"],
+        "maxAgeSeconds" : 3600
+    }
+]

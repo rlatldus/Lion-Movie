@@ -35,7 +35,7 @@
 		<div class="menu">
 			<router-link to="/login" class="button">
 				<span class="material-icons">login</span>
-				<span class="text" v-if=" !token">Login</span>
+				<span class="text" v-if="!token">Login</span>
 				<span class="text" v-else>Logout</span>
 			</router-link>
 			<router-link to="/setting" class="button">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState } from 'vuex';
 import { ref, computed } from 'vue';
 import logoURL from '../assets/logo.png';
 
@@ -62,19 +62,14 @@ export default {
 			localStorage.setItem("is_expanded", is_expanded.value);
 		};
 
-		const currentUser = computed(() => {
-			return this.user;
-		});
-		    const currentToken = computed(() => {
+		const currentToken = computed(() => {
 			return this.token;
 		});
-
 		return {
 			is_expanded,
 			ToggleMenu,
 			logoURL,
-			currentUser,
-			 currentToken
+			currentToken
 		};
 	}
 }

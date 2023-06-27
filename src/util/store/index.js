@@ -3,6 +3,20 @@ import router from "../../router";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
+async function getUserInfo(token) {
+  try {
+    const response = await fetch("https://movie-33ea4-default-rtdb.firebaseio.com", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const userInfo = await response.json();
+    return userInfo;
+  } catch (error) {
+    throw new Error('유저 정보를 가져오는데 실패했습니다');
+  }
+}
+
 export default createStore({
   state: {
     user: null,
@@ -26,6 +40,7 @@ export default createStore({
   },
 
   actions: {
+
     async login({ commit }, details) {
       //NOTE 로그인
       const { email, password } = details;
@@ -50,6 +65,7 @@ export default createStore({
         return;
       }
       commit("SET_USER", auth.currentUser);
+      alert("로그인 되었습니다.");
       router.push("/");
     },
 
@@ -78,7 +94,7 @@ export default createStore({
           default:
             alert("정보를 다시 한번 확인해주세요");
         }
-        return;
+        return alert("회원가입 되었습니다.");
       }
 
       commit("SET_USER", auth.currentUser);
@@ -93,6 +109,16 @@ export default createStore({
       localStorage.removeItem("token");
       router.push("/");
       console.log(auth.currentUser);
+    },
+
+    async fetchUserInfo({ commit, state }) { //NOTE 유저정보 가져오기
+      if (!state.token) return;
+      try {
+        const userInfo = await getUserInfo(state.token);
+        commit("SET_USER", userInfo);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });

@@ -223,9 +223,9 @@ aside {
 		}
 	}
 
-	@media (max-width: 1024px) {
-		position: absolute;
-		z-index: 99;
-	}
+	// @media (max-width: 1024px) {
+	// 	position: absolute;
+	// 	z-index: 99;
+	// } // 로그인 폼이 이상해짐
 }
 </style>

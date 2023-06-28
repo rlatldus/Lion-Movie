@@ -1,7 +1,7 @@
 <template>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
 		<div class="logo">
-			<img :src="logoURL" alt="Vue" />
+			<img :src="logoURL" alt="Vue" /> 
 		</div>
 
 		<div class="menu-toggle-wrap">
@@ -31,8 +31,8 @@
 		</div>
 
 		<div class="flex"></div>
-
-		<div class="menu">
+		
+		<div class="menu sidemenu">
 			<router-link to="/login" class="button">
 				<span class="material-icons">login</span>
 				<span class="text" v-if="!token">Login</span>
@@ -47,34 +47,33 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { ref, computed } from 'vue';
-import logoURL from '../assets/logo.png';
+	import {mapState} from 'vuex';
+	import {ref, computed} from 'vue';
+	import logoURL from '../assets/logo.png';
 
-export default {
-	computed: {
+	export default {
+		computed: {
 		...mapState(['user', 'token'])
 	},
 	setup() {
 		const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 		const ToggleMenu = () => {
-			is_expanded.value = !is_expanded.value;
-			localStorage.setItem("is_expanded", is_expanded.value);
+		is_expanded.value = !is_expanded.value;
+	localStorage.setItem("is_expanded", is_expanded.value);
 		};
 
 		const currentToken = computed(() => {
 			return this.token;
 		});
-		return {
-			is_expanded,
-			ToggleMenu,
-			logoURL,
-			currentToken
-		};
+	return {
+		is_expanded,
+		ToggleMenu,
+		logoURL,
+		currentToken
+	};
 	}
 }
 </script>
-
 
 <style lang="scss" scoped>
 aside {
@@ -83,16 +82,19 @@ aside {
 
 	background-color: var(--dark);
 	color: var(--light);
-
 	width: calc(2rem + 32px);
 	overflow: hidden;
 	min-height: 100vh;
 	padding: 1rem;
-
 	transition: 0.2s ease-in-out;
 
+	@media (min-width: 350px) and (max-width : 549px) {
+		width: calc(2em + 32px);
+		
+	}
+
 	.flex {
-		flex: 1 1 0%;
+		flex: 1 1 0%
 	}
 
 	.logo {
@@ -103,6 +105,7 @@ aside {
 		}
 	}
 
+	
 	.menu-toggle-wrap {
 		display: flex;
 		justify-content: flex-end;
@@ -114,13 +117,12 @@ aside {
 
 		.menu-toggle {
 			transition: 0.2s ease-in-out;
-
 			.material-icons {
 				font-size: 2rem;
 				color: var(--light);
 				transition: 0.2s ease-out;
 			}
-
+			
 			&:hover {
 				.material-icons {
 					color: var(--primary);
@@ -129,9 +131,8 @@ aside {
 			}
 		}
 	}
-
-	h3,
-	.button .text {
+	
+	h3, .button .text {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 	}
@@ -145,7 +146,7 @@ aside {
 
 	.menu {
 		margin: 0 -1rem;
-
+		
 		.button {
 			display: flex;
 			align-items: center;
@@ -159,7 +160,6 @@ aside {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
 			}
-
 			.text {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
@@ -168,8 +168,7 @@ aside {
 			&:hover {
 				background-color: var(--dark-alt);
 
-				.material-icons,
-				.text {
+				.material-icons, .text {
 					color: var(--primary);
 				}
 			}
@@ -178,8 +177,7 @@ aside {
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons,
-				.text {
+				.material-icons, .text {
 					color: var(--primary);
 				}
 			}
@@ -201,14 +199,13 @@ aside {
 
 		.menu-toggle-wrap {
 			top: -3rem;
-
+			
 			.menu-toggle {
 				transform: rotate(-180deg);
 			}
 		}
 
-		h3,
-		.button .text {
+		h3, .button .text {
 			opacity: 1;
 		}
 
@@ -223,9 +220,46 @@ aside {
 		}
 	}
 
-	// @media (max-width: 1024px) {
+	// @media (max-width: 0px) {
 	// 	position: absolute;
 	// 	z-index: 99;
-	// } // 로그인 폼이 이상해짐
+	// }
+
+	@media (min-width: 550px) and (max-width : 1023px) {
+		aside {
+	
+	width: calc(2rem + 20px);
+
+
+		}
+	}
+	@media (min-width: 350px) and(max-width : 549px) {
+	
+	
+		.menu-toggle-wrap{
+					display: none;
+				}
+		.menu {
+		margin: 0 -1rem;
+		
+		.button {
+			padding: 0.5em 1.03em;
+
+			.material-icons {
+				
+				font-size: 1.7rem;
+			}
+	
+			}
+		}
+		&.is-expanded {
+			width: calc(3rem + 2px);
+
+		}
+	}
+	
 }
+
+
+
 </style>

@@ -3,11 +3,10 @@
 		<div>
 			<h1><span class="material-icons setting">settings</span>Setting</h1>
 		</div>
-		<div class="Setting_icons">
+		<div class="setting_icons">
 			<ul class="set">
-				<li></li>
-				<li></li>
-				<li></li>
+				<li>dd</li>
+				<li>dd</li>
 			</ul>
 		</div>
 
@@ -17,7 +16,15 @@
 
 <style scoped>
 
+li {
+	list-style: none;
+	height: auto;
 
+}
+
+li>span{
+	font-size: 150px;
+}
 
 h1{
 	display: flex;
@@ -34,5 +41,10 @@ main{
 	font-size: 120%;
 	
 }
+.setting_icons{
+	margin-top: 30px;
+	background-color: rgb(32, 196, 196);
+}
+
 
 </style>

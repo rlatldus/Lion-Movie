@@ -11,6 +11,8 @@
 <script setup>
 import Sidebar from './components/Sidebar.vue'
 import Setting from './components/Setting.vue'
+import About from './components/About.vue'
+import KakaoMap from './components/KakaoMap.vue';
 </script>
 
 <style lang="scss">
@@ -50,9 +52,11 @@ button {
 		flex: 1 1 0;
 		padding: 2rem;
 
-		@media (max-width: 1024px) {
-			padding-left: 6rem;
-		}
+		// @media (max-width: 00px) {
+		// 	padding-left: 6em;
+		// }
+		
+		
 	}
 }
 </style>

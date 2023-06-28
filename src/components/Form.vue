@@ -1,47 +1,27 @@
 <template>
   <form @submit.prevent="submitForm">
-    <p>영화, 드라마, 예능<br/>신나게 플레이해보아요 !</p>
+    <p>영화, 드라마, 예능
+      <br />
+      신나게 플레이해보아요 !
+    </p>
     <h2>{{ formTitle }}</h2>
     <label>
-      <input v-model="formData.email" autocomplete="email" placeholder="email을 입력해주세요" type="text" />
+      <input v-model="formData.email" autocomplete="email" placeholder="이메일을 입력해주세요" type="text" />
     </label>
     <label>
-      <input v-model="formData.password" autocomplete="password" placeholder="password를 입력해주세요" type="password" />
+      <input v-model="formData.password" autocomplete="password" placeholder="비밀번호를 입력해주세요" type="password" />
     </label>
-    <button type="submit">{{ formTitle }}하기</button>
+    <button type="submit">{{ submitButtonText }}</button>
   </form>
 </template>
 
 <script>
-import { mapState, useStore } from 'vuex';
-import { ref, computed, onMounted } from 'vue';
-
 export default {
-  data() {
-    return {
-      isLoginForm: true, // 로그인 폼인지 회원가입 폼인지 여부를 판단하기 위한 변수
-      formData: {
-        email: '',
-        password: ''
-      }
-    };
-  },
-  computed: {
-    formTitle() {
-      return this.isLoginForm ? '로그인' : '회원가입';
-    }
-  },
-  methods: {
-    submitForm() {
-      const store = useStore();
-      store.dispatch('login', this.formData);
-      // 폼 전송 로직 구현
-      if (this.isLoginForm) {
-        store.dispatch('login', this.formData);
-      } else {
-        // 회원가입 폼 전송 로직
-      }
-    }
+  props: {
+    formTitle: String,
+    submitButtonText: String,
+    formData: Object,
+    submitForm: Function
   }
 };
 </script>

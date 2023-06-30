@@ -14,8 +14,8 @@
 import { ref, computed, onMounted } from 'vue';
 import { mapState, useStore } from 'vuex';
 import { auth } from '../firebase';
-import UserForm from './Form.vue';
-import FormWrap from './FormWrap.vue';
+import UserForm from './common/Form.vue';
+import FormWrap from './common/FormWrap.vue';
 export default {
   components: {
     UserForm,

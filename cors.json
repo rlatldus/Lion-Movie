@@ -1,6 +1,6 @@
 [
     {
-        "origin" : ["http://192.168.0.7:3001"],
+        "origin" : ["https://movie-33ea4.web.app/"],
         "method" : ["GET"],
         "maxAgeSeconds" : 3600
     }

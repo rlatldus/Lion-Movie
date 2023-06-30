@@ -1,7 +1,7 @@
 <template>
-  <div class="modal">
-    <div class="overlay" @click="$emit('close-modal')"></div>
-    <div class="modal-card">
+  <div class="modal2">
+    <div class="overlay2" @click="$emit('close-modal')"></div>
+    <div class="modal-card2">
       <slot />
     </div>
   </div>
@@ -12,34 +12,36 @@ export default {};
 </script>
 
 <style>
-.modal,
-.overlay {
+.modal2,
+.overlay2 {
   width: 100%;
   height: 100%;
   position: fixed;
   left: 0px;
-  top: 0;
+  top: 0px;
+  
 }
 
-.modal{
+.modal2{
   
   z-index: 99;
 }
-.overlay {
+.overlay2 {
   
   opacity: 0.5;
   background-color: black;
 }
-.modal-card {
-  
+.modal-card2 {
+
   border-radius: 10px;
   position: relative;
-  max-width: 78%;
+  max-width: 28%;
   margin: auto;
-  margin-top: 70px;
+  margin-top: 10%;
   padding: 20px;
   background-color: white;
-  min-height: 500px;
+  height: 50%;
   opacity: 1;
+  
 }
 </style>

@@ -32,11 +32,15 @@
 			</div>
 		</div>
 		<div class="footer">
+			<ModalView2 v-if="isModalViewed2" @close-modal="isModalViewed2 = false">
+     		 <Content2/>
+    		</ModalView2>
 			<ul class="footer_contents">
-				<li><a href="#">OOO 이용약관</a></li>
-				<li><a href="#">청소년 보호 정책</a></li>
-				<li><a href="#">개인정보 수집 및 이용</a></li>
-				<li><a href="#">개인정보처리방침</a></li>
+				<li><button @click="isModalViewed2 = true">OOO 이용약관</button></li>
+				<li><button @click="isModalViewed2 = true">청소년 보호 정책</button></li>
+				<li><button @click="isModalViewed2 = true">개인정보 수집 및 이용</button></li>
+				<li><button @click="isModalViewed2 = true">개인정보처리방침</button></li>
+			
 			</ul>
 		</div>
 	</main>
@@ -45,6 +49,8 @@
 <script>
 import Content from './common/Content.vue'
 import ModalView from './common/ModalView.vue';
+import Content2 from './common/Content2.vue'
+import ModalView2 from './common/ModalView2.vue';
 import KakaoMap from './KakaoMap.vue'
 
 export default{
@@ -52,11 +58,14 @@ export default{
 	components:{
 		KakaoMap,
 		Content,
-		ModalView
+		ModalView,
+		Content2,
+		ModalView2
 	},
 	data(){
 		return{
-			isModalViewed:false
+			isModalViewed:false,
+			isModalViewed2:false
 		}
 	}
 }
@@ -173,7 +182,7 @@ main{
 }
 
 
-.footer_contents a{
+.footer_contents button{
 	
 	display: flex;
 	justify-content: center;

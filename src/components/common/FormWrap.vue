@@ -20,7 +20,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url(https://img.kor-img.com:4443/images/bg.jpg) center no-repeat;
+    background: url(./../../assets/bg.jpg) center no-repeat;
     background-size: cover;
 
     .forms {

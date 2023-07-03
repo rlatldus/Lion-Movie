@@ -52,7 +52,7 @@ export default {
     });
 
     onMounted(() => {
-      store.dispatch('fetchUserInfo');
+      // store.dispatch('fetchUserInfo');
       console.log(user, "유저")
       console.log(token, "토큰")
 

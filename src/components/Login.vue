@@ -13,12 +13,11 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue';
-import { mapState, useStore } from 'vuex';
-// import { auth } from '../firebase';
+import { ref } from 'vue';
+import { mapGetters, useStore } from 'vuex';
+import AuthButton from './common/AuthButton.vue';
 import UserForm from './common/Form.vue';
 import FormWrap from './common/FormWrap.vue';
-import AuthButton from './common/AuthButton.vue';
 export default {
   components: {
     AuthButton,
@@ -26,10 +25,15 @@ export default {
     FormWrap
 
   },
+  computed: {
+    ...mapGetters(["getToken"]),
+    token() {
+      return this.getToken;
+    }
+  },
   setup() {
     const store = useStore();
     const formData = ref({ email: '', password: '' });
-    // console.log(auth);
 
     const login = () => {
       store.dispatch('login', formData.value);
@@ -43,27 +47,10 @@ export default {
       store.dispatch('logout');
     }
 
-    const user = computed(() => {
-      return store.state.user;
-    });
-
-    const token = computed(() => {
-      return store.state.token;
-    });
-
-    onMounted(() => {
-      // store.dispatch('fetchUserInfo');
-      console.log(user, "유저")
-      console.log(token, "토큰")
-
-    });
-
     return {
       formData,
       login,
       logout,
-      user,
-      token
     }
   }
 };

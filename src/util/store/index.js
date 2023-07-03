@@ -40,7 +40,33 @@ export default createStore({
   },
 
   actions: {
-
+    async authlogin({ commit }, details) {
+      //NOTE 로그인
+      const { email, password } = details;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        const token = await auth.currentUser.getIdToken();
+        localStorage.setItem("token", token);
+        commit("SET_TOKEN", token);
+        console.log(auth.currentUser);
+      } catch (error) {
+        console.log(error);
+        switch (error.code) {
+          case "auth/user-not-found":
+            alert("사용자가 없습니다");
+            break;
+          case "auth/wrong-password":
+            alert("비밀번호가 다릅니다");
+            break;
+          default:
+            alert("정보를 다시 한번 확인해주세요");
+        }
+        return;
+      }
+      commit("SET_USER", auth.currentUser);
+      alert("로그인 되었습니다.");
+      router.push("/");
+    },
     async login({ commit }, details) {
       //NOTE 로그인
       const { email, password } = details;
@@ -111,7 +137,8 @@ export default createStore({
       console.log(auth.currentUser);
     },
 
-    async fetchUserInfo({ commit, state }) { //NOTE 유저정보 가져오기
+    async fetchUserInfo({ commit, state }) {
+      //NOTE 유저정보 가져오기
       if (!state.token) return;
       try {
         const userInfo = await getUserInfo(state.token);

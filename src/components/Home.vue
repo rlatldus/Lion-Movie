@@ -2,7 +2,7 @@
 	<main id="Home-page">
 		<h1>Home</h1>
 		<div class="mainRandom-movie"
-			:style="{ 'background-image': 'url(' + getMovieMainImage(randomMovie.backdrop_path) + ')' }">
+			:style="{ 'backgroundImage': 'url(' + getMovieMainImage(randomMovie.backdrop_path) + ')' }">
 			<!-- 화면 상단 메인 -->
 			<div v-if="randomMovie" class="mainRandom-movie--txt">
 				<h2>{{ randomMovie.title }}</h2>

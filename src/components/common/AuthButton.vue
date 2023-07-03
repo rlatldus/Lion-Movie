@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="button">
         <button @click="loginWithGoogle">Google 로그인</button>
     </div>
 </template>
@@ -21,8 +21,7 @@ export default {
                     // 로그인 상태인 경우 처리할 코드 작성
                     user.value = currentUser
                     const token = currentUser.accessToken
-                    store.commit('SET_USER', user.value)
-                    store.commit('SET_TOKEN', token)
+                    store.commit('SET_USER', { currentUser ,token })
                     localStorage.setItem("token", token);
                 }
             })
@@ -39,3 +38,23 @@ export default {
     }
 }
 </script>
+<style scoped>
+.button {
+  width: 50%;
+  max-width: 600px;
+  min-width: 300px;
+  margin-top: 50px;
+  padding: 15px 10px;
+  background-color: #ff7979;
+  color: white;
+
+  &:hover {
+    background-color: #e00000;
+  }
+
+  &:active {
+    background-color: red;
+    border: 1px solid white;
+  }
+}
+</style>

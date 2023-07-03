@@ -47,11 +47,11 @@ export default {
       }
     },
 
-    async register({ commit }, details) {
+    async register({ }, details) {
       const { email, password } = details;
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-        commit("SET_USER", auth.currentUser);
+        alert("회원가입 되었습니다.");
         router.push("/login");
       } catch (error) {
         switch (error.code) {
@@ -70,7 +70,6 @@ export default {
           default:
             alert("정보를 다시 한번 확인해주세요");
         }
-        return alert("회원가입 되었습니다.");
       }
     },
 

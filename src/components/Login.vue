@@ -14,7 +14,7 @@
 <script>
 import { ref, computed, onMounted } from 'vue';
 import { mapState, useStore } from 'vuex';
-import { auth } from '../firebase';
+// import { auth } from '../firebase';
 import UserForm from './common/Form.vue';
 import FormWrap from './common/FormWrap.vue';
 import AuthButton from './common/AuthButton.vue';
@@ -23,12 +23,12 @@ export default {
     AuthButton,
     UserForm,
     FormWrap
-    
+
   },
   setup() {
     const store = useStore();
     const formData = ref({ email: '', password: '' });
-    console.log(auth);
+    // console.log(auth);
 
     const login = () => {
       store.dispatch('login', formData.value);

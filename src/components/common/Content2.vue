@@ -1,6 +1,7 @@
 <template>
    <TabsWrapper class="MainTab">
-        <TabItem title="OOO 이용약관" class="Tab">
+        <TabItem title="OOO 이용약관" class="Tab" >
+        
           <p class="contents">디즈니+ 이용약관 (대한민국)
 
 시행일자: 2021년 11월 12일
@@ -188,15 +189,20 @@ xi.        달리 제3자로 하여금 위 제한을 위반하도록 허용하�
 
         </TabItem>
     </TabsWrapper>
+    
 
-
+    
   </template>
   
 <script setup>
 import TabsWrapper from '../common/TabsWrapper.vue';
 import TabItem from '../common/TabItem.vue';
 import { onBeforeMount } from 'vue';
+import ModalView2 from './ModalView2.vue';
+
+ 
 </script>
+
   
   <style scoped>
   * {
@@ -210,23 +216,82 @@ import { onBeforeMount } from 'vue';
       color: #2c3e50;
       margin-top: 60px;
   }
-
-
+.button1{
+  position: absolute;
+  bottom: 0;
+}
+.container{
+  position: absolute;
+  bottom:50px;
+}
 .Tab{
   color: whitesmoke;
   font-size: 0.85em;
   background-color: rgb(63, 104, 140);
   padding: 20px;
 }
+body {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+.messages {
+    height: 300px;
+    overflow: auto;
+}
+.container {
+    text-align: left;
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
 
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+.container::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}
   </style>
 
 
 <script>
- export default {
-    name: "Content2",
-   
-  };
 
+export default {
+  name: "Content2",
+ 
+}
+  
+ 
 
 </script>

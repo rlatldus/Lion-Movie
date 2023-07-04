@@ -2,7 +2,7 @@
 	<div class="app">
 		<!-- Sidebar -->
 		<Sidebar />
-
+		<Menu />
 		<!-- Content -->
 		<router-view />
 	</div>
@@ -13,6 +13,8 @@ import Sidebar from './components/Sidebar.vue'
 import Setting from './components/Setting.vue'
 import About from './components/About.vue'
 import KakaoMap from './components/KakaoMap.vue';
+import Menu from './components/Menu.vue'
+
 </script>
 
 <style lang="scss">
@@ -47,7 +49,6 @@ button {
 
 .app {
 	display: flex;
-
 	main {
 		flex: 1 1 0;
 		padding: 2rem;
@@ -56,7 +57,18 @@ button {
 		// 	padding-left: 6em;
 		// }
 		
-		
+		@media (max-width:549px){
+	
+		margin-top:  2.53em;
+	
+	
+	
+		}
 	}
 }
+
 </style>
+<script>
+
+
+</script>

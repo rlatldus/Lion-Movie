@@ -1,7 +1,7 @@
 <template>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
 		<div class="logo">
-			<img :src="logoURL" alt="logo" />
+			<img :src="logoURL" alt="Vue" />
 		</div>
 
 		<div class="menu-toggle-wrap">
@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="flex"></div>
-
+		
 		<div class="menu sidemenu">
 			<router-link to="/login" class="button">
 				<span class="material-icons">login</span>
@@ -88,8 +88,9 @@ aside {
 	transition: 0.2s ease-in-out;
 
 	@media (min-width: 350px) and (max-width : 549px) {
-		width: calc(2em + 32px);
-
+		display: none;
+	
+		
 	}
 
 	.flex {
@@ -104,7 +105,7 @@ aside {
 		}
 	}
 
-
+	
 	.menu-toggle-wrap {
 		display: flex;
 		justify-content: flex-end;
@@ -116,13 +117,12 @@ aside {
 
 		.menu-toggle {
 			transition: 0.2s ease-in-out;
-
 			.material-icons {
 				font-size: 2rem;
 				color: var(--light);
 				transition: 0.2s ease-out;
 			}
-
+			
 			&:hover {
 				.material-icons {
 					color: var(--primary);
@@ -131,9 +131,8 @@ aside {
 			}
 		}
 	}
-
-	h3,
-	.button .text {
+	
+	h3, .button .text {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 	}
@@ -147,7 +146,7 @@ aside {
 
 	.menu {
 		margin: 0 -1rem;
-
+		
 		.button {
 			display: flex;
 			align-items: center;
@@ -161,7 +160,6 @@ aside {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
 			}
-
 			.text {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
@@ -170,8 +168,7 @@ aside {
 			&:hover {
 				background-color: var(--dark-alt);
 
-				.material-icons,
-				.text {
+				.material-icons, .text {
 					color: var(--primary);
 				}
 			}
@@ -180,8 +177,7 @@ aside {
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons,
-				.text {
+				.material-icons, .text {
 					color: var(--primary);
 				}
 			}
@@ -203,14 +199,13 @@ aside {
 
 		.menu-toggle-wrap {
 			top: -3rem;
-
+			
 			.menu-toggle {
 				transform: rotate(-180deg);
 			}
 		}
 
-		h3,
-		.button .text {
+		h3, .button .text {
 			opacity: 1;
 		}
 
@@ -232,39 +227,17 @@ aside {
 
 	@media (min-width: 550px) and (max-width : 1023px) {
 		aside {
-
-			width: calc(2rem + 20px);
+	
+	width: calc(2rem + 20px);
 
 
 		}
 	}
-
 	@media (min-width: 350px) and(max-width : 549px) {
-
-
-		.menu-toggle-wrap {
-			display: none;
-		}
-
-		.menu {
-			margin: 0 -1rem;
-
-			.button {
-				padding: 0.5em 1.03em;
-
-				.material-icons {
-
-					font-size: 1.7rem;
-				}
-
-			}
-		}
-
-		&.is-expanded {
-			width: calc(3rem + 2px);
-
-		}
-	}
-
+	
+	
 }
+}
+
+
 </style>

@@ -67,13 +67,15 @@ export default{
 			isModalViewed:false,
 			isModalViewed2:false
 		}
-	}
+	},
+	
+	
 }
 
 </script>
 
 
-<style scoped>
+<style lang="scss" scoped>
 
 
 
@@ -83,16 +85,16 @@ export default{
 }
 
 main{
-
+	
 	height: 100%;
 	min-height: 100vh;
 	position: relative;
 	background-color: rgb(40, 65, 91);
-	padding-bottom: 130px;
+	// padding-bottom: 130px;
 
 	#wrapper{
 	height: 300px;
-	width: 900px;
+	width: 830px;
 	margin: 0 auto;
 }
 
@@ -196,7 +198,6 @@ main{
 	}
 
 	@media (min-width: 550px) and (max-width : 1023px) {
-
 	.kakaoMap{
 	width: 100%;
 	margin: 0 auto;

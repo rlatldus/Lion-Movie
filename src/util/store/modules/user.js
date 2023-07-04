@@ -33,7 +33,6 @@ export default {
         const token = auth.currentUser.accessToken;
         commit("SET_USER", { user: auth.currentUser, token });
         localStorage.setItem("token", token);
-        alert("로그인 되었습니다.");
         router.push("/");
       } catch (error) {
         switch (error.code) {

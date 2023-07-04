@@ -1,7 +1,8 @@
 <template>
-    <div class="button">
-        <button @click="loginWithGoogle">Google 로그인</button>
-    </div>
+    <button class="google-login-button" @click="loginWithGoogle">
+        <img src="./../../assets/google.png" alt="Google 로고">
+            구글로 로그인
+    </button>
 </template>
 
 <script>
@@ -40,22 +41,34 @@ export default {
 }
 </script>
 <style scoped>
-.button {
-  width: 50%;
-  max-width: 600px;
-  min-width: 300px;
-  margin-top: 50px;
-  padding: 15px 10px;
-  background-color: #ff7979;
-  color: white;
+.google-login-button {
+  background-color: #4285f4;
+  color: #ffffff;
+  display: inline-block;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 24px;
+}
 
-  &:hover {
-    background-color: #e00000;
-  }
+.google-login-button:hover {
+  background-color: #3367d6;
+}
 
-  &:active {
-    background-color: red;
-    border: 1px solid white;
-  }
+.google-login-button:active {
+  background-color: #2a56c6;
+}
+
+.google-login-button:focus {
+  outline: none;
+}
+
+.google-login-button img {
+  vertical-align: middle;
+  margin-right: 10px;
 }
 </style>

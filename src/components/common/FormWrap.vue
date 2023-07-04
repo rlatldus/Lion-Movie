@@ -22,7 +22,9 @@ export default {
     left: 0;
     background: url(./../../assets/bg.jpg) center no-repeat;
     background-size: cover;
-
+    @media (max-width : 549px) {
+		position: absolute;
+	}
     .forms {
         display: flex;
         flex-direction: column;
@@ -34,6 +36,7 @@ export default {
         bottom: 0;
         left: 0;
         background: linear-gradient(rgba(52, 52, 52, 0.5), rgba(0, 0, 0, 0.8));
+
     }
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
-  <div class="moviemodal">
+  <div class="Seriesmodal">
     <div class="overlay" @click="$emit('close-modal')"></div>
     <div class="modal-card">
-      <div v-if="movieDetails" class="modal-card_wrap">
+      <div v-if="seriesDetails" class="modal-card_wrap">
         <div class="modal--card-Left" style="max-width:350px;">
-          <img :src="getMoviePosterUrl(movieDetails.poster_path)" alt="Movie Poster" class="movieImg" style="width: 100%; height:450px"/>
+          <img :src="getMoviePosterUrl(seriesDetails.poster_path)" alt="Series Poster" class="movieImg" style="width: 100%; height:450px"/>
         </div>
         <div class="modal--card-Right">
-          <h2>{{ movieDetails.title }}</h2>
-          <p>{{ movieDetails.overview }}</p>
-          <p>개봉일: {{ movieDetails.release_date }}</p>
+          <h2>{{ seriesDetails.name }}</h2>
+          <p>{{ seriesDetails.overview }}</p>
+          <p>개봉일: {{ seriesDetails.first_air_date }}</p>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
 <script>
 export default {
   props: {
-    movieDetails: {
+    seriesDetails: {
       type: Object,
       required: true
     }
@@ -40,10 +40,8 @@ export default {
 
 
 
-
-
 <style lang="scss" scoped>
-.moviemodal,
+.Seriesmodal,
 .overlay {
   width: 100%;
   height: 100%;
@@ -52,7 +50,7 @@ export default {
   top: 0;
 }
 
-.moviemodal{
+.Seriesmodal{
   z-index: 9999;
 }
 .overlay {

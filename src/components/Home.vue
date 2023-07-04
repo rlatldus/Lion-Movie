@@ -19,20 +19,21 @@
     <div class="movieListWrap">
 			
 			<h1>상영 영화</h1>
+      <Favorites :item="item"></Favorites>
       <ul class="movieList_ul">
 					<!-- <button onclick="" class="btn--next">next</button> -->
-					<li v-for="movie in movies" :key="movie.id" class="movieList_li">
+					<li v-for="movie in movies" :key="movie.id" class="movieList_li ">
 						<button @click="fetchMovieDetails(movie)" >
 							<img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
 						</button>
-					</li>
-				</ul>
+          </li>
+        </ul>
 				<!-- <button onclick="" class="btn--prev">prev</button> -->
     </div>
     <div class="movieListWrap">
       <h1>인기 영화</h1>
       <ul class="movieList_ul">
-        <li v-for="movie in popularMovies" :key="movie.id" class="movieList_li">
+        <li v-for="movie in popularMovies" :key="movie.id" class="movieList_li ">
           <button @click="fetchMovieDetails(movie)">
             <img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
           </button>
@@ -56,6 +57,7 @@
 import axios from 'axios';
 import MovieModal from './common/MovieModal.vue';
 import SeriesModal from './common/SeriesModal.vue'
+import Favorites from './common/Favorites.vue';
 // import VueTinySlider from 'vue-tiny-slider';
 
 export default {
@@ -63,6 +65,7 @@ export default {
   components: {
     MovieModal,
 		SeriesModal,
+    Favorites
 		// 'tiny-slider' : VueTinySlider,
   },
 
@@ -215,6 +218,9 @@ export default {
 <style  lang="scss" scoped>
 body{
 	height: 100vh;
+}
+.playingMovie{
+ border: 3px solid red;
 }
 
 main{

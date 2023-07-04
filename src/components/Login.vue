@@ -3,12 +3,12 @@
   <FormWrap>
     <user-form v-if="!token" formTitle="로그인" submitButtonText="로그인하기" :formData="formData" :submitForm="login">
     </user-form>
-    <auth-button  v-if="!token"></auth-button>
+    <auth-button v-if="!token"></auth-button>
     <span v-if="!token">만약 계정이 없다면, <router-link to="/register"><span class="deco">회원가입</span></router-link>을 먼저
       진행해주세요</span>
     <user-form v-else formTitle="회원정보" submitButtonText="저장하기" :formData="formData" :submitForm="userinfo">
     </user-form>
-    <button v-else class="logout" @click="logout">로그아웃</button>
+    <button v-else class="logout" @click="logout"> 로그아웃</button>
   </FormWrap>
 </template>
 
@@ -26,10 +26,13 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getToken"]),
+    ...mapGetters(["getToken", "getUser"]),
     token() {
       return this.getToken;
-    }
+    },
+    // user() {
+    //   return this.getUser;
+    // }
   },
   setup() {
     const store = useStore();

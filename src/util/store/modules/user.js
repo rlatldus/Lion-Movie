@@ -21,6 +21,9 @@ export default {
     getToken(state) {
       return state.token;
     },
+    // getUser(state) {
+    //   return state.user;
+    // },
   },
   actions: {
     async login({ commit }, details) {
@@ -47,7 +50,7 @@ export default {
       }
     },
 
-    async register({ }, details) {
+    async register({}, details) {
       const { email, password } = details;
       try {
         await createUserWithEmailAndPassword(auth, email, password);

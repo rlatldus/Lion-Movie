@@ -23,6 +23,7 @@ export default {
                     const token = currentUser.accessToken
                     store.commit('SET_USER', { currentUser ,token })
                     localStorage.setItem("token", token);
+                    alert('로그인됐어요')
                 }
             })
         })

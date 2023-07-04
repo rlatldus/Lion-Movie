@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapGetters, useStore } from 'vuex';
+import { mapGetters } from 'vuex';
 import { ref } from 'vue';
 import logoURL from '../assets/logo.png';
 
@@ -59,8 +59,6 @@ export default {
 		}
 	},
 	setup() {
-		const store = useStore();
-
 		const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 		const ToggleMenu = () => {
 			is_expanded.value = !is_expanded.value;

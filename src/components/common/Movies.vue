@@ -21,9 +21,7 @@
           <button @click="fetchMovieDetails(movie,`${type}`)">
             <img :src="`${baseImageUrl}${movie. poster_path}`" alt="Movie Poster" class="movieImg" />
           </button>
-          <button @click="toggleFavorite(item)">
-              {{ isFavorite(item) ? '찜 해제' : '찜하기' }}
-          </button>
+          <favorites :items="movies"  :item="movie"/>
         </SwiperSlide>
       </swiper>
     </div>
@@ -32,12 +30,11 @@
 </template>
 
 <script>
-import { useStore } from 'vuex';
-import { ref, watchEffect } from 'vue';
 import axios from 'axios';
 import MovieModal from './MovieModal.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation } from 'swiper';
+import favorites from './Favorites.vue';
 // import 'swiper/css/scrollbar';
 // import 'swiper/css/free-mode';
 import 'swiper/swiper-bundle.min.css';
@@ -53,6 +50,7 @@ export default {
     MovieModal,
     Swiper,
     SwiperSlide,
+    favorites
   },
   data() {
     return{

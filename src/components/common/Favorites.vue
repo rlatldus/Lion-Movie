@@ -1,27 +1,24 @@
 <template>
-    <div class="movieListWrap">
-      <h1>상영 영화</h1>
-        <div class="favorite">
-            <div v-for="item in items" :key="item.id">
-                <img class="img" :src ="`https://image.tmdb.org/t/p/original${item. backdrop_path}`"/>
-                {{ item.title}}
                 <button @click="toggleFavorite(item)">
                     {{ isFavorite(item) ? '찜 해제' : '찜하기' }}
                 </button>
-            </div>
-        </div>
-    </div>
 </template>
 
 <script>
 import { useStore } from 'vuex';
 import { ref, watchEffect } from 'vue';
-import axios from 'axios';
 export default {
-
+    props: {
+    items: {
+      type: String,
+      required: true,
+    },
+    item: {
+      type: String,
+      required: true,
+    },
+},
     setup() {
-
-
         const store = useStore();
         const items = ref([]);
 
@@ -38,16 +35,6 @@ export default {
             }
             console.log(store)
         };
-
-        axios
-        .get(`https://api.themoviedb.org/3/movie/now_playing?api_key=b946fe7e58fbad6b579118f99125fb0d&language=ko-KR` )
-        .then((response) => {
-          console.log(response.data.results,"sss")
-          items.value = response.data.results
-        })
-        .catch((error) => {
-          console.error(error);
-        })
 
         watchEffect(() => {
             items.value.forEach((item) => {

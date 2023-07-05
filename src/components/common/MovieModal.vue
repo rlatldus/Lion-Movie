@@ -7,9 +7,9 @@
           <img :src="getMoviePosterUrl(movieDetails.poster_path)" alt="Movie Poster" class="movieImg" style="width: 100%; height:450px"/>
         </div>
         <div class="modal--card-Right">
-          <h2>{{ movieDetails.title }}</h2>
-          <p>{{ movieDetails.overview }}</p>
-          <p>개봉일: {{ movieDetails.release_date }}</p>
+          <h2>{{ movieDetails.title || movieDetails.name }}</h2>
+          <p>{{ movieDetails.overview || movieDetails.overview }}</p>
+          <p>개봉일: {{ movieDetails.release_date || movieDetails.first_air_date }}</p>
         </div>
       </div>
     </div>
@@ -37,10 +37,6 @@ export default {
   }
 };
 </script>
-
-
-
-
 
 <style lang="scss" scoped>
 .moviemodal,

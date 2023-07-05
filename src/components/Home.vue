@@ -2,7 +2,7 @@
   <main id="Home-page">
     <h1>Home</h1>
     <div class="mainRandom-movie" style="margin-bottom: 20px">
-      <img :src="getMovieMainImage(randomMovie.backdrop_path)" alt="Movie Poster" class="movieImg" />
+      <img :src="`${baseImageUrl}${randomMovie.backdrop_path}`" alt="Movie Poster" class="movieImg" />
       <div v-if="randomMovie" class="mainRandom-movie--txt">
         <h2>{{ randomMovie.title }}</h2>
         <p>{{ randomMovie.overview }}</p>
@@ -10,128 +10,52 @@
       </div>
     </div>
 
-    <MovieModal v-if="isModalViewed" :movieDetails="selectedMovieDetails" @close-modal="isModalViewed = false">
-		</MovieModal>
-    <SeriesModal v-if="isModalViewedSeries" :seriesDetails="selectedTvDetails" @close-modal="isModalViewedSeries = false">
-		</SeriesModal>
+    <movie-list-wrap
+      title="상영 영화"
+      :movies="movies"
+      :base-image-url="baseImageUrl"
+      :apiKey="apiKey"
+      type="movie"
+    ></movie-list-wrap>
 
-    <div class="movieListWrap">
-      <h1>상영 영화</h1>
+    <movie-list-wrap
+      title="인기 영화"
+      :movies="popularMovies"
+      :base-image-url="baseImageUrl"
+      :apiKey="apiKey"
+      type="movie"
+    ></movie-list-wrap>
 
-      <swiper
-        :slidesPerView="4"
-        :spaceBetween="30"
-        :freeMode="true"
-        :pagination="{
-          clickable: true,
-        }"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper"
-       >
-        <SwiperSlide v-for="movie in movies" :key="movie.id" class="movieList_li">
-          <button @click="fetchMovieDetails(movie)">
-            <img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
-          </button>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+    <movie-list-wrap
+      title="인기 티비시리즈"
+      :movies="popularTvSeries"
+      :base-image-url="baseImageUrl"
+      :apiKey="apiKey"
+      type="tv"
+    ></movie-list-wrap>
     
 
-    <div class="movieListWrap">
-      <h1>인기 영화</h1>
-      <swiper
-        :slidesPerView="4"
-        :spaceBetween="30"
-        :freeMode="true"
-        :pagination="{
-          clickable: true,
-        }"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper"
-       >
-        <SwiperSlide v-for="movie in popularMovies" :key="movie.id" class="movieList_li">
-          <button @click="fetchMovieDetails(movie)">
-            <img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
-          </button>
-        </SwiperSlide>
-      </swiper>
-    </div>
+    <movie-list-wrap
+      title="현재상영 티비시리즈"
+      :movies="OntheAirTvSeries"
+      :base-image-url="baseImageUrl"
+      :apiKey="apiKey"
+      type="tv"
+    ></movie-list-wrap>
 
-    <div class="movieListWrap">
-      <h1>인기 티비시리즈</h1>
-      <swiper
-        :slidesPerView="4"
-        :spaceBetween="30"
-        :freeMode="true"
-        :pagination="{
-          clickable: true,
-        }"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper"
-       >
-        <SwiperSlide v-for="series in popularTvSeries" :key="series.id" class="movieList_li">
-          <button @click="fetchTvDetails(series)">
-            <img :src="getMoviePosterUrl(series.poster_path)" alt="series Poster" class="movieImg" />
-          </button>
-        </SwiperSlide>
-      </swiper>
-    </div>
-    <div class="movieListWrap">
-      <h1>현재상영 티비시리즈</h1>
-      <swiper
-        :slidesPerView="4"
-        :spaceBetween="30"
-        :freeMode="true"
-        :pagination="{
-          clickable: true,
-        }"
-        :navigation="true"
-        :modules="modules"
-        class="mySwiper"
-       >
-        <SwiperSlide v-for="series in OntheAirTvSeries" :key="series.id" class="movieList_li">
-          <button @click="fetchTvDetails(series)">
-            <img :src="getMoviePosterUrl(series.poster_path)" alt="series Poster" class="movieImg" />
-          </button>
-        </SwiperSlide>
-      </swiper>
-    </div>
   </main>
 </template>
 
 <script>
 import axios from 'axios';
-import MovieModal from './common/MovieModal.vue';
-import SeriesModal from './common/SeriesModal.vue'
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
-import 'swiper/swiper-bundle.min.css';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-// import 'swiper/css/scrollbar';
-// import 'swiper/css/free-mode';
-
-
-import { Pagination, Navigation } from 'swiper';
+import MovieListWrap from './common/Movies.vue';
 
 export default {
   name: 'Home',
   components: {
-    MovieModal,
-		SeriesModal,
-    Swiper,
-    SwiperSlide,
+    MovieListWrap,
   },
-  setup() {
-      return {
-        modules: [ Pagination, Navigation]
-      };
-    },
+
   data() {
     return {
       movies: [],
@@ -140,49 +64,50 @@ export default {
       OntheAirTvSeries:[],
       baseImageUrl: 'https://image.tmdb.org/t/p/original',
       apiKey: 'b946fe7e58fbad6b579118f99125fb0d',
-      movieDetails: {},
-      seriesDetails:{},
-      isModalViewed: false,
-			isModalViewedSeries: false,
-      selectedMovieDetails: null,
-      selectedTvDetails:null,
-      randomMovie: null,
+      randomMovie: null
     };
   },
   created() {
     this.fetchMovies();
-    this.fetchPopularMovies();
     this.fetchRandomMovie();
-		this.fetchPopularTvSeries();
-    this.fetchOntheAirTvSeries();
   },
 
   methods: {
-    fetchMovies() {
-      const moviesApiUrl  = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=ko-KR`;
-		
+    fetchMovie(type,series) {
       axios
-        .get(moviesApiUrl )
+        .get(  `https://api.themoviedb.org/3/${type}/${series}?api_key=${this.apiKey}&language=ko-KR`)
         .then((response) => {
+          if (type === "movie" && series === "now_playing") {
           this.movies = response.data.results;
+          }
+          if (type === "movie" && series === "top_rated") {
+          this.popularMovies = response.data.results;
+          }
+          if (type === "tv" && series === "top_rated") {
+          this.popularTvSeries = response.data.results;
+          }
+          if (type === "tv" && series === "popular") {
+          this.OntheAirTvSeries = response.data.results;
+          }
         })
         .catch((error) => {
           console.error(error);
         });
+    },
+    //무비가져오기
+    fetchMovies() {
+      const movie = "movie"; 
+      const now_playing = `now_playing`;
+      const top_rated = `top_rated`;
+      const tv = "tv"; 
+      const popular = `popular`;
+      this.fetchMovie(movie, now_playing);
+      this.fetchMovie(movie, top_rated);
+      this.fetchMovie(tv, top_rated);
+      this.fetchMovie(tv, popular);
     },
 
-    fetchPopularMovies() {
-      const popularMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiKey}&language=ko-KR`;
-      axios
-        .get(popularMoviesUrl)
-        .then((response) => {
-          this.popularMovies = response.data.results;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
-		
+		// 맨 상단 무비
     fetchRandomMovie() {
 			const randomMovieUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiKey}&language=ko-KR`;
       axios
@@ -195,95 +120,6 @@ export default {
 				console.error(error);
 			});
     },
-		
-		fetchPopularTvSeries() {
-			const popularTvSeriesUrl = `https://api.themoviedb.org/3/tv/top_rated?api_key=${this.apiKey}&language=ko-KR`;
-			axios
-				.get(popularTvSeriesUrl)
-				.then((response) => {
-					this.popularTvSeries = response.data.results;
-				})
-				.catch((error) => {
-					console.error(error);
-				});
-		},
-		fetchOntheAirTvSeries() {
-			const ontheAirTvSeriesUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${this.apiKey}&language=ko-KR`;
-			axios
-				.get(ontheAirTvSeriesUrl)
-				.then((response) => {
-					this.OntheAirTvSeries = response.data.results;
-				})
-				.catch((error) => {
-					console.error(error);
-				});
-		},
-
-		fetchMovieDetails(movie){
-			const movieId = movie.id;
-			let detailsApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&language=ko-KR`;
-
-			axios.get(detailsApiUrl)
-        .then(response => {
-          this.movieDetails[movieId] = response.data;
-					console.log(this.movieDetails);
-					this.selectedMovieDetails = this.movieDetails[movieId];
-					this.isModalViewed = true;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-		},
-		getMovieOverview(movieId){
-			if(this.movieDetails[movieId]){
-				return this.movieDetails[movieId].overview;
-			}else{
-				return "준비중입니다"
-			}
-
-		},
-
-		fetchTvDetails(series){
-			const seriesId = series.id;
-			let detailsApiUrl = `https://api.themoviedb.org/3/tv/${seriesId}?api_key=${this.apiKey}&language=ko-KR`;
-
-			axios.get(detailsApiUrl)
-        .then(response => {
-          this.seriesDetails[seriesId] = response.data;
-					console.log(this.seriesDetails);
-					this.selectedTvDetails = this.seriesDetails[seriesId];
-					this.isModalViewedSeries = true;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-		},
-		getMovieOverview(seriesId){
-			if(this.seriesDetails[seriesId]){
-				return this.seriesDetails[seriesId].overview;
-			}else{
-				return "준비중입니다"
-			}
-		},
-
-
-		// 이미지 
-    getMoviePosterUrl(posterPath) {
-      if (posterPath) {
-        return this.baseImageUrl + posterPath;
-      } else {
-        return '준비중입니다';
-      }
-    },
-
-    getMovieMainImage(backdropPath) {
-      if (backdropPath) {
-        return this.baseImageUrl + backdropPath;
-      } else {
-        return '';
-      }
-    },
-
   },
 };
 </script>
@@ -340,34 +176,6 @@ main{
       -webkit-line-clamp: 6 ;
       -webkit-box-orient: vertical;
 		}
-
-		.movieListWrap{
-      padding-bottom: 20px;
-		}
-		
-  .swiper {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      display: flex;
-      height: 100%;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit:cover;
-    }  
-    .swiper-horizontal.swiper-horizontal{
-      padding-bottom: 40px;
-      
-    }
 
     // 반응형@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     @media (min-width: 350px) and (max-width : 549px) {

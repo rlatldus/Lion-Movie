@@ -71,7 +71,6 @@ export default {
   background-color: white;
   min-height: 500px;
   opacity: 1;
-  border: 1px solid red;
 }
 
 .modal-card_wrap{

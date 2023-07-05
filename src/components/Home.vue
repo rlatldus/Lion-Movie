@@ -1,8 +1,7 @@
 <template>
   <main id="Home-page">
-		<!-- <input type="text"> -->
     <h1>Home</h1>
-    <div class="mainRandom-movie">
+    <div class="mainRandom-movie" style="margin-bottom: 20px">
       <img :src="getMovieMainImage(randomMovie.backdrop_path)" alt="Movie Poster" class="movieImg" />
       <div v-if="randomMovie" class="mainRandom-movie--txt">
         <h2>{{ randomMovie.title }}</h2>
@@ -17,37 +16,88 @@
 		</SeriesModal>
 
     <div class="movieListWrap">
-			
-			<h1>상영 영화</h1>
-      <ul class="movieList_ul">
-					<!-- <button onclick="" class="btn--next">next</button> -->
-					<li v-for="movie in movies" :key="movie.id" class="movieList_li">
-						<button @click="fetchMovieDetails(movie)" >
-							<img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
-						</button>
-					</li>
-				</ul>
-				<!-- <button onclick="" class="btn--prev">prev</button> -->
-    </div>
-    <div class="movieListWrap">
-      <h1>인기 영화</h1>
-      <ul class="movieList_ul">
-        <li v-for="movie in popularMovies" :key="movie.id" class="movieList_li">
+      <h1>상영 영화</h1>
+
+      <swiper
+        :slidesPerView="4"
+        :spaceBetween="30"
+        :freeMode="true"
+        :pagination="{
+          clickable: true,
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+       >
+        <SwiperSlide v-for="movie in movies" :key="movie.id" class="movieList_li">
           <button @click="fetchMovieDetails(movie)">
             <img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
           </button>
-        </li>
-      </ul>
+        </SwiperSlide>
+      </Swiper>
     </div>
+    
+
+    <div class="movieListWrap">
+      <h1>인기 영화</h1>
+      <swiper
+        :slidesPerView="4"
+        :spaceBetween="30"
+        :freeMode="true"
+        :pagination="{
+          clickable: true,
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+       >
+        <SwiperSlide v-for="movie in popularMovies" :key="movie.id" class="movieList_li">
+          <button @click="fetchMovieDetails(movie)">
+            <img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
+          </button>
+        </SwiperSlide>
+      </swiper>
+    </div>
+
     <div class="movieListWrap">
       <h1>인기 티비시리즈</h1>
-      <ul class="movieList_ul">
-        <li v-for="series in popularTvSeries" :key="series.id" class="movieList_li">
+      <swiper
+        :slidesPerView="4"
+        :spaceBetween="30"
+        :freeMode="true"
+        :pagination="{
+          clickable: true,
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+       >
+        <SwiperSlide v-for="series in popularTvSeries" :key="series.id" class="movieList_li">
           <button @click="fetchTvDetails(series)">
             <img :src="getMoviePosterUrl(series.poster_path)" alt="series Poster" class="movieImg" />
           </button>
-        </li>
-      </ul>
+        </SwiperSlide>
+      </swiper>
+    </div>
+    <div class="movieListWrap">
+      <h1>현재상영 티비시리즈</h1>
+      <swiper
+        :slidesPerView="4"
+        :spaceBetween="30"
+        :freeMode="true"
+        :pagination="{
+          clickable: true,
+        }"
+        :navigation="true"
+        :modules="modules"
+        class="mySwiper"
+       >
+        <SwiperSlide v-for="series in OntheAirTvSeries" :key="series.id" class="movieList_li">
+          <button @click="fetchTvDetails(series)">
+            <img :src="getMoviePosterUrl(series.poster_path)" alt="series Poster" class="movieImg" />
+          </button>
+        </SwiperSlide>
+      </swiper>
     </div>
   </main>
 </template>
@@ -56,21 +106,38 @@
 import axios from 'axios';
 import MovieModal from './common/MovieModal.vue';
 import SeriesModal from './common/SeriesModal.vue'
-// import VueTinySlider from 'vue-tiny-slider';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+import 'swiper/swiper-bundle.min.css';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+// import 'swiper/css/scrollbar';
+// import 'swiper/css/free-mode';
+
+
+import { Pagination, Navigation } from 'swiper';
 
 export default {
   name: 'Home',
   components: {
     MovieModal,
 		SeriesModal,
-		// 'tiny-slider' : VueTinySlider,
+    Swiper,
+    SwiperSlide,
   },
-
+  setup() {
+      return {
+        modules: [ Pagination, Navigation]
+      };
+    },
   data() {
     return {
       movies: [],
       popularMovies: [],
 			popularTvSeries: [],
+      OntheAirTvSeries:[],
       baseImageUrl: 'https://image.tmdb.org/t/p/original',
       apiKey: 'b946fe7e58fbad6b579118f99125fb0d',
       movieDetails: {},
@@ -87,6 +154,7 @@ export default {
     this.fetchPopularMovies();
     this.fetchRandomMovie();
 		this.fetchPopularTvSeries();
+    this.fetchOntheAirTvSeries();
   },
 
   methods: {
@@ -134,6 +202,17 @@ export default {
 				.get(popularTvSeriesUrl)
 				.then((response) => {
 					this.popularTvSeries = response.data.results;
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+		},
+		fetchOntheAirTvSeries() {
+			const ontheAirTvSeriesUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${this.apiKey}&language=ko-KR`;
+			axios
+				.get(ontheAirTvSeriesUrl)
+				.then((response) => {
+					this.OntheAirTvSeries = response.data.results;
 				})
 				.catch((error) => {
 					console.error(error);
@@ -188,10 +267,7 @@ export default {
 		},
 
 
-
-
-
-		// 가져오는 
+		// 이미지 
     getMoviePosterUrl(posterPath) {
       if (posterPath) {
         return this.baseImageUrl + posterPath;
@@ -213,6 +289,7 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
+html,
 body{
 	height: 100vh;
 }
@@ -221,7 +298,6 @@ main{
 	width: 70vw;
 	height: 100%;
 	background-color: rgb(40, 65, 91);
-	/* border: 2px solid red; */
 	padding: 30px;
 	overflow: hidden;
 	
@@ -229,7 +305,6 @@ main{
 		.mainRandom-movie{
 			width: 100%;
 			background-size: cover;
-			// border: 2px solid red;
 			max-height: 600px;
 			background: center /cover no-repeat;
 			background-position: top center;
@@ -243,59 +318,62 @@ main{
       width: 100%;
       height: auto;
       opacity: 0.8;
-      // max-height: 500px;
     }
 
 		.mainRandom-movie--txt{
 			position: absolute;
 			top: 40%;
-			width: 450px;
+      font-weight: 900;
+			max-width: 450px;
+      max-height: 200px;
 			color: var(--primary);
 			padding-left: 10px;
-			// border: 1px solid black;
+      border: 1px solid red;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      line-height: 1.2;
+/*       height: 4.8em;*/
+      text-align: left;
+      word-wrap: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 6 ;
+      -webkit-box-orient: vertical;
 		}
 
 		.movieListWrap{
-			box-sizing: border-box;
-		}
-
-		.movieList_ul{
-			display: flex;
-			width: 100%;
-			// flex-wrap: wrap;
-			// border: 1px solid black; 
-			list-style: none;
-			text-align: center;
-			// overflow: scroll;
-      
-		}
-
-		.movieList_li{
-			flex: 0 0 250px; 
-  		height: auto; 
-			margin: 20px;
-			// border: 1px solid red;
-		}
-		.movieList_li:hover {
-			flex: 0 0 260px; 
+      padding-bottom: 20px;
 		}
 		
-		.movieImg{
-			width: 100%;
-			height: auto;
-		}
-		.btn--next{
-			border: 1px solid red;
-		}
-		.btn--prev{
-			border: 1px solid red;
-		}
+  .swiper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
 
+    .swiper-slide {
+      text-align: center;
+      display: flex;
+      height: 100%;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+    }  
+    .swiper-horizontal.swiper-horizontal{
+      padding-bottom: 40px;
+      
+    }
+
+    // 반응형@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     @media (min-width: 350px) and (max-width : 549px) {
       .mainRandom-movie--txt{
         position: relative;
       }
-
     }
     @media (min-width: 550px) and (max-width : 1023px){}
    

@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: "/search",
       component: () => import("../components/Search.vue"),
-      meta: { requiresAuth: true },
+      // meta: { requiresAuth: true },
     },
     {
       path: "/favorite",

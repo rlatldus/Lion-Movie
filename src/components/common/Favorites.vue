@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="favorite">
         <div v-for="item in items" :key="item.id">
             {{ item.name }}
             <button @click="toggleFavorite(item)">
@@ -12,16 +12,14 @@
 <script>
 import { useStore } from 'vuex';
 import { ref, watchEffect } from 'vue';
-
+import axios from 'axios';
 export default {
+
     setup() {
+
+
         const store = useStore();
-        const items = ref([
-            // 여러 개의 아이템 데이터가 들어있는 배열
-            { id: 1, name: '아이템 1' },
-            { id: 2, name: '아이템 2' },
-            { id: 3, name: '아이템 3' }
-        ]);
+        const items = ref([]);
 
         const isFavorite = (item) => {
             const favorites = store.getters.getFavorites;
@@ -37,6 +35,16 @@ export default {
             console.log(store)
         };
 
+        axios
+        .get(`https://api.themoviedb.org/3/movie/now_playing?api_key=b946fe7e58fbad6b579118f99125fb0d&language=ko-KR` )
+        .then((response) => {
+          console.log(response.data.results,"sss")
+          items = response.data.results
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+
         watchEffect(() => {
             items.value.forEach((item) => {
                 item.isFavorite = isFavorite(item);
@@ -51,3 +59,8 @@ export default {
     }
 };
 </script>
+<style scoped>
+.favorite{
+    display: flex;
+}
+</style>

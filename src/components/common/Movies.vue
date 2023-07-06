@@ -2,8 +2,6 @@
   <div id="Home-page">
     <MovieModal v-if="isModalViewed" :movieDetails="selectedMovieDetails" @close-modal="isModalViewed = false">
 		</MovieModal>
-    <SeriesModal v-if="isModalViewedSeries" :seriesDetails="selectedTvDetails" @close-modal="isModalViewedSeries = false">
-		</SeriesModal>
     <div class="movieListWrap">
       <h1>{{title}}</h1>
       <swiper

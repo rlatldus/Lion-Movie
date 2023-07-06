@@ -18,8 +18,8 @@ import About from './components/About.vue'
 import KakaoMap from './components/KakaoMap.vue';
 import Menu from './components/Menu.vue'
 import Home from './components/Home.vue'
-import Favorite from './components/Favorite.vue';
-import Login from './components/Login.vue';
+import Favorite from './components/views/Favorite.vue';
+import Login from './components/views/Login.vue';
 import Search from './components/Search.vue';
 import Footer from './components/Footer.vue';
 

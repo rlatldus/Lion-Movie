@@ -42,7 +42,7 @@ import MovieModal from './MovieModal.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation } from 'swiper';
 // 찜하기 지우지말것
-import favorites from './Favorites.vue';
+import favorites from './favorite/Favorites.vue';
 // @@@@@@@@@@@@@@@@@@@@@
 import 'swiper/css';
 import 'swiper/css/pagination';

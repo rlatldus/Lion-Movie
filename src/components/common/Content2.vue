@@ -1,8 +1,8 @@
 <template>
-   <TabsWrapper class="MainTab">
-        <TabItem title="OOO 이용약관" class="Tab" >
-        
-          <p class="contents">디즈니+ 이용약관 (대한민국)
+  <TabsWrapper class="MainTab">
+       <TabItem title="OOO 이용약관" class="Tab Tab1" >
+       
+         <p class="contents">디즈니+ 이용약관 (대한민국)
 
 시행일자: 2021년 11월 12일
 
@@ -82,10 +82,10 @@ xi.        달리 제3자로 하여금 위 제한을 위반하도록 허용하�
 
 
 </p></TabItem>
-        <TabItem title="청소년 보호정책" class="Tab">
+       <TabItem title="청소년 보호정책" class="Tab">
+         <p class="contents">
 
-
-          b.         무료 체험. 귀하의 디즈니+ 서비스 구독은 무료 체험으로 시작될 수 있습니다. 무료 체험 제공여부는 보장되지 않으며, 제공될 경우에도 과거에 디즈니+ 서비스를 이용하지 않은 분들에 한하여 제공됩니다. 아래 취소 방법에 따라 취소하지 않는 이상, 무료 체험 기간 후 즉시 귀하가 선택한 결제 수단으로 첫 요금이 청구됩니다. 귀하는 귀하의 무료 체험 기간이 종료되기 전에 언제든지 귀하의 구독을 취소할 수 있습니다. 당사는 귀하의 회원가입 시점에 무료 체험 조건을 귀하에게 통지하지만, 적용 법률에 따라 달리 요구되지 않는 이상 귀하는 귀하의 무료 체험 기간이 거의 혹은 이미 만료되었다거나 귀하의 유료 구독 기간이 시작되었다는 내용의 별도 통지를 받지 않습니다. 만약 귀하가 제3자에 의해 운영되는 구독 페이지를 통해 디즈니+를 구독하고, 여기에 해당 제3자의 프로모션 기간 또는 무료 체험 기간이 포함될 경우, 그러한 프로모션 기간 또는 무료 체험 기간에 관하여 해당 제3자의 정책이 적용됩니다.
+         b.         무료 체험. 귀하의 디즈니+ 서비스 구독은 무료 체험으로 시작될 수 있습니다. 무료 체험 제공여부는 보장되지 않으며, 제공될 경우에도 과거에 디즈니+ 서비스를 이용하지 않은 분들에 한하여 제공됩니다. 아래 취소 방법에 따라 취소하지 않는 이상, 무료 체험 기간 후 즉시 귀하가 선택한 결제 수단으로 첫 요금이 청구됩니다. 귀하는 귀하의 무료 체험 기간이 종료되기 전에 언제든지 귀하의 구독을 취소할 수 있습니다. 당사는 귀하의 회원가입 시점에 무료 체험 조건을 귀하에게 통지하지만, 적용 법률에 따라 달리 요구되지 않는 이상 귀하는 귀하의 무료 체험 기간이 거의 혹은 이미 만료되었다거나 귀하의 유료 구독 기간이 시작되었다는 내용의 별도 통지를 받지 않습니다. 만약 귀하가 제3자에 의해 운영되는 구독 페이지를 통해 디즈니+를 구독하고, 여기에 해당 제3자의 프로모션 기간 또는 무료 체험 기간이 포함될 경우, 그러한 프로모션 기간 또는 무료 체험 기간에 관하여 해당 제3자의 정책이 적용됩니다.
 
 c.         취소 및 환불 정책. 귀하는 현재 결제 주기나 무료 체험 기간이 종료되기 전에 언제든지 구독을 취소할 수 있습니다. 이러한 취소는 해당 (월간 또는 연간) 결제 주기나 무료 체험 기간이 종료될 때 발효됩니다. 귀하의 디즈니+ 구독을 취소하고 싶다면 www.disneyplus.com/account/cancel-subscription 에 접속 후 "취소 완료”를 클릭하시기 바랍니다. 이러한 취소는 해당 청구 기간 종료 시점(또는 해당되는 경우 무료 체험 기간 종료 시점)에 발효될 것이고, 귀하는 그 시점까지는 계속해서 디즈니+에 접속 가능합니다. 귀하는 취소 신청일부터 귀하의 구독 기간이 만료되는 해당 결제 주기의 종료시점까지의 기간에 대해 환불을 받을 수 없습니다. 그러나, 만약 귀하의 구독을 즉시 취소하여 잔여기간에 대한 환불액을 받고자 할 경우, 당사의 고객서비스팀에 연락을 하거나 고객센터에 접속하여 구독을 즉시 취소할 수 있는 방법을 안내 받으시기 바랍니다. 월간 구독자 및 연간 구독자에게 지급되는 이러한 잔여기간에 대한 환불액은 결제 주기의 시작일로부터 즉시 취소 신청일까지의 기간에 비례하여 모두 월간 구독료를 기준으로 산정됩니다(할인된 연간 구독료 기준이 아님). 따라서, 연간 요금제의 경우, 구독 기간의 11개월차부터 해당 결제 주기의 종료시점까지의 기간 동안에는 구독을 즉시 취소하더라도 잔여기간에 대한 환불액이 지급되거나 추가 청구되지 않습니다. 
 
@@ -116,11 +116,11 @@ x.         로그인 자격증명을 제3자와 공유하는 행위.
 
 xi.        달리 제3자로 하여금 위 제한을 위반하도록 허용하는 행위
 
+            </p>
+       </TabItem>
+       <TabItem title="개인정보 수집 및 이용" class="Tab">
 
-        </TabItem>
-        <TabItem title="개인정보 수집 및 이용" class="Tab">
-
-          
+         <p class="contents">
 b.         무료 체험. 귀하의 디즈니+ 서비스 구독은 무료 체험으로 시작될 수 있습니다. 무료 체험 제공여부는 보장되지 않으며, 제공될 경우에도 과거에 디즈니+ 서비스를 이용하지 않은 분들에 한하여 제공됩니다. 아래 취소 방법에 따라 취소하지 않는 이상, 무료 체험 기간 후 즉시 귀하가 선택한 결제 수단으로 첫 요금이 청구됩니다. 귀하는 귀하의 무료 체험 기간이 종료되기 전에 언제든지 귀하의 구독을 취소할 수 있습니다. 당사는 귀하의 회원가입 시점에 무료 체험 조건을 귀하에게 통지하지만, 적용 법률에 따라 달리 요구되지 않는 이상 귀하는 귀하의 무료 체험 기간이 거의 혹은 이미 만료되었다거나 귀하의 유료 구독 기간이 시작되었다는 내용의 별도 통지를 받지 않습니다. 만약 귀하가 제3자에 의해 운영되는 구독 페이지를 통해 디즈니+를 구독하고, 여기에 해당 제3자의 프로모션 기간 또는 무료 체험 기간이 포함될 경우, 그러한 프로모션 기간 또는 무료 체험 기간에 관하여 해당 제3자의 정책이 적용됩니다.
 
 c.         취소 및 환불 정책. 귀하는 현재 결제 주기나 무료 체험 기간이 종료되기 전에 언제든지 구독을 취소할 수 있습니다. 이러한 취소는 해당 (월간 또는 연간) 결제 주기나 무료 체험 기간이 종료될 때 발효됩니다. 귀하의 디즈니+ 구독을 취소하고 싶다면 www.disneyplus.com/account/cancel-subscription 에 접속 후 "취소 완료”를 클릭하시기 바랍니다. 이러한 취소는 해당 청구 기간 종료 시점(또는 해당되는 경우 무료 체험 기간 종료 시점)에 발효될 것이고, 귀하는 그 시점까지는 계속해서 디즈니+에 접속 가능합니다. 귀하는 취소 신청일부터 귀하의 구독 기간이 만료되는 해당 결제 주기의 종료시점까지의 기간에 대해 환불을 받을 수 없습니다. 그러나, 만약 귀하의 구독을 즉시 취소하여 잔여기간에 대한 환불액을 받고자 할 경우, 당사의 고객서비스팀에 연락을 하거나 고객센터에 접속하여 구독을 즉시 취소할 수 있는 방법을 안내 받으시기 바랍니다. 월간 구독자 및 연간 구독자에게 지급되는 이러한 잔여기간에 대한 환불액은 결제 주기의 시작일로부터 즉시 취소 신청일까지의 기간에 비례하여 모두 월간 구독료를 기준으로 산정됩니다(할인된 연간 구독료 기준이 아님). 따라서, 연간 요금제의 경우, 구독 기간의 11개월차부터 해당 결제 주기의 종료시점까지의 기간 동안에는 구독을 즉시 취소하더라도 잔여기간에 대한 환불액이 지급되거나 추가 청구되지 않습니다. 
@@ -151,11 +151,11 @@ ix.        불법적인 목적을 위해 불법적인 방식으로 또는 본 �
 x.         로그인 자격증명을 제3자와 공유하는 행위.
 
 xi.        달리 제3자로 하여금 위 제한을 위반하도록 허용하는 행위
+            </p>
+       </TabItem>
+       <TabItem title="개인정보처리방침" class="Tab Tab2">
 
-        </TabItem>
-        <TabItem title="개인정보처리방침" class="Tab">
-
-          
+         <p>
 b.         무료 체험. 귀하의 디즈니+ 서비스 구독은 무료 체험으로 시작될 수 있습니다. 무료 체험 제공여부는 보장되지 않으며, 제공될 경우에도 과거에 디즈니+ 서비스를 이용하지 않은 분들에 한하여 제공됩니다. 아래 취소 방법에 따라 취소하지 않는 이상, 무료 체험 기간 후 즉시 귀하가 선택한 결제 수단으로 첫 요금이 청구됩니다. 귀하는 귀하의 무료 체험 기간이 종료되기 전에 언제든지 귀하의 구독을 취소할 수 있습니다. 당사는 귀하의 회원가입 시점에 무료 체험 조건을 귀하에게 통지하지만, 적용 법률에 따라 달리 요구되지 않는 이상 귀하는 귀하의 무료 체험 기간이 거의 혹은 이미 만료되었다거나 귀하의 유료 구독 기간이 시작되었다는 내용의 별도 통지를 받지 않습니다. 만약 귀하가 제3자에 의해 운영되는 구독 페이지를 통해 디즈니+를 구독하고, 여기에 해당 제3자의 프로모션 기간 또는 무료 체험 기간이 포함될 경우, 그러한 프로모션 기간 또는 무료 체험 기간에 관하여 해당 제3자의 정책이 적용됩니다.
 
 c.         취소 및 환불 정책. 귀하는 현재 결제 주기나 무료 체험 기간이 종료되기 전에 언제든지 구독을 취소할 수 있습니다. 이러한 취소는 해당 (월간 또는 연간) 결제 주기나 무료 체험 기간이 종료될 때 발효됩니다. 귀하의 디즈니+ 구독을 취소하고 싶다면 www.disneyplus.com/account/cancel-subscription 에 접속 후 "취소 완료”를 클릭하시기 바랍니다. 이러한 취소는 해당 청구 기간 종료 시점(또는 해당되는 경우 무료 체험 기간 종료 시점)에 발효될 것이고, 귀하는 그 시점까지는 계속해서 디즈니+에 접속 가능합니다. 귀하는 취소 신청일부터 귀하의 구독 기간이 만료되는 해당 결제 주기의 종료시점까지의 기간에 대해 환불을 받을 수 없습니다. 그러나, 만약 귀하의 구독을 즉시 취소하여 잔여기간에 대한 환불액을 받고자 할 경우, 당사의 고객서비스팀에 연락을 하거나 고객센터에 접속하여 구독을 즉시 취소할 수 있는 방법을 안내 받으시기 바랍니다. 월간 구독자 및 연간 구독자에게 지급되는 이러한 잔여기간에 대한 환불액은 결제 주기의 시작일로부터 즉시 취소 신청일까지의 기간에 비례하여 모두 월간 구독료를 기준으로 산정됩니다(할인된 연간 구독료 기준이 아님). 따라서, 연간 요금제의 경우, 구독 기간의 11개월차부터 해당 결제 주기의 종료시점까지의 기간 동안에는 구독을 즉시 취소하더라도 잔여기간에 대한 환불액이 지급되거나 추가 청구되지 않습니다. 
@@ -186,112 +186,122 @@ ix.        불법적인 목적을 위해 불법적인 방식으로 또는 본 �
 x.         로그인 자격증명을 제3자와 공유하는 행위.
 
 xi.        달리 제3자로 하여금 위 제한을 위반하도록 허용하는 행위
+</p>
+       </TabItem>
+   </TabsWrapper>
+   
 
-        </TabItem>
-    </TabsWrapper>
-    
-
-    
-  </template>
-  
+   
+ </template>
+ 
 <script setup>
 import TabsWrapper from '../common/TabsWrapper.vue';
 import TabItem from '../common/TabItem.vue';
 import { onBeforeMount } from 'vue';
 import ModalView2 from './ModalView2.vue';
 
- 
+
 </script>
 
-  
-  <style scoped>
-  * {
-      box-sizing: border-box;
-  }
-  #app {
-      font-family: Avenir, Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-align: center;
-      color: #2c3e50;
-      margin-top: 60px;
-  }
+ 
+ <style scoped>
+ * {
+     box-sizing: border-box;
+ }
+ #app {
+     font-family: Avenir, Helvetica, Arial, sans-serif;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     text-align: center;
+     color: #2c3e50;
+     margin-top: 60px;
+ }
 .button1{
-  position: absolute;
-  bottom: 0;
+ position: absolute;
+ bottom: 0;
 }
-.container{
-  position: absolute;
-  bottom:50px;
+.container{	
+
+ position: absolute;
+ bottom:50px;
 }
 .Tab{
-  color: whitesmoke;
-  font-size: 0.85em;
-  background-color: rgb(63, 104, 140);
-  padding: 20px;
+ color: whitesmoke;
+ font-size: 0.85em;
+ background-color: rgb(63, 104, 140);
+ padding: 20px;
+
+   @media (max-width:549px){
+      padding: 10px;
+   }
 }
+
 body {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 0 20px;
+
+   margin: 0 auto;
+   max-width: 800px;
+   padding: 0 20px;
 }
 .messages {
-    height: 300px;
-    overflow: auto;
+   height: 300px;
+   overflow: auto;
 }
 .container {
-    text-align: left;
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
+   
+   text-align: left;
+   border: 2px solid #dedede;
+   background-color: #f1f1f1;
+   border-radius: 5px;
+   padding: 10px;
+   margin: 10px 0;
 }
 
 .darker {
-    border-color: #ccc;
-    background-color: #ddd;
+   border-color: #ccc;
+   background-color: #ddd;
 }
 
 .container::after {
-    content: '';
-    clear: both;
-    display: table;
+   content: '';
+   clear: both;
+   display: table;
 }
 
 .container img {
-    float: left;
-    max-width: 60px;
-    width: 100%;
-    margin-right: 20px;
-    border-radius: 50%;
+   float: left;
+   max-width: 60px;
+   width: 100%;
+   margin-right: 20px;
+   border-radius: 50%;
 }
 
 .container img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right: 0;
+   float: right;
+   margin-left: 20px;
+   margin-right: 0;
 }
 
 .time-right {
-    float: right;
-    color: #aaa;
+   float: right;
+   color: #aaa;
 }
 
 .time-left {
-    float: left;
-    color: #999;
+   float: left;
+   color: #999;
 }
-  </style>
+
+
+ </style>
 
 
 <script>
 
 export default {
-  name: "Content2",
- 
+ name: "Content2",
+
 }
-  
  
+
 
 </script>

@@ -15,6 +15,7 @@
     "vue": "^3.2.25",
     "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.0.12",
+    "vue-spinner": "^1.0.4",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

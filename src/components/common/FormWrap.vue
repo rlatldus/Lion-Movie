@@ -20,7 +20,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url(./../../assets/bg.jpg) center no-repeat;
+    background: url(./../../assets/images/bg.jpg) center no-repeat;
     background-size: cover;
     @media (max-width : 549px) {
 		position: absolute;

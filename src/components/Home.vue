@@ -1,15 +1,16 @@
 <template>
   <main id="Home-page">
-    <h1>Home</h1>
-    <div class="mainRandom-movie" style="margin-bottom: 20px">
-      <img :src="`${baseImageUrl}${randomMovie.backdrop_path}`" alt="Movie Poster" class="movieImg" />
+    <!-- <h1>Home</h1> -->
+    <div class="mainRandom-movie">
+      <img v-if="randomMovie" :src="`${baseImageUrl}${randomMovie.backdrop_path}`" alt="Movie Poster" class="movieImg" />
       <div v-if="randomMovie" class="mainRandom-movie--txt">
         <h2>{{ randomMovie.title }}</h2>
-        <p>{{ randomMovie.overview }}</p>
-        <p>개봉일: {{ randomMovie.release_date }}</p>
+        <div class="mainRandom-movie--p">
+          <p>{{ randomMovie.overview }}</p>
+          <p>개봉일: {{ randomMovie.release_date }}</p>
+        </div>
       </div>
     </div>
-
     <movie-list-wrap
       title="상영 영화"
       :movies="movies"
@@ -64,7 +65,8 @@ export default {
       OntheAirTvSeries:[],
       baseImageUrl: 'https://image.tmdb.org/t/p/original',
       apiKey: 'b946fe7e58fbad6b579118f99125fb0d',
-      randomMovie: null
+      randomMovie: null,
+      isLoading: false,
     };
   },
   created() {
@@ -128,28 +130,35 @@ export default {
 html,
 body{
 	height: 100vh;
+  font-family: SeolSans-Medium,sans-serif;
 }
 
 main{
-	width: 70vw;
+	width: 90vw;
 	height: 100%;
 	background-color: rgb(40, 65, 91);
-	padding: 30px;
+  padding: 20px;
 	overflow: hidden;
 	
 
-		.mainRandom-movie{
+  .mainRandom-movie{
 			width: 100%;
-			background-size: cover;
-			max-height: 600px;
-			background: center /cover no-repeat;
-			background-position: top center;
+			max-height: 400px;
 			position: relative;
 			box-sizing: border-box;
       overflow: hidden;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
+      border-radius: 15px;
+      position: relative;
+      margin-bottom: 10px;
 		}
+    .mainRandom-movie:hover{
+      border-radius: 15px;
+      border: 4px solid rgba(255, 255, 255, 0.938);
+      transition: border 200ms linear 0s;
+      opacity: 1;
+    }
     .mainRandom-movie>img{
       width: 100%;
       height: auto;
@@ -162,9 +171,8 @@ main{
       font-weight: 900;
 			max-width: 450px;
       max-height: 200px;
-			color: var(--primary);
+			color: var(--light);
 			padding-left: 10px;
-      border: 1px solid red;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: normal;
@@ -180,7 +188,15 @@ main{
     // 반응형@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     @media (min-width: 350px) and (max-width : 549px) {
       .mainRandom-movie--txt{
-        position: relative;
+        left: 2%;
+        font-size: 0.8rem;
+      }
+      .mainRandom-movie--p{
+        display:none;
+      }
+
+      .movieListWrap>h1{
+        font-size: 0.9rem;
       }
     }
     @media (min-width: 550px) and (max-width : 1023px){}

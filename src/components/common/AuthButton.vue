@@ -1,6 +1,6 @@
 <template>
     <button class="google-login-button" @click="loginWithGoogle">
-        <img src="./../../assets/google.png" alt="Google 로고">
+        <img src="./../../assets/images/google.png" alt="Google 로고">
             구글로 로그인
     </button>
 </template>

@@ -29,7 +29,7 @@ export default {
   methods: {
     getMoviePosterUrl(posterPath) {
       if (posterPath) {
-        return `https://image.tmdb.org/t/p/original/${posterPath}`;
+        return `https://image.tmdb.org/t/p/w500/${posterPath}`;
       } else {
         return '준비중입니다';
       }
@@ -62,11 +62,12 @@ export default {
   position: relative;
   max-width: 78%;
   margin: auto;
-  margin-top: 70px;
+  margin-top: 5%;
   padding: 20px;
   background-color: white;
-  min-height: 500px;
+  max-height: 90vh;
   opacity: 1;
+  overflow: scroll;
 }
 
 .modal-card_wrap{
@@ -74,7 +75,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
-  // border: 1px solid blue;
 }
 
 .modal--card-Left{
@@ -84,7 +84,35 @@ export default {
   width: 50%;
   flex-grow: 1;
   padding: 20px;
-
 }
+  .modal-card::-webkit-scrollbar {
+        width: 12px;
+        border-radius: 10px;
+    }
+    
+    .modal-card::-webkit-scrollbar-track {
+      border-radius: 10px;
+      box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+    }
+    
+    .modal-card::-webkit-scrollbar-thumb {
+        background-image: 
+        -webkit-gradient(linear, left bottom, left top, color-stop(.5, var(--primary)), color-stop(1, var(--grey)));
+        border-radius: 10px;
+    }
+
+
+@media (min-width: 350px) and (max-width : 549px) {
+      .mainRandom-movie--txt{
+        position: relative;
+      }
+      .modal-card {
+        font-size: 0.9rem;
+      }
+
+
+      @media (min-width: 550px) and (max-width : 1023px){}
+    }
+
 
 </style>

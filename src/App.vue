@@ -15,6 +15,7 @@ import About from './components/About.vue'
 import KakaoMap from './components/KakaoMap.vue';
 import Menu from './components/Menu.vue'
 
+
 </script>
 
 <style lang="scss">

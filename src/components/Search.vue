@@ -1,46 +1,47 @@
 <template>
   <main id="Search-page">
     <form @submit.prevent="searchMovies">
-      <input v-model="title" type="text" placeholder="영화검색!!" />
-      <button type="submit">검색</button>
+      <input
+        v-model="title"
+        type="text"
+        placeholder="제목을 입력하세요"
+        class="search--input"
+      />
     </form>
-
-    <div v-if="searchResults.length">
-      <h2>검색 결과</h2>
-      <swiper
-        :effect="'cards'"
-        :grabCursor="true"
-        :modules="modules"
-        class="mySwiper"
+    <section>
+      <div v-if="searchResults.length" class="Search--wrap">
+        <swiper
+          :effect="'cards'"
+          :grabCursor="true"
+          :modules="modules"
+          class="mySwiper"
         >
-        <!-- style="display:flex; flex-wrap: wrap; list-style: none; background-color: aquamarine;"> -->
-
-      <swiper-slide v-for="movie in searchResults" :key="movie.id" style= "padding: 10px; text-align: center;">
-        <button @click="selectMovie(movie)">
-          <img :src="getMoviePosterUrl(movie.poster_path)" alt="Movie Poster" class="movieImg" />
-          <p>
-            {{ movie.title }}
-          </p>
-        </button>
-      </swiper-slide>
-    </swiper>
-      
-    </div>
+          <swiper-slide v-for="movie in searchResults" :key="movie.id">
+            <div :class="['card', { 'card--flipped': selectedMovie === movie }]">
+              <div class="card__front" @click="flipCard(movie)">
+                <img
+                  :src="getMoviePosterUrl(movie.poster_path)"
+                  alt="Movie Poster"
+                  class="movieImg"
+                />
+              </div>
+              <div class="card__back" @click="flipCard(movie)">
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.overview }}</p>
+                <p>개봉일: {{ movie.release_date }}</p>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </section>
   </main>
 </template>
 
 <script>
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
 import 'swiper/css';
 import 'swiper/css/effect-cards';
-
-
-
-
-
-// import required modules
 import { EffectCards } from 'swiper';
 
 export default {
@@ -49,126 +50,142 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  
   setup() {
-      return {
-        modules: [EffectCards]
-      };
-    },
-
+    return { modules: [EffectCards] };
+  },
   data() {
     return {
       title: '',
       searchResults: [],
-      baseImageUrl: 'https://image.tmdb.org/t/p/w300',
-      apiKey: 'b946fe7e58fbad6b579118f99125fb0d'
+      selectedMovie: null,
+      baseImageUrl: 'https://image.tmdb.org/t/p/w500',
+      apiKey: 'b946fe7e58fbad6b579118f99125fb0d',
     };
   },
   methods: {
     searchMovies() {
-      // 검색 API 호출 및 결과 처리
       const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.title}&language=ko-KR`;
 
       fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           this.searchResults = data.results;
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('검색 중 에러 발생:', error);
         });
     },
-    selectMovie(movie) {
-      // 선택한 영화에 대한 추가 작업 수행
-      console.log('선택한 영화:', movie);
-      // 영화 모달 열기 등의 동작 수행
+    flipCard(movie) {
+      if (this.selectedMovie === movie) {
+        this.selectedMovie = null;
+      } else {
+        this.selectedMovie = movie;
+      }
     },
     getMoviePosterUrl(posterPath) {
       if (posterPath) {
         return this.baseImageUrl + posterPath;
       } else {
-        // 포스터 이미지가 없는 경우 대체 이미지 URL을 반환하거나 기본 이미지를 사용할 수 있습니다.
         return '기본 이미지 URL 또는 대체 이미지 URL';
       }
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
-html,
-body {
-  position: relative;
-}
-main{
-	width: 70vw;
-	height: 100vh;
-	background-color: rgb(40, 65, 91);
-	padding: 30px;
-	overflow: hidden;
 
-  .swiper {
-    max-width: 400px;
-    max-height: auto;
-  }
+<style lang="scss" scoped="scoped">
+    main {
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(26, 29, 41);
+        overflow: hidden;
 
-  .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-  }
+        input[type=text] {
+            width: 100%;
+            max-height: 50px;
+            font-size: 1.7rem;
+            padding: 30px 20px;
+            margin: 1rem 0;
+            box-sizing: border-box;
+            border: 3px solid var(--dark);
+            -webkit-transition: 0.5s;
+            transition: 0.3s;
+            outline: none;
+            border-radius: 5px;
+            background: rgb(129, 129, 129);
+            background: linear-gradient(180deg, rgb(145, 144, 144) 0%, rgb(119, 120, 121) 100%);
+            color: var(--light);
+            font-weight: bold;
+        }
 
-  .swiper-slide:nth-child(1n) {
-    background-color: rgb(206, 17, 17);
-  }
+        input[type=text]:focus {
+            border: 3px solid var(--primary);
+        }
 
-  .swiper-slide:nth-child(2n) {
-    background-color: rgb(0, 140, 255);
-  }
+        input::placeholder {
+            font-weight: bold;
+            opacity: 0.5;
+            font-size: 1.7rem;
+            color: var(--light);
+        }
+        .swiper {
+            max-width: 400px;
+            height: 600px;
+        }
 
-  .swiper-slide:nth-child(3n) {
-    background-color: rgb(10, 184, 111);
-  }
+        .swiper-slide {
+            display: flex;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--primary) 100%);
+        }
+        .movieImg {
+            width: 100%;
+            height: auto;
+        }
 
-  .swiper-slide:nth-child(4n) {
-    background-color: rgb(211, 122, 7);
-  }
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
 
-  .swiper-slide:nth-child(5n) {
-    background-color: rgb(118, 163, 12);
-  }
+        .card--flipped {
+            transform: rotateY(180deg);
+        }
 
-  .swiper-slide:nth-child(6n) {
-    background-color: rgb(180, 10, 47);
-  }
+        .card__back,
+        .card__front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
 
-  .swiper-slide:nth-child(7n) {
-    background-color: rgb(35, 99, 19);
-  }
+        .card__front {
+            transform: rotateY(0deg);
+        }
 
-  .swiper-slide:nth-child(8n) {
-    background-color: rgb(0, 68, 255);
-  }
+        .card__back {
+            transform: rotateY(180deg);
+        }
+        // 반응형@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @media (min-width: 350px) and (max-width : 549px) {
 
-  .swiper-slide:nth-child(9n) {
-    background-color: rgb(218, 12, 218);
-  }
+            input[type=text] {
+                padding: 15px 20px;
+            }
+            .swiper {
+                max-width: 400px;
+                max-height: 500px;
+                font-size: 0.9rem;
+            }
 
-  .swiper-slide:nth-child(10n) {
-    background-color: rgb(54, 94, 77);
-  }
-  .swiper-slide:nth-child(11n) {
-    background-color: rgb(54, 94, 77);
-  }
-  .swiper-slide:nth-child(12n) {
-    background-color: rgb(54, 94, 77);
-  }
-  .swiper-slide:nth-child(13n) {
-    background-color: rgb(54, 94, 77);
-  }
-
-}
+        }
+        @media (min-width: 550px) and (max-width : 1023px) {}
+    }
 </style>

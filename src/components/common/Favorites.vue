@@ -10,11 +10,11 @@ import { ref, watchEffect } from 'vue';
 export default {
     props: {
     items: {
-      type: String,
+      type: Array,
       required: true,
     },
     item: {
-      type: String,
+      type: Object,
       required: true,
     },
 },

@@ -6,6 +6,9 @@
 		<!-- Content -->
 		<router-view />
 	</div>
+	<div class="app">
+		<Footer />
+	</div>
 </template>
 
 <script setup>
@@ -14,6 +17,12 @@ import Setting from './components/Setting.vue'
 import About from './components/About.vue'
 import KakaoMap from './components/KakaoMap.vue';
 import Menu from './components/Menu.vue'
+import Home from './components/Home.vue'
+import Favorite from './components/Favorite.vue';
+import Login from './components/Login.vue';
+import Search from './components/Search.vue';
+import Footer from './components/Footer.vue';
+
 
 
 </script>
@@ -57,7 +66,9 @@ button {
 		// @media (max-width: 00px) {
 		// 	padding-left: 6em;
 		// }
-		
+		@media (min-width: 550px) {
+			padding-left: 6em;
+		}
 		@media (max-width:549px){
 	
 		margin-top:  2.53em;

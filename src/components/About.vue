@@ -6,17 +6,15 @@
 		<div id="wrapper">
 		
 		<div class="info">
-			<div>
 			<h2 class="address_title">
 				<span class="material-icons place">place</span>
 				ADDRESS
 			</h2>
-			<ModalView v-if="isModalViewed" @close-modal="isModalViewed = false">
+			<!-- <ModalView v-if="isModalViewed" @close-modal="isModalViewed = false">
      		 <Content/>
     		</ModalView>
-    		<button class="modalView" @click="isModalViewed = true">찾아오는 방법</button>
+    		<button class="modalView" @click="isModalViewed = true">찾아오는 방법</button> -->
 			<p class="address">서울특별시 노원구 상계로 1길 34<br> 5층 코리아 IT 아카데미</p>
-			</div>
 			<div>
 			<h2 class="tel_title"><span class="material-icons phone">phone</span>TEL</h2>
 			<p class="tel">	02-933-5890</p>
@@ -30,18 +28,6 @@
 					<li class="email">bokbok1234@nate.com</li>
 				</ul>
 			</div>
-		</div>
-		<div class="footer">
-			<ModalView2 v-if="isModalViewed2" @close-modal="isModalViewed2 = false">
-     		 <Content2/>
-    		</ModalView2>
-			<ul class="footer_contents">
-				<li><button @click="isModalViewed2 = true">OOO 이용약관</button></li>
-				<li><button @click="isModalViewed2 = true">청소년 보호 정책</button></li>
-				<li><button @click="isModalViewed2 = true">개인정보 수집 및 이용</button></li>
-				<li><button @click="isModalViewed2 = true">개인정보처리방침</button></li>
-			
-			</ul>
 		</div>
 	</main>
 </template>
@@ -88,38 +74,40 @@ main{
 	
 	height: 100%;
 	min-height: 100vh;
-	position: relative;
-	background-color: rgb(40, 65, 91);
-	// padding-bottom: 130px;
+			// position: relative;
 
-	#wrapper{
+	background-color: rgb(40, 65, 91);
+	#wrapper{			
+
+		transition:0.7s ease-in-out;
+
 	height: 300px;
 	width: 830px;
 	margin: 0 auto;
 }
 
-.modalView{
+// .modalView{
 	
-	border: 1px solid rgb(222, 211, 211);
-	font-size: 0.9em;
-	border-radius: 20px;
-	color:hwb(210 80% 15% / 0.683);
-	font-weight: 900;
-	position:absolute;
-	left:190px;
-	top:27px;
-	width: 160px;
-	height: 30px;
-	background-color: rgb(63, 104, 140);
-}
-.modalView:hover {
+// 	border: 1px solid rgb(222, 211, 211);
+// 	font-size: 0.9em;
+// 	border-radius: 20px;
+// 	color:hwb(210 80% 15% / 0.683);
+// 	font-weight: 900;
+// 	position:absolute;
+// 	left:190px;
+// 	top:27px;
+// 	width: 160px;
+// 	height: 30px;
+// 	background-color: rgb(63, 104, 140);
+// }
+// .modalView:hover {
 
-		color: var(--light);
-		background-color: var(--dark-alt);
-		transition: 0.4s ease-in-out;
-		font-size: 0.93em;;
+// 		color: var(--light);
+// 		background-color: var(--dark-alt);
+// 		transition: 0.4s ease-in-out;
+// 		font-size: 0.93em;;
 
-}
+// }
 
 .info{
 	position:relative;
@@ -165,37 +153,7 @@ main{
 	margin-bottom: 0.7em;
 }
 
-.footer{
-	height: 5em;
-	position: absolute;
-	right: 0;
-	bottom: 0px;
-	border-top: 2px solid hwb(210 80% 15% / 0.683);
-	width: 100%;
-}
 
-.footer_contents{
-	position: absolute;
-	left:50%;
-	transform: translate(-50%,-50%);
-	height: 30px;
-	display: flex;
-
-}
-
-
-.footer_contents button{
-	
-	display: flex;
-	justify-content: center;
-	margin-top: 3em;
-	padding: 0.4em;
-	width:155px;
-	font-size: 0.8em;
-	font-weight: 900;
-	color: hwb(214 94% 3% / 0.9);
-
-	}
 
 	@media (min-width: 550px) and (max-width : 1023px) {
 	.kakaoMap{
@@ -227,15 +185,48 @@ main{
 	}
 
 	@media (min-width: 350px) and (max-width : 549px) {
+		// *{border:3px solid green}
 		.kakaoMap{
 		width: 100%;
 		margin: 0 auto;
 		}
 		
 		#wrapper{
-		width: 200px;
+		width: 100%;
 		margin: 0 auto;
 		}
+		.info, .contact{
+			position: absolute;
+			left:0;
+	float: none;
+	width:100%
+	
+}
+.info p{
+	width: 0%;
+	margin-left: 6.5em;
+	margin-bottom: 3em;
+
+}
+// .footer{
+// 	height: 5em;
+// 	position: absolute;
+// 	right: 0;
+// 	bottom: 0px;
+// 	border-top: 2px solid hwb(210 80% 15% / 0.683);
+// 	width: 100%;
+// }.footer_contents{
+	
+// 	position: absolute;
+// 	width: 0px;
+// 	height: 30px;
+// 	display: flex;
+
+// }
+// .footer_contents li{ 
+
+// 	width:0
+// }
 	}
 }
 

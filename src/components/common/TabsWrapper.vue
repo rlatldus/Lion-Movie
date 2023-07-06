@@ -24,33 +24,33 @@ provide('selectedTitle', selectedTitle)
             </li>
 
         </ul>
-
+        <div class="modal_Content">
         <slot />
+    </div>
     </div>
 </template>
 
 <style>
 .tabs {    
+    text-align: center;
     position: absolute;
-    max-width: 60vw;
+    max-width: 50vw;
     margin: 0 auto;
     height: 95%;
 }
 
 .tabs__header {
-    font-size: 90%;
+    align-items: center;
+    font-size: 80%;
     font-weight: 700;
+    color: #fbf5f5;
     text-align: center;
     position: absolute;
-    left:-11px;
-    top:10px;
-    width: 100.5%;
+    top:5px;
+    width: 100%;
     list-style: none;
-    padding: 0;
-    margin: 0;
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* gap: 5px; */
+    padding: 10px;
+
     
 }
 
@@ -59,45 +59,61 @@ provide('selectedTitle', selectedTitle)
     
 }
 .tabs__item:hover{
-scale :103%;
+    scale :103%;
+
 }
 .tabs__item {
     flex: 1;
-    background-color: #eee;
+    margin-bottom: 3px;
+    background-color: cadetblue;
     padding: 5px 0;
-    border-radius: 12px;
     transition: .4s all ease-out;
     cursor: pointer;
     user-select: none;
+    height: 25px;
     
    
 }
 
 .tabs__item.selected {
     
+
     background-color: #2d82dd;
     color:#fbf5f5
 }
 
 .tabs__content {
-    
+    text-align: justify;
     line-height: 1.8em;
     overflow-y:scroll;
-    margin-top: 140px;
+    margin-top: 130px;
     background-color: #bfbfbf;
     height: 61%;    
-    display: grid;
-    place-items: center;
+    /* display: grid; */
+    /* place-items: center; */
     border-radius: 5px;
-    padding: 10px;
     
     
 }
+.modal_Content{  
+
+    padding: 10px;
+    height: 100%;
+    font-size: 85%;
+}
 @media (min-width: 550px) and (max-width: 1023px){
     .tabs__header {
-        width: 100%;
-        left:-11.3px;
 
     }
+}
+@media (max-width: 549px){
+    
+    .tabs__header {
+    font-size: 72%;
+    padding: 0;
+    
+    }
+   
+
 }
 </style>

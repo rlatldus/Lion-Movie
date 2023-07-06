@@ -1,14 +1,10 @@
 <template>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
 		<div class="logo">
-			<img :src="logoURL" alt="Vue" />
+			<img :src="logoURL" alt="MainLogo" />
 		</div>
 
-		<div class="menu-toggle-wrap">
-			<button class="menu-toggle" @click="ToggleMenu">
-				<span class="material-icons">keyboard_double_arrow_right</span>
-			</button>
-		</div>
+
 
 		<h3>Menu</h3>
 		<div class="menu">
@@ -52,6 +48,7 @@ import { ref } from 'vue';
 import logoURL from '../assets/logo.png';
 
 export default {
+	//로그인 시 로그인 ui 로그아웃 시 로그아웃 ui로 변경됨
 	computed: {
 		...mapGetters(["getToken"]),
 		token() {
@@ -78,7 +75,7 @@ export default {
 aside {
 	display: flex;
 	flex-direction: column;
-
+	
 	background-color: var(--dark);
 	color: var(--light);
 	width: calc(2rem + 32px);
@@ -86,6 +83,8 @@ aside {
 	min-height: 100vh;
 	padding: 1rem;
 	transition: 0.2s ease-in-out;
+	position: fixed;
+
 
 	@media (min-width: 350px) and (max-width : 549px) {
 		display: none;
@@ -106,31 +105,31 @@ aside {
 	}
 
 	
-	.menu-toggle-wrap {
-		display: flex;
-		justify-content: flex-end;
-		margin-bottom: 1rem;
+	// .menu-toggle-wrap {
+	// 	display: flex;
+	// 	justify-content: flex-end;
+	// 	margin-bottom: 1rem;
 
-		position: relative;
-		top: 0;
-		transition: 0.2s ease-in-out;
+	// 	position: relative;
+	// 	top: 0;
+	// 	transition: 0.2s ease-in-out;
 
-		.menu-toggle {
-			transition: 0.2s ease-in-out;
-			.material-icons {
-				font-size: 2rem;
-				color: var(--light);
-				transition: 0.2s ease-out;
-			}
+	// 	.menu-toggle {
+	// 		transition: 0.2s ease-in-out;
+	// 		.material-icons {
+	// 			font-size: 2rem;
+	// 			color: var(--light);
+	// 			transition: 0.2s ease-out;
+	// 		}
 			
-			&:hover {
-				.material-icons {
-					color: var(--primary);
-					transform: translateX(0.5rem);
-				}
-			}
-		}
-	}
+	// 		&:hover {
+	// 			.material-icons {
+	// 				color: var(--primary);
+	// 				transform: translateX(0.5rem);
+	// 			}
+	// 		}
+	// 	}
+	// }
 	
 	h3, .button .text {
 		opacity: 0;
@@ -145,6 +144,7 @@ aside {
 	}
 
 	.menu {
+		
 		margin: 0 -1rem;
 		
 		.button {
@@ -183,7 +183,7 @@ aside {
 			}
 		}
 	}
-
+	
 	.footer {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
@@ -194,31 +194,31 @@ aside {
 		}
 	}
 
-	&.is-expanded {
-		width: var(--sidebar-width);
+	// &.is-expanded {
+	// 	width: var(--sidebar-width);
 
-		.menu-toggle-wrap {
-			top: -3rem;
+	// 	.menu-toggle-wrap {
+	// 		top: -3rem;
 			
-			.menu-toggle {
-				transform: rotate(-180deg);
-			}
-		}
+	// 		.menu-toggle {
+	// 			transform: rotate(-180deg);
+	// 		}
+	// 	}
 
-		h3, .button .text {
-			opacity: 1;
-		}
+	// 	h3, .button .text {
+	// 		opacity: 1;
+	// 	}
 
-		.button {
-			.material-icons {
-				margin-right: 1rem;
-			}
-		}
+	// 	.button {
+	// 		.material-icons {
+	// 			margin-right: 1rem;
+	// 		}
+	// 	}
 
-		.footer {
-			opacity: 0;
-		}
-	}
+	// 	.footer {
+	// 		opacity: 0;
+	// 	}
+	// }
 
 	// @media (max-width: 0px) {
 	// 	position: absolute;

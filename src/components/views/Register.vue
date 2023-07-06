@@ -8,8 +8,8 @@
 <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
-import UserForm from './../common/Form.vue';
-import FormWrap from './../common/FormWrap.vue';
+import UserForm from './../common/form/Form.vue';
+import FormWrap from './../common/form/FormWrap.vue';
 export default {
   components: {
     UserForm,

@@ -19,16 +19,16 @@ const router = createRouter({
     },
     {
       path: "/favorite",
-      component: () => import("../components/Favorite.vue"),
+      component: () => import("../components/views/Favorite.vue"),
       meta: { requiresAuth: true },
     },
     {
       path: "/login",
-      component: () => import("../components/Login.vue"),
+      component: () => import("../components/views/Login.vue"),
     },
     {
       path: "/register",
-      component: () => import("../components/Register.vue"),
+      component: () => import("../components/views/Register.vue"),
     },
     {
       path: "/setting",

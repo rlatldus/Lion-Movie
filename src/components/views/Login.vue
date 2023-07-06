@@ -15,9 +15,9 @@
 <script>
 import { ref } from 'vue';
 import { mapGetters, useStore } from 'vuex';
-import AuthButton from './common/AuthButton.vue';
-import UserForm from './common/Form.vue';
-import FormWrap from './common/FormWrap.vue';
+import AuthButton from './../common/AuthButton.vue';
+import UserForm from './../common/Form.vue';
+import FormWrap from './../common/FormWrap.vue';
 export default {
   components: {
     AuthButton,

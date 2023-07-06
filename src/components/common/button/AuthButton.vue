@@ -1,6 +1,6 @@
 <template>
     <button class="google-login-button" @click="loginWithGoogle">
-        <img src="./../../assets/images/google.png" alt="Google 로고">
+        <img src="./../../../assets/images/google.png" alt="Google 로고">
             구글로 로그인
     </button>
 </template>
@@ -9,7 +9,7 @@
 import { GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'firebase/auth'
 import { ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
-import { auth } from '../../firebase'
+import { auth } from '../../../firebase'
 
 export default {
     setup() {

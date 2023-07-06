@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Favorites from './common/Favorites.vue';
+import Favorites from './../common/Favorites.vue';
 import { mapGetters, useStore } from 'vuex';
 
 export default {

@@ -15,14 +15,7 @@ export default {
       return this.getFavorites;
     }
   },
-  setup() {
-    const titles = favorites.map((favorite) => favorite.title);
-    console.log(titles);
-    return {
-      formData,
-      signUp
-    }
-  }
+
 };
 </script>
 <style scoped>

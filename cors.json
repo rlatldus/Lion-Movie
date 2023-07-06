@@ -1,7 +1,0 @@
-[
-    {
-        "origin" : ["https://movie-33ea4.web.app/"],
-        "method" : ["GET"],
-        "maxAgeSeconds" : 3600
-    }
-]

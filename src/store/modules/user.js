@@ -1,6 +1,7 @@
-import router from "../../../router";
-import { auth } from "../../../firebase";
+import router from "../../router";
+import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { parseJwt } from "../../components/hooks/useParseJwt";
 
 export default {
   state: {
@@ -21,9 +22,12 @@ export default {
     getToken(state) {
       return state.token;
     },
-    // getUser(state) {
-    //   return state.user;
-    // },
+    getUser(state) {
+      return state.user;
+    },
+    getUserEmail(state){
+    return parseJwt(state.token).email
+    }
   },
   actions: {
     async login({ commit }, details) {
@@ -33,6 +37,7 @@ export default {
         const token = auth.currentUser.accessToken;
         commit("SET_USER", { user: auth.currentUser, token });
         localStorage.setItem("token", token);
+        alert("로그인 되었습니다")
         router.push("/");
       } catch (error) {
         switch (error.code) {

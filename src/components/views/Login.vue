@@ -8,7 +8,7 @@
       진행해주세요</span>
     <user-form v-else formTitle="회원정보" submitButtonText="저장하기" :formData="formData" :submitForm="userinfo">
     </user-form>
-    <button v-else class="logout" @click="logout"> 로그아웃</button>
+    <button v-else class="logout" @click="logout"> {{userEmail}}로그아웃</button>
   </FormWrap>
 </template>
 
@@ -26,13 +26,13 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getToken", "getUser"]),
+    ...mapGetters(["getToken", "getUserEmail"]),
     token() {
       return this.getToken;
     },
-    // user() {
-    //   return this.getUser;
-    // }
+    userEmail() {
+      return this.getUserEmail;
+    }
   },
   setup() {
     const store = useStore();

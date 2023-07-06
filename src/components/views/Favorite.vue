@@ -1,7 +1,8 @@
 <template>
-  <div>
-  </div>
-  <div>{{ favorite }}</div>
+  <main>
+  <div>{{ favorites }}</div>
+  </main>
+
 </template>
 
 <script>
@@ -10,11 +11,18 @@ import { mapGetters, useStore } from 'vuex';
 export default {
   computed: {
     ...mapGetters(["getFavorites"]),
-    favorite() {
+    favorites() {
       return this.getFavorites;
     }
   },
-
+  setup() {
+    const titles = favorites.map((favorite) => favorite.title);
+    console.log(titles);
+    return {
+      formData,
+      signUp
+    }
+  }
 };
 </script>
 <style scoped>

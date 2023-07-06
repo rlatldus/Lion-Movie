@@ -1,11 +1,9 @@
 
 <template>
-  <FormWrap>
+  <FormWrap :token="token" :hasAccount="false">
     <user-form v-if="!token" formTitle="로그인" submitButtonText="로그인하기" :formData="formData" :submitForm="login">
     </user-form>
     <auth-button v-if="!token"></auth-button>
-    <user-form v-else formTitle="회원정보" submitButtonText="저장하기" :formData="formData" :submitForm="userinfo">
-    </user-form>
     <button v-else class="logout" @click="logout"> {{userEmail}}님의 로그아웃</button>
   </FormWrap>
 </template>
@@ -38,10 +36,6 @@ export default {
 
     const login = () => {
       store.dispatch('login', formData.value);
-    }
-
-    const userinfo = () => {
-      alert("ddd")
     }
 
     const logout = () => {
@@ -77,18 +71,5 @@ export default {
   }
 }
 
-span {
-  margin-top: 20px;
-  width: 50%;
-  max-width: 600px;
-  min-width: 300px;
-  text-align: center;
-  color: white;
 
-  .deco {
-    color: #ff3c3c;
-    font-size: 1.3rem;
-
-  }
-}
 </style>

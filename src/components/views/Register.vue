@@ -1,5 +1,5 @@
 <template>
-  <FormWrap>
+  <FormWrap :token="false" :hasAccount="true">
     <user-form formTitle="회원가입" submitButtonText="화원가입하기" :formData="formData" :submitForm="signUp"></user-form>
   </FormWrap>
 </template>
@@ -27,5 +27,6 @@ export default {
       signUp
     }
   }
+  
 };
 </script>

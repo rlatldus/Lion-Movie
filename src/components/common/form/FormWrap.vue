@@ -2,9 +2,10 @@
     <main class="formWrap">
         <section class="forms">
             <slot></slot>
-            <span v-if="user">{{formText}} <router-link to="`${location}`"><span class="deco">{{loginout}}</span></router-link>{{formgider}}</span>
+            <span v-if="!token && !hasAccount">만약 계정이 없다면, <router-link to="/register"><span class="deco">회원가입</span></router-link>을 먼저
+                진행해주세요</span>
+            <span v-if="!token && hasAccount">만약 계정이 있다면, <router-link to="/login"><span class="deco">로그인</span></router-link>페이지로 이동해주세요</span>
         </section>
-
     </main>
 </template>
 
@@ -12,12 +13,17 @@
 export default {
     name: 'FormWrap',
     props: {
-        user: Boolean,
-  },
+        token: {
+            type: Boolean,
+            default: false
+        },
+            hasAccount: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
-
 </script>
-
 
 <style  lang="scss" scoped>
 .formWrap {
@@ -29,10 +35,12 @@ export default {
     left: 0;
     background: url(./../../../assets/images/bg.jpg) center no-repeat;
     background-size: cover;
+
     @media (max-width : 549px) {
-		position: absolute;
+        position: absolute;
         margin-left: 0px;
-	}
+    }
+
     .forms {
         display: flex;
         flex-direction: column;
@@ -45,6 +53,19 @@ export default {
         left: 0;
         background: linear-gradient(rgba(52, 52, 52, 0.5), rgba(0, 0, 0, 0.8));
 
+        span {
+            margin-top: 20px;
+            width: 50%;
+            max-width: 600px;
+            min-width: 300px;
+            text-align: center;
+            color: white;
+        }
+
+        .deco {
+            color: #ff3c3c;
+            font-size: 1.3rem;
+        }
     }
 }
 </style>

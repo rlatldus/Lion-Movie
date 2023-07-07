@@ -4,7 +4,7 @@
     <user-form v-if="!token" formTitle="로그인" submitButtonText="로그인하기" :formData="formData" :submitForm="login">
     </user-form>
     <auth-button v-if="!token"></auth-button>
-    <button v-else class="logout" @click="logout"> {{userEmail}}님의 로그아웃</button>
+    <button v-else class="logout" @click="logout">{{ userName }} {{userEmail}}님의 로그아웃</button>
   </FormWrap>
 </template>
 
@@ -22,12 +22,15 @@ export default {
 
   },
   computed: {
-    ...mapGetters(["getToken", "getUserEmail"]),
+    ...mapGetters(["getToken", "getUserEmail","getUserName"]),
     token() {
       return this.getToken;
     },
     userEmail() {
       return this.getUserEmail;
+    },
+        userName() {
+      return this.getUserName;
     }
   },
   setup() {

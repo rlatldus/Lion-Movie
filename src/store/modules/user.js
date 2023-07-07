@@ -28,6 +28,9 @@ export default {
     getUserEmail(state) {
       return parseJwt(state.token).email;
     },
+    getUserName(state) {
+      return parseJwt(state.token).name;
+    },
   },
   actions: {
     async login({ commit }, details) {
@@ -59,13 +62,8 @@ export default {
     async register({}, details) {
       const { email, password, displayName } = details;
       try {
-        // Firebase Authentication을 사용하여 사용자 생성
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
-
-        // 사용자 프로필 정보 업데이트
         await updateProfile(user, { displayName });
-
-        // Firestore에 사용자 프로필 정보 저장
         const userRef = doc(db, "users", user.uid);
         await setDoc(userRef, { displayName });
 

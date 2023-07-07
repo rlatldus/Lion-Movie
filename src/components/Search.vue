@@ -97,7 +97,7 @@ export default {
     main {
         width: 100%;
         height: 100vh;
-        background-color: rgb(26, 29, 41);
+        background-color: rgb(24, 35, 61);
         overflow: hidden;
 
         input[type=text] {
@@ -130,7 +130,7 @@ export default {
         }
         .swiper {
             max-width: 400px;
-            height: 600px;
+            height: 625px;
         }
 
         .swiper-slide {
@@ -140,6 +140,14 @@ export default {
             justify-content: center;
             border-radius: 18px;
             background: linear-gradient(180deg, var(--dark) 0%, var(--primary) 100%);
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
+            text-align: center;
+            word-wrap: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 6 ;
+            -webkit-box-orient: vertical;
         }
         .movieImg {
             width: 100%;

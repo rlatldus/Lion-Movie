@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "cors": "^2.8.5",
+    "emailjs-com": "^3.2.0",
     "firebase": "^9.23.0",
     "swiper": "^8.4.7",
     "vue": "^3.2.25",

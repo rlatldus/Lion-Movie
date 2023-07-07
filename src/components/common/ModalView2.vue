@@ -1,6 +1,4 @@
 <template>
-  <main id="Modal">
-    <div class="fix">
   <div class="modal2">
     <div class="overlay2" @click="$emit('close-modal')"></div>
     <div class="modal-card2">
@@ -9,8 +7,6 @@
       <slot />
     </div>
   </div>
-</div>
-</main>
 </template>
 
 <script>
@@ -19,14 +15,6 @@ export default {};
 
 <style scoped>
 
-#Modal {
-  position: relative;
-  .fix {
-    position: fixed;
-    z-index: 999;
-
-  }
-}
 
 
 .modal2,
@@ -41,7 +29,7 @@ export default {};
 
 .modal2{
   position: fixed;
-  top:40%;
+  top:35%;
   z-index: 99;
 }
 .overlay2 {

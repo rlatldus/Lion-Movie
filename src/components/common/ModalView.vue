@@ -38,14 +38,15 @@ export default {};
   background-color: black;
 }
 .modal-card {
-  
+  min-width: 330px;
+
   border-radius: 10px;
   position: relative;
-  max-width: 45%;
+  max-width: 35%;
   margin: auto;
   margin-top: 200px;
-  padding: 20px;
-  background-color: white;
+  padding: 10px;
+  background-color: rgb(27, 126, 165);
   min-height: 350px;
   opacity: 1;
 }

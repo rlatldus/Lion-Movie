@@ -12,11 +12,11 @@
 </template>
 
 <script setup>
-import Sidebar from './components/Sidebar.vue'
+import Sidebar from './components/Sidebar.vue';
 import Setting from './components/Setting.vue'
 import About from './components/About.vue'
 import KakaoMap from './components/KakaoMap.vue';
-import Menu from './components/Menu.vue'
+import Menu from './components/Menu.vue';
 import Home from './components/Home.vue'
 import Favorite from './components/views/Favorite.vue';
 import Login from './components/views/Login.vue';

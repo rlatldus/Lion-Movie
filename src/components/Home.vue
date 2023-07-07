@@ -49,7 +49,7 @@
 
 <script>
 import axios from 'axios';
-import MovieListWrap from './common/Movies.vue';
+import MovieListWrap from './common/movieList/Movies.vue';
 
 export default {
   name: 'Home',
@@ -136,7 +136,7 @@ body{
 main{
 	width: 90vw;
 	height: 100%;
-	background-color: rgb(40, 65, 91);
+	background-color:  rgb(24, 35, 61);
   padding: 20px;
 	overflow: hidden;
 	
@@ -177,7 +177,6 @@ main{
       text-overflow: ellipsis;
       white-space: normal;
       line-height: 1.2;
-/*       height: 4.8em;*/
       text-align: left;
       word-wrap: break-word;
       display: -webkit-box;

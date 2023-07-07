@@ -11,6 +11,7 @@
 				<li><button @click="isModalViewed2 = true">개인정보처리방침</button></li>
 			</ul>
 		</div>
+	
     </main>
 </template>
 <script>
@@ -52,7 +53,6 @@ export default{
     background-color: rgb(24, 35, 61);
     .footer{
 		width: 100%;
-
 }
 
 .footer_contents{

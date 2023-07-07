@@ -5,6 +5,10 @@
       신나게 플레이해보아요 !
     </p>
     <h2>{{ formTitle }}</h2>
+    <label v-if="name">
+      <input v-model="formData.displayName" autocomplete="name" placeholder="이름을 입력해주세요" type="text" />
+    </label>
+    <small v-if="name && !formData.displayName" class="error-message">이름은 필수 입력입니다.</small>
     <label>
       <input v-model="formData.email" autocomplete="email" placeholder="이메일을 입력해주세요" type="text" />
     </label>
@@ -21,6 +25,10 @@
 <script>
 export default {
   props: {
+    name: {
+      type: Boolean,
+      default: false
+    },
     formTitle: String,
     submitButtonText: String,
     formData: Object,
@@ -28,7 +36,10 @@ export default {
   },
   computed: {
     isFormValid() {
-      const { email, password } = this.formData;
+      const { displayName, email, password } = this.formData;
+      if(this.name){
+        return this.isEmailValid(email) && password && password.length >= 8 && displayName;
+      }
       return this.isEmailValid(email) && password && password.length >= 8;
     }
   },

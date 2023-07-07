@@ -1,8 +1,8 @@
 import router from "../../router";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth, db } from "../../firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { parseJwt } from "../../components/hooks/useParseJwt";
-
+import { doc, setDoc } from "firebase/firestore";
 export default {
   state: {
     user: null,
@@ -25,9 +25,9 @@ export default {
     getUser(state) {
       return state.user;
     },
-    getUserEmail(state){
-    return parseJwt(state.token).email
-    }
+    getUserEmail(state) {
+      return parseJwt(state.token).email;
+    },
   },
   actions: {
     async login({ commit }, details) {
@@ -37,7 +37,9 @@ export default {
         const token = auth.currentUser.accessToken;
         commit("SET_USER", { user: auth.currentUser, token });
         localStorage.setItem("token", token);
-        alert("로그인 되었습니다")
+        const uid = auth.currentUser.uid;
+        await fetchUserProfile(uid);
+        alert("로그인 되었습니다");
         router.push("/");
       } catch (error) {
         switch (error.code) {
@@ -55,27 +57,38 @@ export default {
     },
 
     async register({}, details) {
-      const { email, password } = details;
+      const { email, password, displayName } = details;
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        // Firebase Authentication을 사용하여 사용자 생성
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
+
+        // 사용자 프로필 정보 업데이트
+        await updateProfile(user, { displayName });
+
+        // Firestore에 사용자 프로필 정보 저장
+        const userRef = doc(db, "users", user.uid);
+        await setDoc(userRef, { displayName });
+
+        console.log(user);
         alert("회원가입 되었습니다.");
         router.push("/login");
       } catch (error) {
+        console.log(error);
         switch (error.code) {
           case "auth/email-already-in-use":
             alert("중복된 이메일입니다.");
             break;
           case "auth/invalid-email":
-            alert("Invalid email");
+            alert("잘못된 이메일 형식입니다.");
             break;
           case "auth/operation-not-allowed":
-            alert("Operation not allowed");
+            alert("허용되지 않은 작업입니다.");
             break;
           case "auth/weak-password":
             alert("비밀번호가 취약합니다.");
             break;
           default:
-            alert("정보를 다시 한번 확인해주세요");
+            alert("정보를 다시 한번 확인해주세요.");
         }
       }
     },

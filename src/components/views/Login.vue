@@ -36,6 +36,7 @@ export default {
 
     const login = () => {
       store.dispatch('login', formData.value);
+      console.log(store)
     }
 
     const logout = () => {

@@ -1,5 +1,5 @@
 <template>
-  <div id="Home-page">
+  <div id="movie-page">
     <MovieModal v-if="isModalViewed" :movieDetails="selectedMovieDetails" @close-modal="isModalViewed = false">
 		</MovieModal>
     <div class="movieListWrap">
@@ -12,10 +12,14 @@
             slidesPerView: 2,
             spaceBetween: 20
           },
-          640: {
+          549: {
             slidesPerView: 4,
-            spaceBetween: 30
+            spaceBetween: 20
           },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 30
+          }
         }"
         :pagination="{
           clickable: true,
@@ -27,7 +31,7 @@
         <SwiperSlide v-for="movie in movies" :key="movie.id" class="movieList_li">
           <div class="slidewrap">
           <button @click="fetchMovieDetails(movie,`${type}`)">
-            <img :src="`${baseImageUrl}${movie. poster_path}`" alt="Movie Poster" class="movieImg"/>
+            <img :src="`${baseImageUrl}${movie. poster_path}`" alt="Movie Poster" class="movielistImg"/>
           </button>
         </div>
           <favorites :items="movies"  :item="movie" class="favorites"/>
@@ -51,7 +55,7 @@ import 'swiper/css/navigation';
 
 
 export default {
-  name: 'Home',
+  name: 'Movies',
   components: {
     MovieModal,
     Swiper,
@@ -113,20 +117,20 @@ export default {
 }
 </script>
 
-<style  lang="scss">
+<style lang="scss">
     .movieListWrap>h1{
         padding: 20px 0;
         color: var(--light);
     }
 
-    .swiper {
+    .mySwiper {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
     }
     
-    .swiper-slide {
+    .movieList_li {
       text-align: center;
       display: flex;
       height: 100% calc(-5px);
@@ -141,7 +145,7 @@ export default {
       box-shadow: rgba(36, 35, 35, 0.69) 0px 26px 30px -10px, rgba(109, 109, 109, 0.73) 0px 16px 10px -10px;
   }
 
-  .swiper-slide  {
+  .movieList_li {
     &:hover{
       border: 4px solid white;
       background-clip: content-box;
@@ -149,12 +153,6 @@ export default {
       box-shadow: rgba(70, 69, 69, 0.69) 0px 26px 30px -10px, rgba(235, 233, 233, 0.73) 0px 16px 10px -10px;
     }
   }
-  .swiper-slide img {
-      &:hover {
-      scale: 1.1;
-      transition: all 200ms linear 200ms;
-    }
-    }
 
     .favorites{
       background-color: var(--light);
@@ -167,13 +165,19 @@ export default {
     }
 
 
-
-    .swiper-slide img {
+    .movielistImg {
       display: block;
       width: 100%;
       height: 100%;
       object-fit:cover;
     }  
+
+    .movielistImg {
+      &:hover {
+      scale: 1.1;
+      transition: all 200ms linear 200ms;
+    }
+    }
 
     .swiper-horizontal{
       padding-bottom: 40px;

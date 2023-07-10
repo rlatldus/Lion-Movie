@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <form @submit.prevent="sendEmail">
-      <label>이름</label>
-      <input type="text" v-model="name" name="name" placeholder="이름을 적어주세요" disabled>
-      <label>Email</label>
-      <input type="email" v-model="email" name="email" placeholder="Email 주소를 적어주세요" disabled>
-      <label>문의사항</label>
-      <textarea name="message" v-model="message" cols="30" rows="5" placeholder="문의 사항을 적어주세요">
+      <label class="name">이름</label>
+      <input type="text" v-model="name" name="name" placeholder="로그인이 필요합니다." disabled>
+      <label class="email">Email</label>
+      <input type="email" v-model="email" name="email" placeholder="로그인이 필요합니다." disabled>
+      <label class="message_Title">문의사항</label>
+      <textarea name="message" v-model="message" cols="30" rows="5" placeholder="문의 사항을 적어주세요" class="message_Box">
           </textarea>
 
       <input type="submit" value="보내기">
@@ -48,16 +48,6 @@ export default {
     sendEmail(e) {
       try {
         emailjs.sendForm(
-          // 'service_23pav3j', 'template_typk2pw', e.target, 'WWqOl_WK204GrX3fQ',{
-          //   name: this.name,
-          //   email: this.email,
-          //   message: this.meessage
-          // },
-          // 'service_4pfr0gv', 'template_ss5jon8', e.target, 'dQ_ImAPjB-V6dex0O',{
-          //   name: this.name,
-          //   email: this.email,
-          //   message: this.meessage
-          // },
           'service_wx9d50o', 'template_uip8r4a', e.target, 'wlEuG-f4jgV_RhH2y', {
           name: this.name,
           email: this.email,
@@ -71,8 +61,8 @@ export default {
           throw err;
         }
       }
-      this.name = ''
-      this.email = ''
+      this.name = this.userName;
+      this.email = this.userEmail;
       this.message = ''
     },
   }
@@ -80,57 +70,82 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
+* {box-sizing: border-box;
 }
+.form{
 
+}
 label {
-  color: #3993cf;
+  padding-top:5px;
+  width: 50px;
+  height: 40px;
+  text-align: left;
+  color: #a4b1ba;
   float: left;
 }
-
-input[type=text],
-[type=email],
-textarea {
-  width: 100%;
+input[type=text], [type=email], textarea {
+  display: flex;
+  width: 80%;
+  height: 30px;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   resize: vertical;
+ 
 }
-/* 입력 못하게 막을때 효과 */
-input:disabled{
-  background-color: #ccc;
-}
+ 
 
+.message_Title{
+  width: 150px;
+}
+.message_Box{
+  width: 100%;
+  min-height: 60px;
+  max-height: 120px;
+}
 input[type=submit] {
+
+  width: 100%;
+  height: 20px;
   font-weight: 900;
-  font-size: 110%;
-  background-color: #4CAF50;
+  font-size: 90%;
+  background-color: #5673ac;
   color: white;
-  padding: 12px 13px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-
 input[type=submit]:hover {
   background-color: #3993cf;
-  scale: 1.15;
-  transition: 0.5s ease-in-out;
+  transition:  0.5s ease-in-out;
 }
 
 .container {
+  
   display: block;
-  margin: auto;
+  margin:auto;
   text-align: center;
   border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+  background-color:rgb(40, 65, 91);
   min-width: 270x;
-  width: 100%;
+  width: 90%;
+  max-height: 450px;
+  padding: 5px;
+
+}
+
+@media (min-width:350px) and (max-width:1023px){
+  .container{
+
+    width: 100%;
+  }
+  .name, .email {
+    display: none;
+  }
+  input[type=text], [type=email]{
+    display: none;
+  }
 }
 </style>

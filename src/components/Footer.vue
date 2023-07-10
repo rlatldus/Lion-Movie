@@ -11,6 +11,13 @@
 				<li><button @click="isModalViewed2 = true">개인정보처리방침</button></li>
 			</ul>
 		</div>
+		<!-- <div class="email">
+			<ul> 			
+				<li class="modalView email">bokyh0327@gmail.com</li>
+				<li class="modalView email">djagmlwnn12@gmail.com</li>
+				<li class="modalView email">bokbok1234@nate.com</li>
+			</ul>
+		</div> -->
 	
     </main>
 </template>

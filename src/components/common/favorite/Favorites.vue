@@ -1,7 +1,7 @@
 <template>
-    <button @click="toggleFavorite(item)">
-        {{ isFavorite(item) ? '찜 해제' : '찜하기' }}
-    </button>
+                <button @click="toggleFavorite(item)">
+                    {{ isFavorite(item) ? '찜 해제' : '찜하기' }}
+                </button>
 </template>
 
 <script>
@@ -9,15 +9,15 @@ import { useStore } from 'vuex';
 import { ref, watchEffect } from 'vue';
 export default {
     props: {
-        items: {
-            type: Array,
-            required: true,
-        },
-        item: {
-            type: Object,
-            required: true,
-        },
+    items: {
+      type: Array,
+      required: true,
     },
+    item: {
+      type: Object,
+      required: true,
+    },
+},
     setup() {
         const store = useStore();
         const items = ref([]);
@@ -51,18 +51,19 @@ export default {
 };
 </script>
 <style scoped>
-.favorite {
+.favorite{
     display: flex;
 }
 
-.movieListWrap {
-    padding-bottom: 20px;
-    display: flex;
+.movieListWrap{
+      padding-bottom: 20px;
+      display: flex;
 
 
-}
+		}
+        .img{
+        width: 100px;
+      }
 
-.img {
-    width: 100px;
-}
+
 </style>

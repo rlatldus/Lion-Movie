@@ -1,24 +1,24 @@
 <template>
-    <div class="movieListWrap">
-        <swiper :freeMode="true" :loop="true" :breakpoints="{
-            350: {
-                slidesPerView: 2,
-                spaceBetween: 20
-            },
-            640: {
-                slidesPerView: 4,
-                spaceBetween: 30
-            },
-        }" :pagination="{
-    clickable: true,
-}" :navigation="true" :modules="modules" class="mySwiper">
-            <SwiperSlide v-for="(movie, index) in movies" :key="index" class="movieList_li">
-                <div class="slidewrap">
-                    <slot :movie="movie"></slot>
-                </div>
-            </SwiperSlide>
-        </Swiper>
-    </div>
+    <swiper :freeMode="true" :loop="true" :breakpoints="{
+        350: {
+            slidesPerView: 2,
+            spaceBetween: 20
+        },
+        549: {
+            slidesPerView: 4,
+            spaceBetween: 20
+        },
+        1024: {
+            slidesPerView: 5,
+            spaceBetween: 30
+        }
+    }" :pagination="{
+    clickable: true
+}" :navigation="true" :modules="modules" class="swipersize">
+        <SwiperSlide v-for="movie in movies" :key="movie.id">
+            <slot :movie="movie"></slot>
+        </SwiperSlide>
+    </swiper>
 </template>
 
 <script>
@@ -29,16 +29,20 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-
 export default {
     components: {
         Swiper,
         SwiperSlide,
     },
     setup() {
+        const modules = [Pagination, Navigation];
         return {
-            modules: [Pagination, Navigation]
+            modules
         };
+    },
+    data() {
+        return {
+        }
     },
     props: {
         movies: {
@@ -46,111 +50,12 @@ export default {
             required: true,
         },
     },
-}
+};
 </script>
 
-<style  lang="scss">
-.movieListWrap>h1 {
-    padding: 20px 0;
-    color: var(--light);
+<style scoped>
+.swipersize {
+    width: 80%;
 }
-
-.swiper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.swiper-slide {
-    text-align: center;
-    display: flex;
-    height: 100% calc(-5px);
-    position: relative;
-    backface-visibility: hidden;
-    display: block;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: -1px;
-    border-radius: 4px;
-    transition: all 200ms linear 100ms;
-    box-shadow: rgba(36, 35, 35, 0.69) 0px 26px 30px -10px, rgba(109, 109, 109, 0.73) 0px 16px 10px -10px;
-}
-
-.swiper-slide {
-    &:hover {
-        border: 4px solid white;
-        background-clip: content-box;
-        transition: border 200ms linear 0;
-        box-shadow: rgba(70, 69, 69, 0.69) 0px 26px 30px -10px, rgba(235, 233, 233, 0.73) 0px 16px 10px -10px;
-    }
-}
-
-.swiper-slide img {
-    &:hover {
-        scale: 1.1;
-        transition: all 200ms linear 200ms;
-    }
-}
-
-.favorites {
-    background-color: var(--light);
-    position: absolute;
-    width: 15%;
-    height: 15%;
-    top: 0;
-    right: 0;
-    border-radius: 5px;
-}
-
-
-
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.swiper-horizontal {
-    padding-bottom: 40px;
-}
-
-.swiper-button-next:after,
-.swiper-button-prev:after {
-    color: var(--light)
-}
-
-.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-    background-color: var(--light);
-}
-
-// 반응형@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@media (min-width: 350px) and (max-width : 549px) {
-
-    .movieListWrap>h1 {
-        font-size: 1rem;
-    }
-
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 1.5rem;
-        font-weight: 900;
-        display: none;
-        // border: 1px solid red;
-    }
-
-    .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-        // border: 1px solid red;
-        display: none;
-    }
-
-    .swiper-horizontal {
-        padding-bottom: 0;
-    }
-}
-
-@media (min-width: 550px) and (max-width : 1023px) {}
 </style>
-
 

@@ -1,16 +1,26 @@
 <template>
     <div class="moviecard">
-        <h2>{{ movie.title }}</h2>
-        <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
+        <div class="cover" @mouseover="isHovered = true" @mouseout="isHovered = false">
+            <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
+            <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
+            <div class="text" :class="{ 'overview-visible': isHovered }">
+                <p class="texts">내용 : {{ movie.overview || movie.title }}</p>
+                <p>출시일 : {{ movie.release_date }}</p>
+            </div>
+            <button @click="removeFavorite(movie)" v-if="!isHovered">찜삭제하기</button>
+        </div>
         <div class="script">
-            <p>{{ movie.overview }}</p>
-            <p>Release Date: {{ movie.release_date }}</p>
+            <!-- {{ movie.video }} -->
+            <h2>{{ movie.title }}</h2>
             <p>Vote Average: {{ movie.vote_average }}</p>
         </div>
     </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { ref } from 'vue';
+
 export default {
     props: {
         movie: {
@@ -18,31 +28,91 @@ export default {
             required: true,
         },
     },
+    setup() {
+        const store = useStore();
+        const isHovered = ref(false);
+        const removeFavorite = (movie) => {
+            store.dispatch('removeFavorite', movie);
+        };
+        return {
+            isHovered,
+            removeFavorite,
+        }
+    }
 };
+
 </script>
 
-<style  lang="scss" scoped>
+
+<style lang="scss" scoped>
 .moviecard {
     color: white;
+    width: 200px;
+    border-radius: 20px;
 
     h2 {
-        height: 100px;
+        text-align: center;
+        height: 50px;
+        font-size: 20px;
     }
 
-    img {
-        display: block;
-        width: 90%;
-        object-fit: cover;
+    .cover {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 20px;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        color: rgba(255, 255, 255, 0);
+        text-align: left;
 
         &:hover {
-            scale: 1.1;
-            transition: all 200ms linear 200ms;
+            color: rgb(255, 255, 255);
+            transform: translateY(-30px);
+            transition-delay: 0.3s;
+        }
+
+        button {
+            background-color: var(--light);
+            position: absolute;
+            height: 10%;
+            top: 0;
+            right: 0;
+            border-radius: 5px;
+        }
+
+        img {
+            position: absolute;
+            max-width: 250px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                transition: all 0.3s ease-in-out;
+                filter: brightness(0) invert(0);
+                opacity: 0.7;
+            }
+        }
+
+        .texts {
+            margin: 10px;
+            position: absolute;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 10;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            font-size: 12px;
+
         }
     }
 
-.script{
-    font-size: 12px;
-}
-
+    .script {
+        font-size: 12px;
+    }
 }
 </style>

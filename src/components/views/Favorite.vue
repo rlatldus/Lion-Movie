@@ -1,12 +1,16 @@
 <template>
-  <main class="alignCard">
-    <p>{{ userName }}님이 선택한 찜 목록</p> 
-    <Pagination :movies="favorites">
-      <template v-slot="{ movie }">
-        <MovieCard :movie="movie" />
-      </template>
-    </Pagination>
-  </main>
+  <div class="alignCard">
+    <div class="moviebackground">
+      <div class="mymovie">
+        <p>{{ userName }}님이 선택한 찜 목록</p>
+        <Pagination :movies="favorites">
+          <template v-slot="{ movie }">
+            <MovieCard :movie="movie" />
+          </template>
+        </Pagination>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -33,11 +37,23 @@ export default {
 
 <style lang="scss"  scoped>
 .alignCard {
-  width: 90vw;
-  height: 100%;
+  width: 100%;
   background-color: rgb(24, 35, 61);
-  padding: 20px;
-  p{
+
+  .moviebackground {
+    padding-top: 100px;
+    position: relative;
+    height: 400px;
+    background-color: rgb(4, 4, 4);
+  }
+
+  .mymovie {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  p {
     text-align: center;
     font-size: 30px;
     padding-bottom: 20px;

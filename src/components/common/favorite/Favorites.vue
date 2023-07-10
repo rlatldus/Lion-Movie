@@ -33,6 +33,7 @@ export default {
             } else {
                 store.dispatch('addFavorite', item);
             }
+            item.video = true;
             console.log(store)
         };
 

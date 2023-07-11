@@ -7,11 +7,10 @@
                 <p class="texts">내용 : {{ movie.overview || movie.title }}</p>
                 <p>출시일 : {{ movie.release_date }}</p>
             </div>
-            <button @click="removeFavorite(movie)" v-if="!isHovered">찜삭제하기</button>
         </div>
         <div class="script">
-            <!-- {{ movie.video }} -->
             <h2>{{ movie.title }}</h2>
+            <button @click="removeFavorite(movie)">찜삭제하기</button>
             <p>Vote Average: {{ movie.vote_average }}</p>
         </div>
     </div>
@@ -28,12 +27,13 @@ export default {
             required: true,
         },
     },
-    setup() {
+    setup(props) {
         const store = useStore();
         const isHovered = ref(false);
         const removeFavorite = (movie) => {
             store.dispatch('removeFavorite', movie);
         };
+
         return {
             isHovered,
             removeFavorite,
@@ -47,15 +47,7 @@ export default {
 <style lang="scss" scoped>
 .moviecard {
     color: white;
-    width: 200px;
     border-radius: 20px;
-
-    h2 {
-        text-align: center;
-        height: 50px;
-        font-size: 20px;
-    }
-
     .cover {
         margin-top: 30px;
         margin-bottom: 10px;
@@ -63,7 +55,7 @@ export default {
         overflow: hidden;
         position: relative;
         border-radius: 20px;
-        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
         color: rgba(255, 255, 255, 0);
         text-align: left;
 
@@ -73,14 +65,6 @@ export default {
             transition-delay: 0.3s;
         }
 
-        button {
-            background-color: var(--light);
-            position: absolute;
-            height: 10%;
-            top: 0;
-            right: 0;
-            border-radius: 5px;
-        }
 
         img {
             position: absolute;
@@ -113,6 +97,21 @@ export default {
 
     .script {
         font-size: 12px;
+
+        h2 {
+            text-align: center;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        button {
+            background-color: var(--light);
+            position: absolute;
+            height: 10%;
+            top: 0;
+            right: 0;
+            border-radius: 5px;
+        }
     }
 }
 </style>

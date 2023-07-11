@@ -8,11 +8,11 @@
             slideShadows: false
         }" :breakpoints="{
     350: {
-        slidesPerView: movies.length > 4 ? 3 : movies.length,
+        slidesPerView: movies.length > 3 ? 3 : movies.length,
         spaceBetween: 20
     },
     549: {
-        slidesPerView: movies.length > 4 ? 3 : movies.length,
+        slidesPerView: movies.length > 3 ? 3 : movies.length,
         spaceBetween: 20
     },
     1024: {
@@ -20,14 +20,14 @@
         spaceBetween: 30
     }
 }" :pagination="{ clickable: true }" :navigation="true" :autoplay="{ delay: 1000 }" :modules="modules"
-            class="swipersize" @slideChange="updateCurrentIndex($event.realIndex+2)" ref="swiper">
+            class="swipersize" @slideChange="updateCurrentIndex($event.realIndex + 2)" ref="swiper">
             <swiper-slide v-for="movie in movies" :key="movie.id">
                 <slot :movie="movie"></slot>
             </swiper-slide>
         </swiper>
         <p v-else class="empty-message">목록이 비었습니다</p>
     </div>
-    <div class="img">
+    <div v-if="movies.length > 0" class="img">
         <p>{{ currentIndex }}</p>
         <img :src="'https://image.tmdb.org/t/p/w500' + movies[currentIndex].backdrop_path"
             :alt="movies[currentIndex].title" />

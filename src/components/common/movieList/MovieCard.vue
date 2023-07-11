@@ -62,7 +62,7 @@ export default {
 .moviecard {
     color: white;
     border-radius: 20px;
-
+    width: 230px;
     .cover {
         margin-top: 30px;
         margin-bottom: 10px;

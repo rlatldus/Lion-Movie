@@ -90,7 +90,7 @@ main{
 
 .info, .info2{	
 	
-	max-height: 145px;
+	max-height: 155px;
 	position:relative;
 }
 
@@ -109,7 +109,7 @@ main{
 	float: right;
 	padding: 10px;
 	// margin-left: 6.5em;
-	margin-bottom: 5em;
+	margin-bottom: 0em;
 
 }
 

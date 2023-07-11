@@ -9,7 +9,7 @@
             <div class="texts" :class="{ 'overview-visible': isHovered }">
                 <p>출시일 : {{ movie.release_date || movie.first_air_date }}</p>
                 <p>관객수 : {{ movie.popularity || movie.first_air_date }}</p>
-                <p>평점 :
+                <p>평점 : {{ movie.vote_average }}
                     <span v-for="star in starRatings" :key="star" class="star"
                         :class="{ filled: star <= movie.vote_average }">★</span>
                 </p>
@@ -63,74 +63,53 @@ export default {
 
 <style lang="scss" scoped>
 .moviecard {
+    width: 100%;
     color: white;
-    border-radius: 20px;
-    width: 230px;
 
     .cover {
         margin-top: 30px;
         margin-bottom: 10px;
-        height: 300px;
-        overflow: hidden;
+        z-index: 10;
         position: relative;
-        border-radius: 20px;
         transition: transform 0.3s ease-in-out;
-        color: rgba(255, 255, 255, 0);
+        color: #ffffff00;
         text-align: left;
+        overflow: hidden;
+        border-radius: 20px;
+        width: 100%;
+        padding-bottom: 150%;
 
         &:hover {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             transform: translateY(-30px);
             transition-delay: 0.3s;
         }
+    }
 
+    img {
+        position: absolute;
+        background-size: cover;
+        width: 100%;
+        transition: transform 0.3s ease-in-out;
 
-        img {
-            position: absolute;
-            max-width: 250px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1);
-            transition: transform 0.3s ease-in-out;
-
-            &:hover {
-                transition: all 0.3s ease-in-out;
-                filter: brightness(0) invert(0);
-                opacity: 0.7;
-            }
-        }
-
-        .texts {
-            margin: 10px;
-            position: absolute;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 10;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-break: break-all;
-            font-size: 12px;
-
+        &:hover {
+            transition: all 0.3s ease-in-out;
+            filter: brightness(0) invert(0);
+            opacity: 0.7;
         }
     }
 
-    .script {
+    .texts {
+        position: absolute;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 10;
+        margin: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
         font-size: 12px;
 
-        h2 {
-            text-align: center;
-            height: 50px;
-            font-size: 20px;
-        }
-
-        button {
-            background-color: var(--light);
-            position: absolute;
-            height: 10%;
-            top: 0;
-            right: 0;
-            border-radius: 5px;
-        }
     }
 }
 
@@ -154,7 +133,7 @@ export default {
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 999;
+    z-index: 990;
     border: none;
     cursor: pointer;
     font-size: 30px;

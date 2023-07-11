@@ -1,30 +1,34 @@
 <template>
     <div class="alignCard">
-        <swiper v-if="movies.length > 0" :freeMode="true" :loop="true" :effect="'coverflow'" :coverflowEffect="{
-            depth: 100,
-            modifier: 1,
-            rotate: 0,
-            stretch: 0,
-            slideShadows: false
-        }" :breakpoints="{
-    350: {
-        slidesPerView: movies.length > 3 ? 3 : movies.length,
-        spaceBetween: 20
-    },
-    549: {
-        slidesPerView: movies.length > 3 ? 3 : movies.length,
-        spaceBetween: 20
-    },
-    1024: {
-        slidesPerView: movies.length > 4 ? 5 : movies.length,
-        spaceBetween: 30
-    }
-}" :pagination="{ clickable: true }" :navigation="true" :autoplay="{ delay: 1000 }" :modules="modules"
-            class="swipersize" @slideChange="updateCurrentIndex($event.realIndex + 2)" ref="swiper">
-            <swiper-slide v-for="movie in movies" :key="movie.id">
+        <div v-if="movies.length > 0" class="swaper">
+            <div class="mediapc">
+                <swiper :freeMode="true" :loop="true" :effect="'coverflow'" :coverflowEffect="{
+                    depth: 100,
+                    modifier: 1,
+                    rotate: 0,
+                    stretch: 0,
+                    slideShadows: false
+                }" class="swipersize" @slideChange="updateCurrentIndex($event.realIndex + 2)" ref="swiper"
+                    :pagination="{ clickable: true }" :navigation="movies.length > 1" :autoplay="{ delay: 1000 }"
+                    :modules="modules" :breakpoints="{
+                        549: {
+                            slidesPerView: movies.length > 3 ? 3 : movies.length,
+                            spaceBetween: 20
+                        },
+                        1024: {
+                            slidesPerView: movies.length > 4 ? 5 : movies.length,
+                            spaceBetween: 30
+                        }
+                    }">
+                    <swiper-slide v-for="movie in movies" :key="movie.id">
+                        <slot :movie="movie"></slot>
+                    </swiper-slide>
+                </swiper>
+            </div>
+            <div class="mediamo" v-for="movie in movies" :key="movie.id">
                 <slot :movie="movie"></slot>
-            </swiper-slide>
-        </swiper>
+            </div>
+        </div>
         <p v-else class="empty-message">목록이 비었습니다</p>
     </div>
     <div v-if="movies.length > 0" class="img">
@@ -81,8 +85,25 @@ export default {
 </script>
 
 <style lang="scss"  scoped>
-.swipersize {
-    width: 100%;
+.swaper {
+    @media (max-width: 549px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    .mediamo {
+        @media (min-width: 549px) {
+            display: none;
+        }
+    }
+
+    .mediapc {
+        @media (max-width: 549px) {
+            display: none;
+        }
+    }
+
 }
 
 .img {
@@ -101,11 +122,10 @@ export default {
     }
 }
 
-
 .empty-message {
+    margin-top: 20px;
+    color: gray;
     text-align: center;
     font-size: 24px;
-    color: gray;
-    margin-top: 20px;
 }
 </style>

@@ -38,12 +38,23 @@ export default {
 <style lang="scss" scoped>
 .alignCard {
   width: 100%;
+
+  @media (min-width: 549px) {
+    margin-left: 50px;
+    width: calc(100% - 50px);
+  }
+
   background-color: #1e293b;
 
   .mymovie {
-    width: 80%;
+    @media (min-width: 1024px) {
+      width: 80%;
+
+    }
+
+    width: 90%;
     text-align: center;
-    margin: 250px auto 0;
+    margin: 220px auto 0;
   }
 
   p {
@@ -52,10 +63,10 @@ export default {
     position: absolute;
     font-size: 30px;
     color: white;
-    >span{
+
+    >span {
       font-size: 40px;
       font-weight: 900;
     }
   }
-}
-</style>
+}</style>

@@ -56,7 +56,7 @@ export default {
 form {
   max-width: 600px;
   min-width: 300px;
-  min-height: 430px;
+  min-height: 500px;
   width: 50%;
   height: 50%;
   padding: 50px;

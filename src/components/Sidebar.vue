@@ -2,46 +2,49 @@
 	<div class="background"></div>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
 		<div class="aside">
-		<div class="logo">
-			<img :src="logoURL" alt="MainLogo" />
+			<div class="logo">
+				<img :src="logoURL" alt="MainLogo" />
+			</div>
+
+			<h3>Menu</h3>
+			<div class="menu">
+				<router-link to="/" class="button">
+					<span class="material-icons">home</span>
+					<span class="text">Home</span>
+				</router-link>
+				<router-link to="/search" class="button">
+					<span class="material-icons">search</span>
+					<span class="text">Search</span>
+				</router-link>
+				<router-link to="/favorite" class="button">
+					<span class="material-icons">favorite</span>
+					<span class="text">Favorites</span>
+				</router-link>
+				<router-link to="/aboutus" class="button">
+					<span class="material-icons">travel_explore</span>
+					<span class="text">About us</span>
+				</router-link>
+			</div>
+
+			<div class="flex"></div>
+
+			<div class="menu sidemenu">
+				<router-link to="/login" class="button">
+					<span class="material-icons">login</span>
+					<span class="text">Login</span>
+				</router-link>
+				<router-link to="/register" v-if="!token" class="button">
+					<span class="material-icons">person_add_alt</span>
+					<span class="text">Register</span>
+				</router-link>
+				<router-link to="/setting" class="button">
+					<span class="material-icons">settings</span>
+					<span class="text">Settings</span>
+				</router-link>
+			</div>
+
+
 		</div>
-
-		<h3>Menu</h3>
-		<div class="menu">
-			<router-link to="/" class="button">
-				<span class="material-icons">home</span>
-				<span class="text">Home</span>
-			</router-link>
-			<router-link to="/search" class="button">
-				<span class="material-icons">search</span>
-				<span class="text">Search</span>
-			</router-link>
-			<router-link to="/favorite" class="button">
-				<span class="material-icons">favorite</span>
-				<span class="text">Favorites</span>
-			</router-link>
-			<router-link to="/aboutus" class="button">
-				<span class="material-icons">travel_explore</span>
-				<span class="text">About us</span>
-			</router-link>
-		</div>
-
-		<div class="flex"></div>
-		
-		<div class="menu sidemenu">
-			<router-link to="/login" class="button">
-				<span class="material-icons">login</span>
-				<span class="text" v-if="!token">Login</span>
-				<span class="text" v-else>Logout</span>
-			</router-link>
-			<router-link to="/setting" class="button">
-				<span class="material-icons">person_add_alt</span>
-				<span class="text">Settings</span>
-			</router-link>
-		</div>
-
-
-	</div>
 	</aside>
 </template>
 
@@ -75,15 +78,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.background{
+.background {
 	background-color: var(--dark);
 	position: relative;
 	min-height: 100vh;
 }
-aside{
+
+aside {
 	position: relative;
-z-index: 999;
+	z-index: 999;
 }
+
 .aside {
 	display: flex;
 	flex-direction: column;
@@ -101,8 +106,8 @@ z-index: 999;
 
 	@media (min-width: 350px) and (max-width : 549px) {
 		display: none;
-	
-		
+
+
 	}
 
 	.flex {
@@ -117,7 +122,7 @@ z-index: 999;
 		}
 	}
 
-	
+
 	// .menu-toggle-wrap {
 	// 	display: flex;
 	// 	justify-content: flex-end;
@@ -134,7 +139,7 @@ z-index: 999;
 	// 			color: var(--light);
 	// 			transition: 0.2s ease-out;
 	// 		}
-			
+
 	// 		&:hover {
 	// 			.material-icons {
 	// 				color: var(--primary);
@@ -143,8 +148,9 @@ z-index: 999;
 	// 		}
 	// 	}
 	// }
-	
-	h3, .button .text {
+
+	h3,
+	.button .text {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 	}
@@ -157,9 +163,9 @@ z-index: 999;
 	}
 
 	.menu {
-		
+
 		margin: 0 -1rem;
-		
+
 		.button {
 			display: flex;
 			align-items: center;
@@ -173,6 +179,7 @@ z-index: 999;
 				color: var(--light);
 				transition: 0.2s ease-in-out;
 			}
+
 			.text {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
@@ -181,7 +188,8 @@ z-index: 999;
 			&:hover {
 				background-color: var(--dark-alt);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
@@ -190,13 +198,14 @@ z-index: 999;
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
 		}
 	}
-	
+
 	.footer {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
@@ -212,7 +221,7 @@ z-index: 999;
 
 	// 	.menu-toggle-wrap {
 	// 		top: -3rem;
-			
+
 	// 		.menu-toggle {
 	// 			transform: rotate(-180deg);
 	// 		}
@@ -240,17 +249,13 @@ z-index: 999;
 
 	@media (min-width: 550px) and (max-width : 1023px) {
 		aside {
-	
-	width: calc(2rem + 20px);
+
+			width: calc(2rem + 20px);
 
 
 		}
 	}
-	@media (min-width: 350px) and(max-width : 549px) {
-	
-	
-}
-}
 
-
+	@media (min-width: 350px) and(max-width : 549px) {}
+}
 </style>

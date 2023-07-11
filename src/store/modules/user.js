@@ -57,7 +57,7 @@ export default {
       }
     },
 
-    async register({}, details) {
+    async register({ }, details) {
       const { email, password, displayName } = details;
       try {
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
@@ -67,6 +67,7 @@ export default {
 
         console.log(user);
         alert("회원가입 되었습니다.");
+        alert("로그인을 진행해주세요.");
         router.push("/login");
       } catch (error) {
         console.log(error);

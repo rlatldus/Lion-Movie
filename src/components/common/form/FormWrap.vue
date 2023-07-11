@@ -2,9 +2,11 @@
     <main class="formWrap">
         <section class="forms">
             <slot></slot>
-            <span v-if="!token && !hasAccount">만약 계정이 없다면, <router-link to="/register"><span class="deco">회원가입</span></router-link>을 먼저
+            <span v-if="!token && !hasAccount">만약 계정이 없다면, <router-link to="/register"><span
+                        class="deco">회원가입</span></router-link>을 먼저
                 진행해주세요</span>
-            <span v-if="!token && hasAccount">만약 계정이 있다면, <router-link to="/login"><span class="deco">로그인</span></router-link>페이지로 이동해주세요</span>
+            <span v-if="!token && hasAccount">만약 계정이 있다면, <router-link to="/login"><span
+                        class="deco">로그인</span></router-link>페이지로 이동해주세요</span>
         </section>
     </main>
 </template>
@@ -17,7 +19,7 @@ export default {
             type: Boolean,
             default: false
         },
-            hasAccount: {
+        hasAccount: {
             type: Boolean,
             default: false
         }
@@ -27,7 +29,11 @@ export default {
 
 <style  lang="scss" scoped>
 .formWrap {
-    margin-left: 50px;
+    width: 100%;
+    @media (min-width: 549px) {
+        margin-left: 50px;
+        width: calc(100% - 50px);
+    }
     position: relative;
     top: 0;
     right: 0;
@@ -35,11 +41,6 @@ export default {
     left: 0;
     background: url(./../../../assets/images/bg.jpg) center no-repeat;
     background-size: cover;
-
-    @media (max-width : 549px) {
-        position: absolute;
-        margin-left: 0px;
-    }
 
     .forms {
         display: flex;
@@ -67,5 +68,4 @@ export default {
             font-size: 1.3rem;
         }
     }
-}
-</style>
+}</style>

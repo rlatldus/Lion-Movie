@@ -24,12 +24,11 @@
                 v-for="movie in randomMovies"
                 :key="movie.id"
                 class="swiper--random">
-                <button @click="fetchMovieDetails(movie)">
+                <div @click="fetchMovieDetails(movie)">
                     <img
                         :src="`${baseImageUrl}${movie.backdrop_path}`"
                         alt="Movie Poster"
-                        class="movieImg"
-                        style="width:100%; height: auto;"/>
+                        class="movieImg"/>
                     <div class="mainRandom-movie--txt">
                         <h2>{{ movie.title }}</h2>
                         <div class="mainRandom-movie--p">
@@ -38,14 +37,15 @@
                                 {{ movie.release_date }}</p>
                         </div>
                     </div>
-                </button>
+                </div>
             </swiper-slide>
         </swiper>
     </div>
 </template>
 <script>
     import axios from 'axios';
-    import MovieModal from '../movielist/MovieModal.vue';
+    import Movies from '../movieList/Movies.vue';
+    import MovieModal from '../movieList/MovieModal.vue';
     import {Swiper, SwiperSlide} from 'swiper/vue';
     import {Autoplay, Pagination, Navigation} from 'swiper';
 
@@ -55,13 +55,20 @@
 
     export default {
         components: {
+            Movies,
             MovieModal,
             Swiper,
             SwiperSlide
         },
 
         data() {
-            return {baseImageUrl: 'https://image.tmdb.org/t/p/original', apiKey: 'b946fe7e58fbad6b579118f99125fb0d', randomMovies: [], isLoading: false};
+            return {
+                baseImageUrl: 'https://image.tmdb.org/t/p/original', 
+                apiKey: 'b946fe7e58fbad6b579118f99125fb0d', 
+                randomMovies: [], 
+                isLoading: false,
+                isModalViewed: false,
+            };
         },
         setup() {
             return {
@@ -70,6 +77,7 @@
         },
         created() {
             this.fetchRandomMovie();
+            // this.fetchMovieDetails();
         },
 
         methods: {
@@ -83,7 +91,21 @@
                     .catch((error) => {
                         console.error(error);
                     });
-            }
+            },
+            fetchMovieDetails(movie) {
+                const movieId = movie.id;
+                const detailsApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&language=ko-KR`;
+                axios
+                    .get(detailsApiUrl)
+                    .then((response) => {
+                        this.selectedMovieDetails = response.data;
+                        this.isModalViewed = true;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }    
+                
         }
     };
 </script>
@@ -96,7 +118,7 @@
 
     .mainRandom-movie {
         width: 100%;
-        height: 50vh;
+        height: 40vh;
         box-sizing: border-box;
         overflow: hidden;
         display: flex;
@@ -104,18 +126,37 @@
         border-radius: 15px;
         margin-bottom: 10px;
         box-sizing: border-box;
-    }
-    .mainRandom-movie:hover {
+        position: relative;
+        transition: all 200ms linear 100ms;
+        box-shadow: 0px 0px 15px 0px #FFF;
         border-radius: 15px;
-        border: 4px solid rgba(255, 255, 255, 0.938);
-        transition: border 200ms linear 0s;
-        opacity: 1;
+        cursor: pointer;
     }
+    .mainRandom-movie::after  {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: 40px solid white;
+    box-sizing: border-box;
+    opacity: 1;
+    border-radius: 15px;
+    // border: 4px solid white;
+    // transition: opacity 200ms linear 0;
+  }
 
+  .movieImg {
+    width: 100%;
+    height: auto;
+  }
+
+  button {
+    pointer-events: none;
+  }
 
     .mainRandom-movie--txt {
         position: absolute;
         top: 50%;
+        font-size: 0.85rem;
         font-weight: 900;
         max-width: 450px;
         max-height: 200px;
@@ -145,8 +186,6 @@
         width: 100%;
       }
     }
-
-
 
     // 반응형@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     @media (min-width: 350px) and (max-width : 549px) {

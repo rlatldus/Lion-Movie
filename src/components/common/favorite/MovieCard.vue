@@ -1,6 +1,9 @@
 <template>
     <div class="moviecard">
         <div class="cover" @mouseover="isHovered = true" @mouseout="isHovered = false">
+            <button class="favorite-button" @click="removeFavorite(movie)">
+                <font-awesome-icon :icon="['fas', 'heart']" />
+            </button>
             <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
             <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
             <div class="texts" :class="{ 'overview-visible': isHovered }">
@@ -15,7 +18,7 @@
         </div>
         <div class="script">
             <h2>{{ movie.title || movie.name }}</h2>
-            <button @click="removeFavorite(movie)">찜삭제하기</button>
+
             <div class="star-ratings">
                 <span v-for="star in starRatings" :key="star" class="star"
                     :class="{ filled: star <= movie.vote_average }">★</span>
@@ -63,6 +66,7 @@ export default {
     color: white;
     border-radius: 20px;
     width: 230px;
+
     .cover {
         margin-top: 30px;
         margin-bottom: 10px;
@@ -144,5 +148,29 @@ export default {
             color: #FFCC00;
         }
     }
+}
+
+.favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+    color: red;
+
+    :hover {
+        color: gray;
+
+    }
+
+}
+
+.favorite-button:hover {
+    transform: scale(1.1);
 }
 </style>

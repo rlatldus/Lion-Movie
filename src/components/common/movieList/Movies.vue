@@ -157,8 +157,6 @@ export default {
     .favorites{
       background-color: var(--light);
       position: absolute;
-      width: 15%;
-      height: 15%;
       top:0;
       right:0;
       border-radius: 5px;

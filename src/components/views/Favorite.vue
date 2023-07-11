@@ -14,7 +14,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import MovieCard from './../common/movieList/MovieCard.vue';
+import MovieCard from './../common/favorite/MovieCard.vue';
 import Pagination from './../common/pagination/Pagination.vue';
 
 export default {

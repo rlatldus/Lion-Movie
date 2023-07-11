@@ -1,14 +1,12 @@
 <template>
     <div>
-        <span v-if="token && isFavorite(item)" class="favorite-text favorite">찜하기</span>
-        <span v-if="token && !isFavorite(item)" class="favorite-text unfavorite">찜해제</span>
         <button class="favorite-button" :class="{ favorite: isFavorite(item), unfavorite: !isFavorite(item) }" v-if="token"
-            @click="toggleFavorite(item)">
+        @click="toggleFavorite(item)">
+        <span class="favorite-text">찜하기</span>
             <font-awesome-icon :icon="isFavorite(item) ? 'heart' : ['far', 'heart']" />
         </button>
         <button class="favorite-button unfavorite" v-else @click="showAlert">
             <font-awesome-icon icon="heart" :class="{ 'far': true }" />
-            <span>찜하기</span>
         </button>
     </div>
 </template>
@@ -86,6 +84,7 @@ export default {
 .favorite-text {
     margin-left: 8px;
     font-size: 14px;
+    font-weight: 900;
     transition: color 0.2s ease-in-out;
 }
 

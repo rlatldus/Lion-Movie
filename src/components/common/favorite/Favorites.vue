@@ -1,12 +1,14 @@
 <template>
-    <button @click="toggleFavorite(item)">
+    <button v-if="token" @click="toggleFavorite(item)">
         {{ isFavorite(item) ? '찜 해제' : '찜하기' }}
     </button>
+    <button v-else @click="showAlert">찜하기</button>
 </template>
 
 <script>
-import { useStore } from 'vuex';
 import { ref, watchEffect } from 'vue';
+import { mapGetters, useStore } from 'vuex';
+
 export default {
     props: {
         items: {
@@ -16,6 +18,17 @@ export default {
         item: {
             type: Object,
             required: true,
+        },
+    },
+    computed: {
+        ...mapGetters(["getToken"]),
+        token() {
+            return this.getToken;
+        }
+    },
+    methods: {
+        showAlert() {
+            alert("찜기능은 로그인 후 가능합니다");
         },
     },
     setup() {

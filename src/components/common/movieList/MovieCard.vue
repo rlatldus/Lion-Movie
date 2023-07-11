@@ -3,13 +3,15 @@
         <div class="cover" @mouseover="isHovered = true" @mouseout="isHovered = false">
             <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
             <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" :alt="movie.title" />
-            <div class="text" :class="{ 'overview-visible': isHovered }">
-                <p class="texts">내용 : {{ movie.overview || movie.title }}</p>
-                <p>출시일 : {{ movie.release_date }}</p>
+            <div class="texts" :class="{ 'overview-visible': isHovered }">
+                <p>출시일 : {{ movie.release_date || movie.first_air_date }}</p>
+                <p>관객수 : {{ movie.popularity || movie.first_air_date }}</p>
+                <p>평점 : {{ movie.vote_average }}</p>
+                <p>내용 : {{ movie.overview || movie.title || movie.name }}</p>
             </div>
         </div>
         <div class="script">
-            <h2>{{ movie.title }}</h2>
+            <h2>{{ movie.title || movie.name }}</h2>
             <button @click="removeFavorite(movie)">찜삭제하기</button>
             <p>Vote Average: {{ movie.vote_average }}</p>
         </div>
@@ -48,6 +50,7 @@ export default {
 .moviecard {
     color: white;
     border-radius: 20px;
+
     .cover {
         margin-top: 30px;
         margin-bottom: 10px;
@@ -103,7 +106,7 @@ export default {
             height: 50px;
             font-size: 20px;
         }
-        
+
         button {
             background-color: var(--light);
             position: absolute;

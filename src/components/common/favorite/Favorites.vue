@@ -1,8 +1,16 @@
 <template>
-    <button v-if="token" @click="toggleFavorite(item)">
-        {{ isFavorite(item) ? '찜 해제' : '찜하기' }}
-    </button>
-    <button v-else @click="showAlert">찜하기</button>
+    <div>
+        <span v-if="token && isFavorite(item)" class="favorite-text favorite">찜하기</span>
+        <span v-if="token && !isFavorite(item)" class="favorite-text unfavorite">찜해제</span>
+        <button class="favorite-button" :class="{ favorite: isFavorite(item), unfavorite: !isFavorite(item) }" v-if="token"
+            @click="toggleFavorite(item)">
+            <font-awesome-icon :icon="isFavorite(item) ? 'heart' : ['far', 'heart']" />
+        </button>
+        <button class="favorite-button unfavorite" v-else @click="showAlert">
+            <font-awesome-icon icon="heart" :class="{ 'far': true }" />
+            <span>찜하기</span>
+        </button>
+    </div>
 </template>
 
 <script>
@@ -65,18 +73,40 @@ export default {
 };
 </script>
 <style scoped>
+.favorite-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.favorite-text {
+    margin-left: 8px;
+    font-size: 14px;
+    transition: color 0.2s ease-in-out;
+}
+
 .favorite {
-    display: flex;
+    color: red;
 }
 
-.movieListWrap {
-    padding-bottom: 20px;
-    display: flex;
-
+.unfavorite {
+    color: gray;
 
 }
 
-.img {
-    width: 100px;
+.favorite-button:hover {
+    transform: scale(1.1);
+}
+
+.favorite-text.favorite:hover {
+    color: darkred;
+}
+
+.favorite-text.unfavorite:hover {
+    color: gray;
 }
 </style>

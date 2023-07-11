@@ -8,12 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "emailjs-com": "^3.2.0",
     "firebase": "^9.23.0",
     "swiper": "^8.4.7",
-    "vue": "^3.2.25",
+    "vue": "^3.3.4",
     "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.0.12",
     "vue-spinner": "^1.0.4",

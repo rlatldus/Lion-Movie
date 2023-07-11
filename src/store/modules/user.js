@@ -41,9 +41,9 @@ export default {
         commit("SET_USER", { user: auth.currentUser, token });
         localStorage.setItem("token", token);
         const uid = auth.currentUser.uid;
-        await fetchUserProfile(uid);
         alert("로그인 되었습니다");
         router.push("/");
+        await fetchUserProfile(uid);
       } catch (error) {
         switch (error.code) {
           case "auth/user-not-found":
@@ -52,8 +52,6 @@ export default {
           case "auth/wrong-password":
             alert("비밀번호가 다릅니다");
             break;
-          default:
-            alert("정보를 다시 한번 확인해주세요");
         }
         return;
       }
@@ -95,6 +93,7 @@ export default {
       await signOut(auth);
       commit("CLEAR_USER");
       localStorage.removeItem("token");
+      alert("로그아웃 되었습니다.");
       router.push("/");
     },
   },

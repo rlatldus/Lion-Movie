@@ -1,6 +1,6 @@
 
 <template>
-  <FormWrap :token="true" :hasAccount="false">
+  <FormWrap :token="Boolean(token)" :hasAccount="false">
     <user-form v-if="!token" formTitle="로그인" submitButtonText="로그인하기" :formData="formData" :submitForm="login">
     </user-form>
     <auth-button v-if="!token"></auth-button>

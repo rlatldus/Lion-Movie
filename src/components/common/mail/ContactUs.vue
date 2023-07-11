@@ -1,10 +1,11 @@
 <template>
   <div class="container">
+    <p v-if="token">{{ userName }}님! 문제가 있으신가요?</p>
     <form @submit.prevent="sendEmail">
       <label class="name">이름</label>
-      <input type="text" v-model="name" name="name" placeholder="로그인이 필요합니다." disabled>
+      <input type="text" v-model="name" name="name" placeholder="이름을 적어주세요." :disabled="token">
       <label class="email">Email</label>
-      <input type="email" v-model="email" name="email" placeholder="로그인이 필요합니다." disabled>
+      <input type="email" v-model="email" name="email" placeholder="이메일을 적어주세요." :disabled="token">
       <label class="message_Title">문의사항</label>
       <textarea name="message" v-model="message" cols="30" rows="5" placeholder="문의 사항을 적어주세요" class="message_Box">
           </textarea>
@@ -31,7 +32,10 @@ export default {
   },
   //이메일, 이름 정보 가져오기
   computed: {
-    ...mapGetters(["getUserEmail", "getUserName"]),
+    ...mapGetters(["getUserEmail", "getUserName", "getToken"]),
+    token() {
+      return this.getToken;
+    },
     userEmail() {
       return this.getUserEmail;
     },
@@ -40,9 +44,14 @@ export default {
     }
   },
   //가져온 정보 연결하기
-    created() {
-    this.name = this.userName;
-    this.email = this.userEmail;
+  created() {
+    if (!this.token) {
+      this.name = '';
+      this.email = '';
+    } else {
+      this.name = this.userName;
+      this.email = this.userEmail;
+    }
   },
   methods: {
     sendEmail(e) {
@@ -51,7 +60,7 @@ export default {
           'service_wx9d50o', 'template_uip8r4a', e.target, 'wlEuG-f4jgV_RhH2y', {
           name: this.name,
           email: this.email,
-          message: this.meessage
+          message: this.message
         },
         )
       } catch (err) {
@@ -61,8 +70,8 @@ export default {
           throw err;
         }
       }
-      this.name = this.userName;
-      this.email = this.userEmail;
+      this.name = this.userName || '';
+      this.email = this.userEmail || '';
       this.message = ''
     },
   }
@@ -70,20 +79,24 @@ export default {
 </script>
 
 <style scoped>
-* {box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-.form{
 
-}
+.form {}
+
 label {
-  padding-top:5px;
+  padding-top: 5px;
   width: 50px;
   height: 40px;
   text-align: left;
   color: #a4b1ba;
   float: left;
 }
-input[type=text], [type=email], textarea {
+
+input[type=text],
+[type=email],
+textarea {
   display: flex;
   width: 80%;
   height: 30px;
@@ -93,18 +106,20 @@ input[type=text], [type=email], textarea {
   box-sizing: border-box;
   margin-bottom: 10px;
   resize: vertical;
- 
-}
- 
 
-.message_Title{
+}
+
+
+.message_Title {
   width: 150px;
 }
-.message_Box{
+
+.message_Box {
   width: 100%;
   min-height: 60px;
   max-height: 120px;
 }
+
 input[type=submit] {
 
   width: 100%;
@@ -117,18 +132,19 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
+
 input[type=submit]:hover {
   background-color: #3993cf;
-  transition:  0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .container {
-  
+
   display: block;
-  margin:auto;
+  margin: auto;
   text-align: center;
   border-radius: 5px;
-  background-color:rgb(40, 65, 91);
+  background-color: rgb(40, 65, 91);
   min-width: 270x;
   width: 90%;
   max-height: 450px;
@@ -136,15 +152,19 @@ input[type=submit]:hover {
 
 }
 
-@media (min-width:350px) and (max-width:1023px){
-  .container{
+@media (min-width:350px) and (max-width:1023px) {
+  .container {
 
     width: 100%;
   }
-  .name, .email {
+
+  .name,
+  .email {
     display: none;
   }
-  input[type=text], [type=email]{
+
+  input[type=text],
+  [type=email] {
     display: none;
   }
 }

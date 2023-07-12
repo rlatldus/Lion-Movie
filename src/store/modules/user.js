@@ -26,10 +26,10 @@ export default {
       return state.user;
     },
     getUserEmail(state) {
-      return parseJwt(state.token).email;
+      return parseJwt(state.token).email || null;
     },
     getUserName(state) {
-      return parseJwt(state.token).name;
+      return parseJwt(state.token).name || null;
     },
   },
   actions: {
@@ -57,7 +57,7 @@ export default {
       }
     },
 
-    async register({ }, details) {
+    async register({}, details) {
       const { email, password, displayName } = details;
       try {
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
@@ -69,6 +69,7 @@ export default {
         alert("회원가입 되었습니다.");
         alert("로그인을 진행해주세요.");
         router.push("/login");
+        await signOut(auth);
       } catch (error) {
         console.log(error);
         switch (error.code) {

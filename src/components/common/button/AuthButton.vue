@@ -18,23 +18,25 @@ export default {
     const store = useStore()
     const user = ref(null)
     onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        if (user.value.emailVerified) {
-          user.value = currentUser
-          console.log(user.value.emailVerified)
-          const token = currentUser.accessToken
-          store.commit('SET_USER', { currentUser, token })
-          localStorage.setItem("token", token);
-          nextTick(() => {
-            router.push("/");
-          });
-        }
+      console.log("로딩로딩22")
+      user.value = currentUser
+      if (user.value && user.value.emailVerified) {
+        console.log("로딩로딩33")
+        console.log(user.value.emailVerified)
+        const token = currentUser.accessToken
+        store.commit('SET_USER', { currentUser, token })
+        localStorage.setItem("token", token);
+        nextTick(() => {
+          router.push("/");
+        });
       }
     })
 
     const loginWithGoogle = () => {
       const provider = new GoogleAuthProvider()
       signInWithRedirect(auth, provider)
+      console.log("로딩로딩11")
+
     }
 
     return {
@@ -57,22 +59,22 @@ export default {
   font-weight: bold;
   padding: 10px 24px;
 
-  :hover {
-    background-color: #3367d6;
-  }
+}
 
-  :active {
-    background-color: #2a56c6;
-  }
+.google-login-button:hover {
+  background-color: #3367d6;
+}
 
-  :focus {
-    outline: none;
-  }
+.google-login-button:active {
+  background-color: #2a56c6;
+}
 
-  img {
-    vertical-align: middle;
-    margin-right: 10px;
-  }
+.google-login-button:focus {
+  outline: none;
+}
 
+.google-login-button img {
+  vertical-align: middle;
+  margin-right: 10px;
 }
 </style>

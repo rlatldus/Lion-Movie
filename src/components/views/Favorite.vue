@@ -36,6 +36,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .alignCard {
   width: 100%;
 
@@ -63,6 +73,7 @@ export default {
     position: absolute;
     font-size: 30px;
     color: white;
+    animation: slide-left 1s;
 
     >span {
       font-size: 40px;

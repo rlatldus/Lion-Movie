@@ -18,13 +18,18 @@ export default {
     const store = useStore()
     const user = ref(null)
     onAuthStateChanged(auth, (currentUser) => {
-      user.value = currentUser
-      const token = currentUser.accessToken
-      store.commit('SET_USER', { currentUser, token })
-      localStorage.setItem("token", token);
-      nextTick(() => {
-        router.push("/");
-      });
+      if (currentUser) {
+        if (user.value.emailVerified) {
+          user.value = currentUser
+          console.log(user.value.emailVerified)
+          const token = currentUser.accessToken
+          store.commit('SET_USER', { currentUser, token })
+          localStorage.setItem("token", token);
+          nextTick(() => {
+            router.push("/");
+          });
+        }
+      }
     })
 
     const loginWithGoogle = () => {
@@ -51,22 +56,23 @@ export default {
   font-size: 14px;
   font-weight: bold;
   padding: 10px 24px;
-}
 
-.google-login-button:hover {
-  background-color: #3367d6;
-}
+  :hover {
+    background-color: #3367d6;
+  }
 
-.google-login-button:active {
-  background-color: #2a56c6;
-}
+  :active {
+    background-color: #2a56c6;
+  }
 
-.google-login-button:focus {
-  outline: none;
-}
+  :focus {
+    outline: none;
+  }
 
-.google-login-button img {
-  vertical-align: middle;
-  margin-right: 10px;
+  img {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
 }
 </style>

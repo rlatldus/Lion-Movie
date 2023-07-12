@@ -37,10 +37,7 @@
 					<span class="material-icons">person_add_alt</span>
 					<span class="text">Register</span>
 				</router-link>
-				<router-link to="/setting" class="button">
-					<span class="material-icons">settings</span>
-					<span class="text">Settings</span>
-				</router-link>
+			
 			</div>
 
 
@@ -78,17 +75,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.background {
+.background{
 	background-color: var(--dark);
 	position: relative;
 	min-height: 100vh;
 }
-
-aside {
+aside{
 	position: relative;
-	z-index: 999;
+z-index: 999;
 }
-
 .aside {
 	display: flex;
 	flex-direction: column;
@@ -106,8 +101,7 @@ aside {
 
 	@media (min-width: 350px) and (max-width : 549px) {
 		display: none;
-
-
+	
 	}
 
 	.flex {
@@ -121,36 +115,8 @@ aside {
 			width: 2rem;
 		}
 	}
-
-
-	// .menu-toggle-wrap {
-	// 	display: flex;
-	// 	justify-content: flex-end;
-	// 	margin-bottom: 1rem;
-
-	// 	position: relative;
-	// 	top: 0;
-	// 	transition: 0.2s ease-in-out;
-
-	// 	.menu-toggle {
-	// 		transition: 0.2s ease-in-out;
-	// 		.material-icons {
-	// 			font-size: 2rem;
-	// 			color: var(--light);
-	// 			transition: 0.2s ease-out;
-	// 		}
-
-	// 		&:hover {
-	// 			.material-icons {
-	// 				color: var(--primary);
-	// 				transform: translateX(0.5rem);
-	// 			}
-	// 		}
-	// 	}
-	// }
-
-	h3,
-	.button .text {
+	
+	h3, .button .text {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 	}
@@ -163,9 +129,9 @@ aside {
 	}
 
 	.menu {
-
+		
 		margin: 0 -1rem;
-
+		
 		.button {
 			display: flex;
 			align-items: center;
@@ -179,7 +145,6 @@ aside {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
 			}
-
 			.text {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
@@ -188,8 +153,7 @@ aside {
 			&:hover {
 				background-color: var(--dark-alt);
 
-				.material-icons,
-				.text {
+				.material-icons, .text {
 					color: var(--primary);
 				}
 			}
@@ -198,14 +162,13 @@ aside {
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons,
-				.text {
+				.material-icons, .text {
 					color: var(--primary);
 				}
 			}
 		}
 	}
-
+	
 	.footer {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
@@ -215,47 +178,7 @@ aside {
 			color: var(--grey);
 		}
 	}
-
-	// &.is-expanded {
-	// 	width: var(--sidebar-width);
-
-	// 	.menu-toggle-wrap {
-	// 		top: -3rem;
-
-	// 		.menu-toggle {
-	// 			transform: rotate(-180deg);
-	// 		}
-	// 	}
-
-	// 	h3, .button .text {
-	// 		opacity: 1;
-	// 	}
-
-	// 	.button {
-	// 		.material-icons {
-	// 			margin-right: 1rem;
-	// 		}
-	// 	}
-
-	// 	.footer {
-	// 		opacity: 0;
-	// 	}
-	// }
-
-	// @media (max-width: 0px) {
-	// 	position: absolute;
-	// 	z-index: 99;
-	// }
-
-	@media (min-width: 550px) and (max-width : 1023px) {
-		aside {
-
-			width: calc(2rem + 20px);
-
-
-		}
-	}
-
-	@media (min-width: 350px) and(max-width : 549px) {}
 }
+
+
 </style>

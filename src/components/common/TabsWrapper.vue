@@ -90,10 +90,8 @@ provide('selectedTitle', selectedTitle)
     margin-top: 130px;
     background-color: #bfbfbf;
     height: 61%;    
-  
     border-radius: 5px;
-      /* display: grid; */
-    /* place-items: center; */
+
     
 }
 .modal_Content{  
@@ -102,26 +100,13 @@ provide('selectedTitle', selectedTitle)
     height: 100%;
     font-size: 85%;
 }
-@media (min-width: 550px) and (max-width: 1023px){
-    .tabs__header {
-
-    }
-}
-@media (max-width: 549px){
-    
-  *{}
-    .tabs {    
-    
-}
 
 
-}
-
-.tabs__header {
+/* .tabs__header {
 
     font-size: 74%;
 
-}
+} */
 
 
 </style>

@@ -1,16 +1,20 @@
 <template>
   <div class="container">
-    <p v-if="token">{{ userName }}님! 문제가 있으신가요?</p>
     <form @submit.prevent="sendEmail">
+      <div class="wrapper">
+      <div class="box1">
       <label class="name">이름</label>
-      <input type="text" v-model="name" name="name" placeholder="이름을 적어주세요." :disabled="token">
+      <input type="text" v-model="name" name="name" placeholder="이름을 입력해주세요" required>
       <label class="email">Email</label>
-      <input type="email" v-model="email" name="email" placeholder="이메일을 적어주세요." :disabled="token">
+      <input type="email" v-model="email" name="email" placeholder="이메일을 입력해주세요." required>
+    </div>
+    <div class="box2">
       <label class="message_Title">문의사항</label>
-      <textarea name="message" v-model="message" cols="30" rows="5" placeholder="문의 사항을 적어주세요" class="message_Box">
+      <textarea name="message" v-model="message" cols="30" rows="5" placeholder="문의 사항을 적어주세요" class="message_Box" required>
           </textarea>
-
-      <input type="submit" value="보내기">
+      <input type="submit" value="보내기" >
+    </div>
+      </div>
     </form>
 
   </div>
@@ -79,24 +83,17 @@ export default {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
+* {box-sizing: border-box;
 }
-
-.form {}
-
 label {
-  padding-top: 5px;
+  padding-top:5px;
   width: 50px;
   height: 40px;
   text-align: left;
   color: #a4b1ba;
   float: left;
 }
-
-input[type=text],
-[type=email],
-textarea {
+input[type=text], [type=email], textarea {
   display: flex;
   width: 80%;
   height: 30px;
@@ -106,20 +103,18 @@ textarea {
   box-sizing: border-box;
   margin-bottom: 10px;
   resize: vertical;
-
+ 
 }
+ 
 
-
-.message_Title {
+.message_Title{
   width: 150px;
 }
-
-.message_Box {
+.message_Box{
   width: 100%;
   min-height: 60px;
   max-height: 120px;
 }
-
 input[type=submit] {
 
   width: 100%;
@@ -132,19 +127,18 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
-
 input[type=submit]:hover {
   background-color: #3993cf;
-  transition: 0.5s ease-in-out;
+  transition:  0.5s ease-in-out;
 }
 
 .container {
-
+  
   display: block;
-  margin: auto;
+  margin:auto;
   text-align: center;
   border-radius: 5px;
-  background-color: rgb(40, 65, 91);
+  background-color:rgb(40, 65, 91);
   min-width: 270x;
   width: 90%;
   max-height: 450px;
@@ -152,20 +146,40 @@ input[type=submit]:hover {
 
 }
 
-@media (min-width:350px) and (max-width:1023px) {
-  .container {
-
+@media (min-width:550px) and (max-width:1023px){
+  .wrapper{
+    display: flex;
+  }
+ .box1{
+  width: 48%;
+ }
+ .box2{
+  width: 52%;
+ }
+  .container{
+    
     width: 100%;
   }
-
-  .name,
-  .email {
-    display: none;
+   .name, .email {
+   display: none;
   }
+ input[type=text], [type=email]{
+width: 90%;  }
 
-  input[type=text],
-  [type=email] {
-    display: none;
-  }
+.message_Title{
+  display: none;
 }
+
+
+}
+@media (min-width:350px) and (max-width:549px){
+  .name, .email {
+   display: none;
+  }
+  input[type=text], [type=email]{
+width: 100%;  }
+
+}
+
+
 </style>

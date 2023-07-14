@@ -8,8 +8,8 @@
                     rotate: 0,
                     stretch: 0,
                     slideShadows: false
-                }" class="swipersize" @slideChange="updateCurrentIndex($event.realIndex + 2)" ref="swiper"
-                    :pagination="{ clickable: true }" :navigation="movies.length > 1" :autoplay="{ delay: 1000 }"
+                }" class="swipersize" @slideChange="updateCurrentIndex($event.realIndex)" ref="swiper"
+                    :pagination="{ clickable: true }" :navigation="movies.length > 0" :autoplay="{ delay: 1000 }"
                     :modules="modules" :breakpoints="{
                         549: {
                             slidesPerView: movies.length > 3 ? 3 : movies.length,
@@ -32,9 +32,9 @@
         <p v-else class="empty-message">목록이 비었습니다</p>
     </div>
     <div v-if="movies.length > 0" class="img">
-        <p>{{ currentIndex }}</p>
-        <img :src="'https://image.tmdb.org/t/p/w500' + movies[currentIndex].backdrop_path"
-            :alt="movies[currentIndex].title" />
+        <p>{{ adjustedIndex }}{{ movies.length }}</p>
+        <img :src="'https://image.tmdb.org/t/p/w500' + movies[adjustedIndex]?.backdrop_path"
+            :alt="movies[adjustedIndex].title" />
     </div>
 </template>
 
@@ -71,14 +71,28 @@ export default {
     },
     methods: {
         updateCurrentIndex(currentIndex) {
-            if (currentIndex === this.movies.length) {
-                this.currentIndex = 0;
-            } else if (currentIndex > this.movies.length) {
-                this.currentIndex = 1;
-            } else {
-                this.currentIndex = currentIndex;
+            if (this.movies.length >= 2 ) {
+                if (currentIndex + 2 === this.movies.length + 1) {
+                    this.currentIndex = 1;
+                } else if (currentIndex + 2 === this.movies.length) {
+                    this.currentIndex = 0;
+                } else {
+
+                    this.currentIndex = currentIndex + 2;
+                }
+                console.log(this.currentIndex, this.movies.length);
+            }else if(this.movies.length==1){
+                 this.currentIndex = currentIndex;
             }
-            console.log(this.currentIndex, this.movies.length);
+        }
+    },
+    computed: {
+        adjustedIndex() {
+            let currentIndex = this.currentIndex;
+            if (currentIndex > this.movies.length - 1) {
+                currentIndex = currentIndex - 1;
+            }
+            return currentIndex;
         },
     },
 };

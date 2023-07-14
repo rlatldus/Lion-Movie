@@ -9,6 +9,7 @@
       <button class="logout" @click="logout"> 로그아웃</button>
     </div>
   </FormWrap>
+
 </template>
 
 <script>
@@ -21,7 +22,7 @@ export default {
   components: {
     AuthButton,
     UserForm,
-    FormWrap
+    FormWrap,
 
   },
   computed: {
@@ -62,6 +63,7 @@ export default {
 .font {
   display: flex;
   flex-direction: column;
+  
   .logout {
     text-align: center;
     width: 100px1;
@@ -92,5 +94,6 @@ export default {
       font-weight: 900;
     }
   }
+ 
 }
 </style>

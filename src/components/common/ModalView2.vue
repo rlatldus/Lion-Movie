@@ -28,6 +28,7 @@ export default {};
 }
 
 .modal2{
+  
   position: fixed;
   top:35%;
   z-index: 99;
@@ -38,6 +39,7 @@ export default {};
   background-color: black;
 }
 .modal-card2 {  
+
   border:2px solid rgb(59, 81, 142);
 
   border-radius: 10px;
@@ -83,7 +85,7 @@ max-width: 52%;
 }
   @media (max-width: 549px){
   .modal-card2 {
-  max-width: 52%;
+  max-width: 70%;
   max-height: 370px;
   
 }

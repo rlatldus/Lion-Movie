@@ -64,6 +64,7 @@ provide('selectedTitle', selectedTitle)
 
 }
 .tabs__item {
+    
     flex: 1;
     margin-bottom: 3px;
     background-color: cadetblue;
@@ -101,6 +102,14 @@ provide('selectedTitle', selectedTitle)
     font-size: 85%;
 }
 
+@media (max-width:549px){
+    .tabs__item{
+        width: 137%;
+    }
+    .tabs__content{
+        width:137%;
+    }
+}
 
 /* .tabs__header {
 

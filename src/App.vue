@@ -6,7 +6,7 @@
 		<!-- Content -->
 		<router-view />
 	</div>
-	<div class="app">
+	<div class="app" v-if="!$route.meta.hideFooter">
 		<Footer />
 	</div>
 </template>
@@ -71,7 +71,7 @@ button {
 		}
 		@media (max-width:549px){
 	
-		margin-top:  2.53em;
+		margin-top:  2em;
 	
 	
 	

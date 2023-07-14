@@ -1,10 +1,11 @@
-<template>
+<template >
+  
   <div class="container">
-    <form @submit.prevent="sendEmail">
+    <form @submit.prevent="sendEmail"  >
       <div class="wrapper">
-      <div class="box1">
+      <div class="box1" >
       <label class="name">이름</label>
-      <input type="text" v-model="name" name="name" placeholder="이름을 입력해주세요" required>
+      <input type="text" v-model="name" name="name" placeholder="이름을 입력해주세요" required >
       <label class="email">Email</label>
       <input type="email" v-model="email" name="email" placeholder="이메일을 입력해주세요." required>
     </div>
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+
 import emailjs from 'emailjs-com';
 //이메일, 이름 가져오기
 import { mapGetters } from 'vuex';
@@ -74,9 +76,9 @@ export default {
           throw err;
         }
       }
-      this.name = this.userName || '';
-      this.email = this.userEmail || '';
-      this.message = ''
+      this.name = this.userName;
+      this.email = this.userEmail;
+      this.message = '';
     },
   }
 }

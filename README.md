@@ -73,7 +73,7 @@ Firebase|
 |Search page|![Home & Preview](https://user-images.githubusercontent.com/122377401/233072426-3177b9fa-e992-4d40-91f3-cd372d3cdbae.png)| 
 |Info page|![Detail Page](https://user-images.githubusercontent.com/122377401/233072424-b855b592-797c-4fc9-828c-2d9dba372fb3.png)| 
 |Mypage |![My & User](https://user-images.githubusercontent.com/122377401/233072422-e4ffc00a-c2bb-4833-bdea-f9e70e922801.png)| 
-|User Page |![BackOffice](https://user-images.githubusercontent.com/122377401/233072414-091c8f1a-a03b-447e-b267-d7197ab1aa42.png)| 
+|User Page | ![image](https://github.com/rlatldus/Movie/assets/122216298/7efdf85c-3d50-47a0-aa08-b69e24da76e1) | 
 
 
 느낀점 

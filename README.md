@@ -1,4 +1,4 @@
-# 무비셀렉터
+# LINE MOVIE
 애정하는 영화 좋아요 및 문의 가능한 사이트<br />
 - **`Team name` :** 라이언무비 ( 영화 찜하기 사이트 제작 )
 - **`Project duration` :** 2023.03.13 - 2023.04.14
@@ -36,7 +36,7 @@
 
 Vue|Scss|JavaScript|esLint|Prettier|
 |  :--: | :--: | :--: | :--: | :--: |
-| <img src="https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9" alt="icon" width="65" height="65"/>
+| <img src="https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9" alt="icon" width="65" height="65"/> |
  | <img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="icon" width="65" height="65" />|  <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
 
 

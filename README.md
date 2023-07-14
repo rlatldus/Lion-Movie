@@ -36,7 +36,7 @@
 
 Vue|Scss|JavaScript|esLint|Prettier|
 |  :--: | :--: | :--: | :--: | :--: |
-| ![image](https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9)
+| <img src="https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9" alt="icon" width="65" height="65"/>
  | <img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="icon" width="65" height="65" />|  <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
 
 
@@ -75,6 +75,8 @@ Firebase|
 |Detail Page|![Detail Page](https://user-images.githubusercontent.com/122377401/233072424-b855b592-797c-4fc9-828c-2d9dba372fb3.png)| 
 |My & User |![My & User](https://user-images.githubusercontent.com/122377401/233072422-e4ffc00a-c2bb-4833-bdea-f9e70e922801.png)| 
 |BackOffice |![BackOffice](https://user-images.githubusercontent.com/122377401/233072414-091c8f1a-a03b-447e-b267-d7197ab1aa42.png)| 
+
+
 느낀점 
 CORS란?
 CORS는 Cross-Origin Resource Sharing 의 약자이며 한 출처에서 실행중인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할숭 있는 권한을 부여하도록 브라우저에 알려주는 체제이다.

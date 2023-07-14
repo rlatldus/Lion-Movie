@@ -107,7 +107,6 @@ export default {
         .then(response => {
 					this.selectedMovieDetails = response.data;
 					this.isModalViewed = true;
-          console.log(response.data,"sss")
         })
         .catch(error => {
           console.error(error);

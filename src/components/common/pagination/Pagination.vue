@@ -32,7 +32,6 @@
         <p v-else class="empty-message">목록이 비었습니다</p>
     </div>
     <div v-if="movies.length > 0" class="img">
-        <p>{{ adjustedIndex }}{{ movies.length }}</p>
         <img :src="'https://image.tmdb.org/t/p/w500' + movies[adjustedIndex]?.backdrop_path"
             :alt="movies[adjustedIndex].title" />
     </div>
@@ -80,7 +79,6 @@ export default {
 
                     this.currentIndex = currentIndex + 2;
                 }
-                console.log(this.currentIndex, this.movies.length);
             }else if(this.movies.length==1){
                  this.currentIndex = currentIndex;
             }

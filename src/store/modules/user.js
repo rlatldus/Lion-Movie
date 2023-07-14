@@ -65,7 +65,6 @@ export default {
         const userRef = doc(db, "users", user.uid);
         await setDoc(userRef, { displayName });
 
-        console.log(user);
         alert("회원가입 되었습니다.");
         alert("로그인을 진행해주세요.");
         router.push("/login");

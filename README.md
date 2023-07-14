@@ -24,7 +24,7 @@
 
 |김시연<br>(FE, Team lead)|장영아<br>(FE)|복영헌<br>(FE)|                     
 | :--: | :--: | :--: | 
-| <p align="left">**Pages**<br/>- 유저페이지<br/>- 마이페이지 <br /><br/>**Features**<br/>-좋아요, 북마크 CRUD <br/> - Sign in/up 기능 <br/>-구글로그인</p>-firebase DB 관리 | <p align="left">**Pages**<br/>- 메인 홈페이지<br/>- 검색 페이지<br/> <br/>**Features**<br/>- framer-motion swiper 애니메이션 <br/> - 영화 api GET <br/> </p> | <p align="left">**Pages**<br/>- 메뉴바, 푸터, 모달창 카카오맵api, 메일관리 <br/> |
+| <p align="left">**Pages**<br/>- 유저페이지<br/>- 마이페이지 <br /><br/>**Features**<br/>-좋아요, 북마크 CRUD <br/> - Sign in/up 기능, 구글로그인</p>-firebase DB 관리 | <p align="left">**Pages**<br/>- 메인 홈페이지<br/>- 검색 페이지<br/> <br/>**Features**<br/>- framer-motion swiper 애니메이션 <br/> - 영화 api GET <br/> </p> | <p align="left">**Pages**<br/>- 메뉴바, 푸터<br/>  - 모달창 <br/> - 카카오맵api, 메일관리 <br/> |
 
 
 
@@ -32,40 +32,21 @@
 
 ## <span style="">  **Tools** </span>
 
-### **Communication** </span>
-
-Notion|Github|Discord|Figma|
-| :--: | :--: | :--: | :--: |
-| <img alt="Notion logo" src="https://www.notion.so/cdn-cgi/image/format=auto,width=640,quality=100/front-static/shared/icons/notion-app-icon-3d.png" height="65" width="65">| <img alt="github logo" src="https://techstack-generator.vercel.app/github-icon.svg" width="65" height="65">| <img alt="Discord logo" src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/62595384e89d1d54d704ece7_3437c10597c1526c3dbd98c737c2bcae.svg" height="65" width="65"> | <img src="https://i.pinimg.com/originals/a5/58/b4/a558b426cb8973523f37bbed94cf0f09.png" alt="icon" width="65" height="65" /> | 
-
 ### Front-End
 
-React|Scss|JavaScript|esLint|Prettier|
+Vue|Scss|JavaScript|esLint|Prettier|
 |  :--: | :--: | :--: | :--: | :--: |
-|  <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="icon" width="65" height="65" />|  <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
+| ![image](https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9)
+ | <img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="icon" width="65" height="65" />|  <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
 
 
 ### Other
 
-AWS|
+Firebase|
 | :--: |
-| <img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="65" height="65" /> |
+| ![image](https://github.com/rlatldus/Movie/assets/122216298/95630a87-0621-4bc2-b5fe-08a62da9a595)|
 
 <br/>
-
-
-## Git Branch
-
-`main` : 서비스 운영 브랜치 
-
-`dev` : 메인 브랜치 배포전 릴리즈 브랜치  
-
-`feature` : 기능 개발 브랜치
-
-`pages` : 페이지 개발 브랜치 
-
-
-
 
 <br/>
 

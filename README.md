@@ -24,20 +24,19 @@
 
 |김시연<br>(FE, Team lead)|장영아<br>(FE)|복영헌<br>(FE)|                     
 | :--: | :--: | :--: | 
-| <p align="left">**Pages**<br/>- 유저페이지<br/>- 마이페이지 <br /><br/>**Features**<br/>-좋아요, 북마크 CRUD <br/> - Sign in/up 기능, 구글로그인</p>-firebase DB 관리 | <p align="left">**Pages**<br/>- 메인 홈페이지<br/>- 검색 페이지<br/> <br/>**Features**<br/>- framer-motion swiper 애니메이션 <br/> - 영화 api GET <br/> </p> | <p align="left">**Pages**<br/>- 메뉴바, 푸터<br/>  - 모달창 <br/> - 카카오맵api, 메일관리 <br/> |
+| <p align="left">**Pages**<br/> - 유저페이지<br/> - 마이페이지 <br /><br/>**Features**<br/>-좋아요, 북마크 CRUD <br/> -Sign in/up 기능, 구글로그인</p> -firebase DB 관리 
+| <p align="left">**Pages**<br/> - 메인 홈페이지<br/>- 검색 페이지<br/> <br/>**Features**<br/>- framer-motion swiper 애니메이션 <br/> - 영화 api GET <br/> </p> 
+| <p align="left">**Pages**<br/> - 서치페이지<br/><br/> - 메뉴바, 푸터<br/>  - 모달창 <br/> - 카카오맵api, 메일관리 <br/> |
 
 
 
 <br/>
 
-## <span style="">  **Tools** </span>
-
 ### Front-End
 
 Vue|Scss|JavaScript|esLint|Prettier|
 |  :--: | :--: | :--: | :--: | :--: |
-| <img src="https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9" alt="icon" width="65" height="65"/> |
- | <img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="icon" width="65" height="65" />|  <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
+| <img src="https://github.com/rlatldus/Movie/assets/122216298/8167513d-c43a-4c81-ad28-cc229b9b1ea9" alt="icon" width="65" height="65"/> | <img src="https://techstack-generator.vercel.app/sass-icon.svg" alt="icon" width="65" height="65" />|  <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/eslint-icon.svg" alt="icon" width="65" height="65" /> | <img src="https://techstack-generator.vercel.app/prettier-icon.svg" alt="icon" width="65" height="65" /> |
 
 
 ### Other
@@ -55,14 +54,8 @@ Firebase|
 
 | |페이지 및 기능 |설명|담당개발자|
 |:--:|:--:|:--:|:--:|
-|Main Page|![image](https://github.com/rlatldus/Movie/assets/122216298/96bd5da3-006c-4ac3-94d1-279ca7bc8bb8)
-| - react-slick 캐러셀 구현 <br/>마우스 오버 시 평점확인 <br/>클릭 시 해당영화 프리뷰 | **FRONT-END** </br> `이인국`,`구성미` </br>|
-|Preview|![image](https://github.com/rlatldus/Movie/assets/122216298/d39b35e4-4012-41c4-b588-3d350e03618b)
-| </br> - 마우스 오버 시<br/> 평점확인 </br> - 클릭시 해당영화 프리뷰 | **FRONT-END** </br> `이인국` </br> |
-|Detail Page|![image](https://github.com/rlatldus/Movie/assets/122216298/742b2503-aedc-44fd-8dcf-4a9d9c21a1ea)
-| - 댓글,답글 기능 구현 </br> - 좋아요 , 북마크 구현 </br> - 공감 , 비공감<br/> 구현 | **FRONT-END** </br> `주양아` |
-|Detail page2 |![image](https://github.com/rlatldus/Movie/assets/122216298/5cf491e0-c4db-4eea-a888-9fe11eaea4de)
-| - 댓글,답글 기능 구현 <br/> - 호감도 체크 구현 <br/>- 댓글 정렬 기능  | **FRONT-END** </br> `주양아` </br> |
+|Home|![image](https://github.com/rlatldus/Movie/assets/122216298/d39b35e4-4012-41c4-b588-3d350e03618b) | </br> - 모달 클릭 시<br/> 해당영화 프리뷰 | **FRONT-END** </br> `장영아` </br> |
+|Detail page2 |![image](https://github.com/rlatldus/Movie/assets/122216298/5cf491e0-c4db-4eea-a888-9fe11eaea4de)| - 댓글,답글 기능 구현 <br/> - 호감도 체크 구현 <br/>- 댓글 정렬 기능  | **FRONT-END** </br> `주양아` </br> |
 |Search page |![image](https://github.com/rlatldus/Movie/assets/122216298/503501e3-742a-4a6d-a494-ead30841f979)
 | - 영화 검색기능 구현 <br/>| **FRONT-END** </br> `주양아` </br> |
 |My Page|![image](https://github.com/rlatldus/Movie/assets/122216298/56edab3a-e69a-4a0a-8b46-fec50663fea8)

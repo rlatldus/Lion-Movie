@@ -53,13 +53,10 @@ Firebase|
 | |페이지 및 기능 |설명|담당개발자|
 |:--:|:--:|:--:|:--:|
 |Home|![image](https://github.com/rlatldus/Movie/assets/122216298/d39b35e4-4012-41c4-b588-3d350e03618b) | </br> - 모달 클릭 시<br/> 해당영화 프리뷰 | **FRONT-END** </br> `장영아` </br> |
-|Detail page2 |![image](https://github.com/rlatldus/Movie/assets/122216298/5cf491e0-c4db-4eea-a888-9fe11eaea4de)| - 댓글,답글 기능 구현 <br/> - 호감도 체크 구현 <br/>- 댓글 정렬 기능  | **FRONT-END** </br> `주양아` </br> |
-|Search page |![image](https://github.com/rlatldus/Movie/assets/122216298/503501e3-742a-4a6d-a494-ead30841f979)
-| - 영화 검색기능 구현 <br/>| **FRONT-END** </br> `주양아` </br> |
-|My Page|![image](https://github.com/rlatldus/Movie/assets/122216298/56edab3a-e69a-4a0a-8b46-fec50663fea8)
-| - 카테고리별 캐러셀 구현 <br /> - 호버시 좋아요<br/> 기능 구현 |  **FRONT-END** </br> `구성미` </br> |
-| User Page |![image](https://github.com/rlatldus/Movie/assets/122216298/9f26ceb1-ea82-4f78-a0c9-54000034db78)
-| - 타 사용자 리뷰 및 댓글 확인 기능 |**FRONT-END** </br>`구성미` </br>|
+| Search page |![image](https://github.com/rlatldus/Movie/assets/122216298/5cf491e0-c4db-4eea-a888-9fe11eaea4de)|  - 영화 검색기능 구현<br/>  | **FRONT-END** </br> `장영아` </br> |
+| Info page |![image](https://github.com/rlatldus/Movie/assets/122216298/503501e3-742a-4a6d-a494-ead30841f979) | - 문의 메일 기능, 카카오Map 구현 <br/>| **FRONT-END** </br> `복영헌` </br> |
+|My Page|![image](https://github.com/rlatldus/Movie/assets/122216298/56edab3a-e69a-4a0a-8b46-fec50663fea8) | - 호버 시 해당영화 정보 프리뷰 구현 <br /> - 좋아요 CRUD <br/> 기능 구현 |  **FRONT-END** </br> `김시연` </br> | User Page |![image](https://github.com/rlatldus/Movie/assets/122216298/9f26ceb1-ea82-4f78-a0c9-54000034db78)
+| - Sign in/up 기능 <br/> -구글로그인 |**FRONT-END** </br>`김시연` </br>|
 <br/>
 
 ## Pages

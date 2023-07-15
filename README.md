@@ -3,7 +3,7 @@
 - **`Team name` :** 라이언무비 ( 영화 찜하기 사이트 제작 )
 - **`Project duration` :** 2023.03.13 - 2023.04.14
 - **`Team members` :** 김시연(조장), 장영아, 복영헌
-- **`Link` :** [라이언무비 방문하기👀](https://movie-33ea4.web.app/)
+- **`Link` :** [라이언무비 방문하기](https://movie-33ea4.web.app/)
 
 
 ![image](https://github.com/rlatldus/Movie/assets/122216298/4e39e8aa-cdfd-4750-a7e9-cd2a0e480a9b)

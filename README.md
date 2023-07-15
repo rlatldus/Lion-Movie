@@ -56,10 +56,10 @@ Firebase|
 
 | |페이지 및 기능 |설명|담당개발자|
 |:--:|:--:|:--:|:--:|
-|Home|< img src="https://github.com/rlatldus/Movie/assets/122216298/d39b35e4-4012-41c4-b588-3d350e03618b" width: 300 height="300"/> | </br> - 모달 클릭 시<br/> 해당영화 프리뷰 | **FRONT-END** </br> `장영아` </br> |
-| Search page | <img src= "https://github.com/rlatldus/Movie/assets/122216298/5cf491e0-c4db-4eea-a888-9fe11eaea4de"/>|  - 영화 검색기능 구현<br/>  | **FRONT-END** </br> `장영아` </br> |
-| Info page | <img src="https://github.com/rlatldus/Movie/assets/122216298/503501e3-742a-4a6d-a494-ead30841f979"/> | - 문의 메일 기능, 카카오Map 구현 <br/>| **FRONT-END** </br> `복영헌` </br> |
-|My Page|  <img src="https://github.com/rlatldus/Movie/assets/122216298/f82e0215-aec5-4e02-a4a6-40a4bfdd615b"/> | - 호버 시 해당영화 정보 프리뷰 구현 <br /> - 좋아요 CRUD <br/> 기능 구현 |  **FRONT-END** </br> `김시연` </br> |
+|Home|< img src="https://github.com/rlatldus/Movie/assets/122216298/d39b35e4-4012-41c4-b588-3d350e03618b" width="300"/> | </br> - 모달 클릭 시<br/> 해당영화 프리뷰 | **FRONT-END** </br> `장영아` </br> |
+| Search page | <img src= "https://github.com/rlatldus/Movie/assets/122216298/5cf491e0-c4db-4eea-a888-9fe11eaea4de"  width="300"/>|  - 영화 검색기능 구현<br/>  | **FRONT-END** </br> `장영아` </br> |
+| Info page | <img src="https://github.com/rlatldus/Movie/assets/122216298/503501e3-742a-4a6d-a494-ead30841f979"  width="300"/> | - 문의 메일 기능, 카카오Map 구현 <br/>| **FRONT-END** </br> `복영헌` </br> |
+|My Page|  <img src="https://github.com/rlatldus/Movie/assets/122216298/f82e0215-aec5-4e02-a4a6-40a4bfdd615b"  width="300"/> | - 호버 시 해당영화 정보 프리뷰 구현 <br /> - 좋아요 CRUD <br/> 기능 구현 |  **FRONT-END** </br> `김시연` </br> |
 | User Page | <img src="https://github.com/rlatldus/Movie/assets/122216298/56edab3a-e69a-4a0a-8b46-fec50663fea8"/> | - Sign in/up 기능 <br/> -구글로그인 | **FRONT-END** </br>`김시연` </br> |
 <br/>
 

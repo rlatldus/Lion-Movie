@@ -67,7 +67,7 @@ Firebase|
 
 ## Pages
 
-| |페이지/기능 배치 구조|
+| |페이지/기능 배치 구조| |
 | :--: | :--: | :--: | 
 |Home| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/461ba91d-1fed-47a2-9431-6e3c17f06e99"  width="300" />| 'type'과 'series'에 따라 영화와 TV 정보를 각각의 데이터 속성에 저장|
 |Search page| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/be58dfca-8616-441a-a3c1-73264b079889" width="300"/>| TMDB API 

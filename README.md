@@ -74,6 +74,7 @@ Firebase|
 |Info page|![Detail Page](https://user-images.githubusercontent.com/122377401/233072424-b855b592-797c-4fc9-828c-2d9dba372fb3.png)| 
 |Mypage |![My & User](https://user-images.githubusercontent.com/122377401/233072422-e4ffc00a-c2bb-4833-bdea-f9e70e922801.png)| 
 |User Page | ![image](https://github.com/rlatldus/Movie/assets/122216298/7efdf85c-3d50-47a0-aa08-b69e24da76e1) | 
+![로그인 페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/1fbe2772-3805-4ffa-a399-9a9594fb6739)
 
 
 느낀점 

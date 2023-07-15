@@ -69,12 +69,18 @@ Firebase|
 
 | |페이지/기능 배치 구조|
 | :--: | :--: |
-|Home|![Common](https://user-images.githubusercontent.com/122377401/233072429-c8a09ffe-e11b-4c63-89ec-04ebaaa7d002.png)|
-|Search page|![Home & Preview](https://user-images.githubusercontent.com/122377401/233072426-3177b9fa-e992-4d40-91f3-cd372d3cdbae.png)| 
-|Info page|![Detail Page](https://user-images.githubusercontent.com/122377401/233072424-b855b592-797c-4fc9-828c-2d9dba372fb3.png)| 
-|Mypage |![My & User](https://user-images.githubusercontent.com/122377401/233072422-e4ffc00a-c2bb-4833-bdea-f9e70e922801.png)| 
-|User Page | ![image](https://github.com/rlatldus/Movie/assets/122216298/7efdf85c-3d50-47a0-aa08-b69e24da76e1) | 
-![로그인 페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/1fbe2772-3805-4ffa-a399-9a9594fb6739)
+|Home|![홈페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/461ba91d-1fed-47a2-9431-6e3c17f06e99)|
+|Search page|![서치 페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/be58dfca-8616-441a-a3c1-73264b079889)| 
+|Info page|![문의 페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/d9450f46-a651-4ca7-8c56-d7e95b71d9cc)| 
+|Mypage |![마이 페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/d8d0cde6-70a1-4954-8163-085099b7b5f6)| 
+|User Page | ![로그인 페이지](https://github.com/rlatldus/Lion-Movie/assets/122216298/1e81596f-1dee-4eec-983f-3ffe6cfdf1e9) | 
+
+
+
+
+
+
+
 
 
 느낀점 

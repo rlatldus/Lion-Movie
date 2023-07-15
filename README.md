@@ -68,12 +68,17 @@ Firebase|
 ## Pages
 
 | |페이지/기능 배치 구조|
-| :--: | :--: |
-|Home| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/461ba91d-1fed-47a2-9431-6e3c17f06e99"  width="300" />|
-|Search page| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/be58dfca-8616-441a-a3c1-73264b079889" width="300"/>| 
-|Info page| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/d9450f46-a651-4ca7-8c56-d7e95b71d9cc"  width="300"/>| 
-|Mypage | <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/d8d0cde6-70a1-4954-8163-085099b7b5f6" width="300"/>| 
-|User Page | <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/1e81596f-1dee-4eec-983f-3ffe6cfdf1e9" width="300"/> | 
+| :--: | :--: | :--: | 
+|Home| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/461ba91d-1fed-47a2-9431-6e3c17f06e99"  width="300" />| 'type'과 'series'에 따라 영화와 TV 정보를 각각의 데이터 속성에 저장|
+|Search page| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/be58dfca-8616-441a-a3c1-73264b079889" width="300"/>| TMDB API 
+ GET 이용|
+|Info page| <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/d9450f46-a651-4ca7-8c56-d7e95b71d9cc"  width="300"/>| kakaoMAP api 사용하여 웹 첫 화면에서 보여질 영역을 좌표로 설정, 로그인 상태일 때 getmatter를 사용하여 이름과 이메일 주소 기입, 문의사항 입력 후 연결된 이메일 계정으로 메일 도착 |
+|Mypage | <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/d8d0cde6-70a1-4954-8163-085099b7b5f6" width="300"/>| vuex로 store에 저장해서 상태관리, Vuex mapGetters 사용 > 편리하게 만듬 |
+|User Page | <img src="https://github.com/rlatldus/Lion-Movie/assets/122216298/1e81596f-1dee-4eec-983f-3ffe6cfdf1e9" width="300"/> | Catch try 문으로 예외 처리, vuex로 store에 저장해서 상태관리, Vuex mapGetters 사용|
+![image](https://github.com/rlatldus/Lion-Movie/assets/122216298/d13b1f3d-1957-42c3-8c3a-6efe816d9955) | 
+
+
+
 
 
 

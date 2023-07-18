@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ref, watchEffect } from 'vue';
+import { ref, watchEffect, computed, onMounted } from 'vue';
 import { mapGetters, useStore } from 'vuex';
 
 export default {
@@ -27,7 +27,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(["getToken"]),
+        ...mapGetters(["getToken", "getFavorites"]),
         token() {
             return this.getToken;
         }
@@ -62,6 +62,16 @@ export default {
             });
         });
 
+        const token = computed(() => {
+            return store.getters.getToken;
+        });
+
+        onMounted(() => {
+            if (token.value) {
+                store.dispatch('initializeFavorites');
+            }
+        });
+
         return {
             items,
             toggleFavorite,
@@ -69,6 +79,7 @@ export default {
         };
     }
 };
+
 </script>
 <style scoped>
 .favorite-button {

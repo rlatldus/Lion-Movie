@@ -15,36 +15,34 @@
 
 
 <style scoped>
-
 li {
 	list-style: none;
 	height: auto;
 
 }
 
-li>span{
+li>span {
 	font-size: 150px;
 }
 
-h1{
+h1 {
 	display: flex;
 
 }
 
-main{
+main {
 	background-color: #1d4d77;
 }
 
 
-.setting{
+.setting {
 	margin-right: 15px;
 	font-size: 120%;
-	
+
 }
-.setting_icons{
+
+.setting_icons {
 	margin-top: 30px;
 	background-color: rgb(32, 196, 196);
 }
-
-
 </style>

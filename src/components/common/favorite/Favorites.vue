@@ -1,8 +1,8 @@
 <template>
     <div>
         <button class="favorite-button" :class="{ favorite: isFavorite(item), unfavorite: !isFavorite(item) }" v-if="token"
-        @click="toggleFavorite(item)">
-        <span class="favorite-text">찜하기</span>
+            @click="toggleFavorite(item)">
+            <span class="favorite-text">찜하기</span>
             <font-awesome-icon :icon="isFavorite(item) ? 'heart' : ['far', 'heart']" />
         </button>
         <button class="favorite-button unfavorite" v-else @click="showAlert">

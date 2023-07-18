@@ -13,15 +13,15 @@
 
 <script setup>
 import Sidebar from './components/Sidebar.vue';
-import Setting from './components/Setting.vue'
-import About from './components/About.vue'
-import KakaoMap from './components/KakaoMap.vue';
-import Menu from './components/Menu.vue';
-import Home from './components/Home.vue'
-import Favorite from './components/views/Favorite.vue';
-import Login from './components/views/Login.vue';
-import Search from './components/Search.vue';
-import Footer from './components/Footer.vue';
+// import Setting from './components/Setting.vue'
+// import About from './components/About.vue'
+// import KakaoMap from './components/KakaoMap.vue';
+import Menu from './components/views/Menu.vue';
+// import Home from './components/Home.vue'
+// import Favorite from './components/views/Favorite.vue';
+// import Login from './components/views/Login.vue';
+// import Search from './components/Search.vue';
+import Footer from './components/common/footer/Footer.vue';
 
 
 
@@ -59,6 +59,7 @@ button {
 
 .app {
 	display: flex;
+
 	main {
 		flex: 1 1 0;
 		padding: 2rem;
@@ -69,16 +70,16 @@ button {
 		@media (min-width: 550px) {
 			padding-left: 6em;
 		}
-		@media (max-width:549px){
-	
-		margin-top:  2em;
-	
-	
-	
+
+		@media (max-width:549px) {
+
+			margin-top: 2em;
+
+
+
 		}
 	}
 }
-
 </style>
 <script>
 

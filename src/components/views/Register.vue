@@ -1,6 +1,7 @@
 <template>
   <FormWrap :token="false" :hasAccount="true">
-    <user-form :name="true" formTitle="회원가입" submitButtonText="화원가입하기" :formData="formData" :submitForm="signUp"></user-form>
+    <user-form :name="true" formTitle="회원가입" submitButtonText="화원가입하기" :formData="formData"
+      :submitForm="signUp"></user-form>
   </FormWrap>
 </template>
 
@@ -15,7 +16,7 @@ export default {
     FormWrap
   },
   setup() {
-    const formData = ref({ email: '', password: '', displayName:'' });
+    const formData = ref({ email: '', password: '', displayName: '' });
     const store = useStore();
 
     const signUp = () => {
@@ -27,6 +28,6 @@ export default {
       signUp
     }
   }
-  
+
 };
 </script>

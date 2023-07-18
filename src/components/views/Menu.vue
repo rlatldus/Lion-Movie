@@ -22,7 +22,7 @@
                 <router-link to="/Login" class="button">
                     <li class="text">Login</li>
                 </router-link>
-                <router-link to="/Register" v-if="!token"  class="button">
+                <router-link to="/Register" v-if="!token" class="button">
                     <li class="text">Register</li>
                 </router-link>
             </ul>
@@ -31,7 +31,7 @@
 </template>
 
 <script >
-import logoURL from '../assets/logo.png';
+import logoURL from '../../assets/logo.png';
 import { mapGetters } from 'vuex';
 import { ref } from 'vue';
 export default {
@@ -41,12 +41,12 @@ export default {
             logoURL
         }
     },
-    	computed: {
-		...mapGetters(["getToken"]),
-		token() {
-			return this.getToken;
-		}
-	},
+    computed: {
+        ...mapGetters(["getToken"]),
+        token() {
+            return this.getToken;
+        }
+    },
     methods: {
         showMenu() {
             this.showMobileMenu = !this.showMobileMenu;

@@ -37,7 +37,7 @@ export default {
   computed: {
     isFormValid() {
       const { displayName, email, password } = this.formData;
-      if(this.name){
+      if (this.name) {
         return this.isEmailValid(email) && password && password.length >= 8 && displayName;
       }
       return this.isEmailValid(email) && password && password.length >= 8;

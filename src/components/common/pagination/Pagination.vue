@@ -70,7 +70,7 @@ export default {
     },
     methods: {
         updateCurrentIndex(currentIndex) {
-            if (this.movies.length >= 2 ) {
+            if (this.movies.length >= 2) {
                 if (currentIndex + 2 === this.movies.length + 1) {
                     this.currentIndex = 1;
                 } else if (currentIndex + 2 === this.movies.length) {
@@ -79,8 +79,8 @@ export default {
 
                     this.currentIndex = currentIndex + 2;
                 }
-            }else if(this.movies.length==1){
-                 this.currentIndex = currentIndex;
+            } else if (this.movies.length == 1) {
+                this.currentIndex = currentIndex;
             }
         }
     },

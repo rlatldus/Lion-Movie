@@ -30,10 +30,12 @@ export default {
 <style  lang="scss" scoped>
 .formWrap {
     width: 100%;
+
     @media (min-width: 549px) {
         margin-left: 50px;
         width: calc(100% - 50px);
     }
+
     position: relative;
     top: 0;
     right: 0;

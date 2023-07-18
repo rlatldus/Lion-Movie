@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
+import Home from "../components/views/Home.vue";
 import AuthGuard from "../util/authguard";
 const router = createRouter({
   history: createWebHistory(),
@@ -7,37 +7,35 @@ const router = createRouter({
     {
       path: "/",
       component: Home,
-      meta:{hideFooter:false},
+      meta: { hideFooter: false },
     },
     {
       path: "/aboutus",
-      component: () => import("../components/About.vue"),
-      meta:{hideFooter:false},
+      component: () => import("../components/views/About.vue"),
+      meta: { hideFooter: false },
     },
     {
       path: "/search",
-      component: () => import("../components/Search.vue"),
-      meta:{hideFooter:false},
+      component: () => import("../components/views/Search.vue"),
+      meta: { hideFooter: false },
       // meta: { requiresAuth: true },
     },
     {
       path: "/favorite",
       component: () => import("../components/views/Favorite.vue"),
-      
-      meta: { requiresAuth: true, hideFooter:false},
+
+      meta: { requiresAuth: true, hideFooter: false },
     },
     {
       path: "/login",
       component: () => import("../components/views/Login.vue"),
-      meta:{hideFooter:true},
-      
+      meta: { hideFooter: true },
     },
     {
       path: "/register",
       component: () => import("../components/views/Register.vue"),
-      meta:{hideFooter:true},
+      meta: { hideFooter: true },
     },
-   
   ],
 });
 
